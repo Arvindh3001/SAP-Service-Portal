@@ -1,0 +1,152 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.TechnicianManagement"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onNavHome" tooltip="Back to Dashboard" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<VBox class="spContent">
+
+					<!-- Page Header -->
+					<HBox justifyContent="SpaceBetween" alignItems="Center"
+						class="sapUiSmallMarginBottom">
+						<items>
+							<VBox>
+								<Title text="Technician Management" level="H2" />
+								<Text text="Bangalore ASP Region  •  May 2026" class="sapUiTinyMarginTop" />
+							</VBox>
+							<Button text="+ Add Technician" icon="sap-icon://add"
+								type="Emphasized" press=".onAddTechnician" />
+						</items>
+					</HBox>
+
+					<!-- Summary KPIs -->
+					<FlexBox wrap="Wrap" class="spKpiRow sapUiSmallMarginBottom">
+						<items>
+							<GenericTile header="Total Technicians" class="spKpiTile spKpiTileBlue">
+								<tileContent><TileContent><content>
+									<NumericContent value="14" withMargin="false" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Available" class="spKpiTile spKpiTileGreen">
+								<tileContent><TileContent><content>
+									<NumericContent value="3" withMargin="false" valueColor="Good" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Busy / On Visit" class="spKpiTile spKpiTileOrange">
+								<tileContent><TileContent><content>
+									<NumericContent value="9" withMargin="false" valueColor="Critical" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Offline / Leave" class="spKpiTile spKpiTileRed">
+								<tileContent><TileContent><content>
+									<NumericContent value="2" withMargin="false" valueColor="Critical" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Onboarding" class="spKpiTile spKpiTileBlue">
+								<tileContent><TileContent><content>
+									<NumericContent value="5" withMargin="false" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+						</items>
+					</FlexBox>
+
+					<!-- Icon Tab Bar -->
+					<IconTabBar class="spPanel" expandable="false">
+						<items>
+
+							<!-- Active Technicians -->
+							<IconTabFilter text="Active Technicians" count="14" icon="sap-icon://employee">
+								<content>
+									<Toolbar>
+										<SearchField width="320px" placeholder="Search by name, zone, skill..." />
+										<ToolbarSpacer />
+									</Toolbar>
+									<Table items="{service>/technicians}"
+										noDataText="No technicians found"
+										growing="true" growingThreshold="10"
+										fixedLayout="false">
+										<columns>
+											<Column><Text text="NAME" /></Column>
+											<Column><Text text="EMP ID" /></Column>
+											<Column><Text text="SKILLS / CERT." /></Column>
+											<Column><Text text="ZONE" /></Column>
+											<Column><Text text="STATUS" /></Column>
+											<Column><Text text="ACTIVE CASES" /></Column>
+											<Column><Text text="ATTENDANCE" /></Column>
+											<Column><Text text="SLA %" /></Column>
+											<Column><Text text="ACTIONS" /></Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<Text text="{service>name}" />
+													<Text text="{service>empId}" />
+													<Text text="{service>skills}" wrapping="true" />
+													<Text text="{service>zone}" />
+													<ObjectStatus text="{service>status}"
+														state="{service>statusState}" />
+													<Text text="{service>activeCases}" />
+													<ObjectStatus text="{service>attendance}"
+														state="{service>attendanceState}" />
+													<Text text="{service>sla}" />
+													<HBox>
+														<items>
+															<Button text="Edit" type="Transparent"
+																press=".onEditTechnician"
+																class="sapUiTinyMarginEnd" />
+															<Button text="View" type="Transparent"
+																press=".onViewProfile" />
+														</items>
+													</HBox>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</IconTabFilter>
+
+							<!-- Onboarding Pipeline -->
+							<IconTabFilter text="Onboarding Pipeline" count="5" icon="sap-icon://add-employee">
+								<content>
+									<VBox class="sapUiMediumMargin">
+										<Text text="5 technicians are currently completing their onboarding registration."
+											class="sapUiSmallMarginBottom" />
+									</VBox>
+								</content>
+							</IconTabFilter>
+
+							<!-- Offboarded -->
+							<IconTabFilter text="Offboarded" count="2" icon="sap-icon://employee-rejections">
+								<content>
+									<VBox class="sapUiMediumMargin">
+										<Text text="2 technicians have been offboarded from the system."
+											class="sapUiSmallMarginBottom" />
+									</VBox>
+								</content>
+							</IconTabFilter>
+
+						</items>
+					</IconTabBar>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

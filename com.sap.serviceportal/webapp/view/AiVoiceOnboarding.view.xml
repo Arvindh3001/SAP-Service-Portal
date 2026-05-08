@@ -1,0 +1,276 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.AiVoiceOnboarding"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="false" backgroundDesign="Solid" class="spAiOnboardPage">
+		<content>
+			<VBox class="spAiOnboardRoot">
+
+				<!-- ── TOP BAR ── -->
+				<Toolbar class="spAiTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to Login" class="spTopBarBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Technician Self-Registration Portal" class="spAiPortalTitle" />
+					<ToolbarSpacer />
+					<Button text="? Help" class="spHelpBtn" type="Accept" />
+				</Toolbar>
+
+				<!-- ── STEP PROGRESS BAR ── -->
+				<HBox class="spAiStepBar" alignItems="Center" justifyContent="Center">
+					<items>
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="1" backgroundColor="Accent1" displaySize="XS" />
+								<Text text="Personal Details" class="spAiStepTitle spAiStepTitleActive" />
+								<Text text="Speaking now..." class="spAiStepSub spAiStepSubActive" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="2" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="KYC Documents" class="spAiStepTitle" />
+								<Text text="Aadhaar, PAN, Certs" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="3" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Skills &amp; Zone" class="spAiStepTitle" />
+								<Text text="Experience &amp; area" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="4" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Review &amp; Submit" class="spAiStepTitle" />
+								<Text text="Confirm &amp; submit" class="spAiStepSub" />
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+
+				<!-- ── TWO-PANEL MAIN CONTENT ── -->
+				<HBox class="spAiPanelsRow">
+					<items>
+
+						<!-- LEFT: AI Voice Assistant Panel -->
+						<VBox class="spAiVoicePanel">
+							<items>
+
+								<Title text="AI Voice Registration Assistant" titleStyle="H4" class="spAiVoiceTitle" />
+								<Text text="Speak naturally in your preferred language — AI fills your form in real time"
+									class="spAiVoiceSubtitle" />
+
+								<!-- Language selector -->
+								<HBox class="spAiLangRow" id="langRow">
+									<items>
+										<Button text="English" class="spLangBtnActive" type="Emphasized" press=".onLangSelect" />
+										<Button text="Hindi"   class="spLangBtn" type="Transparent" press=".onLangSelect" />
+										<Button text="Tamil"   class="spLangBtn" type="Transparent" press=".onLangSelect" />
+										<Button text="Kannada" class="spLangBtn" type="Transparent" press=".onLangSelect" />
+										<Button text="Telugu"  class="spLangBtn" type="Transparent" press=".onLangSelect" />
+									</items>
+								</HBox>
+
+								<!-- Chat area -->
+								<ScrollContainer class="spAiChatScroll" vertical="true" height="260px">
+									<content>
+										<VBox class="spAiChatInner">
+											<items>
+												<HBox class="spAiMsgRow">
+													<items><VBox class="spAiMsgBubble"><items>
+														<Text text="Hello! I'm your registration assistant. Please tell me your full name to get started." class="spAiMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox justifyContent="End" class="spAiMsgRow">
+													<items><VBox class="spUserMsgBubble"><items>
+														<Text text="My name is Ravi Kumar." class="spUserMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox class="spAiMsgRow">
+													<items><VBox class="spAiMsgBubble"><items>
+														<Text text="Got it — Ravi Kumar! Now please tell me your date of birth." class="spAiMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox justifyContent="End" class="spAiMsgRow">
+													<items><VBox class="spUserMsgBubble"><items>
+														<Text text="15th April 1990." class="spUserMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox class="spAiMsgRow">
+													<items><VBox class="spAiMsgBubble"><items>
+														<Text text="Perfect! Date of birth: 15 Apr 1990. Which city do you provide service in?" class="spAiMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox justifyContent="End" class="spAiMsgRow">
+													<items><VBox class="spUserMsgBubble"><items>
+														<Text text="I work in North Bangalore." class="spUserMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox class="spAiMsgRow">
+													<items><VBox class="spAiMsgBubble"><items>
+														<Text text="Mapped to service zone: North Bangalore. How many years of experience do you have?" class="spAiMsgText" />
+													</items></VBox></items>
+												</HBox>
+											</items>
+										</VBox>
+									</content>
+								</ScrollContainer>
+
+								<!-- Listening + waveform -->
+								<HBox alignItems="Center" class="spAiListeningRow">
+									<items>
+										<Text text="{= ${local>/isListening} ? '≡ Listening...' : '≡ Ready'}"
+											class="spAiListeningText" />
+										<Text text="{= ${local>/isListening} ? '▁▂▄▆▇█▇▅▃▁▂▄▇█▅▃▁▂▄▆▇▅' : ''}"
+											class="spAiWaveform" />
+									</items>
+								</HBox>
+
+								<!-- Mic button -->
+								<HBox justifyContent="Center" class="spAiMicRow">
+									<items>
+										<Button icon="sap-icon://microphone" class="spAiMicBtn"
+											type="{= ${local>/isListening} ? 'Reject' : 'Accept'}"
+											press=".onMicToggle" />
+									</items>
+								</HBox>
+								<Text text="{= ${local>/isListening} ? 'Tap to pause  •  Speak clearly to continue' : 'Tap mic to start listening'}"
+									class="spAiMicHint" />
+
+								<!-- AI Confidence box -->
+								<VBox class="spAiConfidenceBox">
+									<items>
+										<Text text="AI Confidence: High" class="spAiConfidenceTitle" />
+										<Text text="Accent detected: South Indian English  •  Background noise: Low  •  5 fields validated  •  0 errors"
+											class="spAiConfidenceDetail" />
+									</items>
+								</VBox>
+
+							</items>
+						</VBox>
+
+						<!-- RIGHT: Live Form Panel (read-only — AI fills from voice) -->
+						<VBox class="spAiFormPanel">
+							<items>
+
+								<!-- Form header -->
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spAiFormHeaderRow">
+									<items>
+										<Title text="Live Form — Auto-filling from Voice" titleStyle="H4" class="spAiFormTitle" />
+										<Text text="5 of 12 filled" class="spAiFormProgressLabel" />
+									</items>
+								</HBox>
+								<ProgressIndicator percentValue="42" displayValue="" state="Success" class="spAiFormProgressBar" />
+
+								<!-- Form grid: 2 columns — all fields read-only -->
+								<l:Grid defaultSpan="XL6 L6 M12 S12" hSpacing="1" vSpacing="0">
+									<l:content>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="First Name" class="spAiFieldLabel" />
+											<Input value="Ravi" class="spAiFieldFilled" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Last Name" class="spAiFieldLabel" />
+											<Input value="Kumar" class="spAiFieldFilled" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Date of Birth" class="spAiFieldLabel" />
+											<Input placeholder="dd-mm-yyyy" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Gender" class="spAiFieldLabel" />
+											<Select width="100%" enabled="true">
+												<items>
+													<core:Item key="" text="Select" />
+													<core:Item key="M" text="Male" />
+													<core:Item key="F" text="Female" />
+													<core:Item key="O" text="Other" />
+												</items>
+											</Select>
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Mobile Number" class="spAiFieldLabel" />
+											<Input placeholder="+91 XXXXX XXXXX" editable="true" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Aadhaar Number" class="spAiFieldLabel" />
+											<Input placeholder="Pending input..." editable="true" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Service Zone" class="spAiFieldLabel" />
+											<Select width="100%" enabled="true">
+												<items>
+													<core:Item key="BLR-N" text="Pending..." />
+													<core:Item key="BLR-N2" text="North Bangalore" />
+													<core:Item key="BLR-S" text="South Bangalore" />
+													<core:Item key="HYD" text="Hyderabad" />
+												</items>
+											</Select>
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Years of Experience" class="spAiFieldLabel" />
+											<Input value="5 years" editable="true" class="spAiFieldFilled" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Email Address" class="spAiFieldLabel" />
+											<Input placeholder="Pending..." editable="true" width="100%" />
+										</items></VBox>
+										<VBox class="spAiFieldBox"><items>
+											<Label text="Current Address" class="spAiFieldLabel" />
+											<Input placeholder="Pending..." editable="true" width="100%" />
+										</items></VBox>
+									</l:content>
+								</l:Grid>
+
+								<!-- Skills detected -->
+								<VBox class="spAiSkillsSection">
+									<items>
+										<Text text="Skills auto-detected from conversation:" class="spAiSkillsLabel" />
+										<HBox wrap="Wrap" class="spAiSkillsRow">
+											<items>
+												<Text text="● HVAC (Level 2)"        class="spAiSkillChip spAiSkillChipTeal" />
+												<Text text="● Electrical Systems"    class="spAiSkillChip spAiSkillChipBlue" />
+												<Text text="+ Speak to add more"     class="spAiSkillChipAdd" />
+											</items>
+										</HBox>
+									</items>
+								</VBox>
+
+								<!-- KYC Upload Banner + Next button -->
+								<HBox alignItems="Center" class="spAiKycBanner">
+									<items>
+										<VBox class="spAiKycInfo">
+											<items>
+												<Text text="KYC Upload — Voice Guided" class="spAiKycTitle" />
+												<Text text="Say 'upload Aadhaar' or 'take photo' — AI guides camera capture and auto-verifies document quality."
+													class="spAiKycDesc" />
+											</items>
+										</VBox>
+										<Button text="Next: KYC Documents"
+											press=".onNext"
+											type="Emphasized"
+											icon="sap-icon://arrow-right"
+											iconFirst="false" />
+									</items>
+								</HBox>
+
+							</items>
+						</VBox>
+
+					</items>
+				</HBox>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

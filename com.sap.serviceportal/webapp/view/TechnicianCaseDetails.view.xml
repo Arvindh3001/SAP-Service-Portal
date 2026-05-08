@@ -1,0 +1,323 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.TechnicianCaseDetails"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'com/sap/serviceportal/model/formatter'
+	}">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onNavHome" tooltip="Back to Dashboard" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/technicianUser/initials}" backgroundColor="Accent7"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<!-- Status Flow -->
+				<core:HTML content="&lt;div class='spCaseStatusBar'&gt;&lt;div class='spCaseStep'&gt;&lt;div class='spCaseBubble spCaseBubble--done'&gt;&#10003;&lt;/div&gt;&lt;span class='spCaseLbl spCaseLbl--done'&gt;New&lt;/span&gt;&lt;/div&gt;&lt;div class='spCaseConn spCaseConn--done'&gt;&lt;/div&gt;&lt;div class='spCaseStep'&gt;&lt;div class='spCaseBubble spCaseBubble--done'&gt;&#10003;&lt;/div&gt;&lt;span class='spCaseLbl spCaseLbl--done'&gt;Assigned&lt;/span&gt;&lt;/div&gt;&lt;div class='spCaseConn spCaseConn--done'&gt;&lt;/div&gt;&lt;div class='spCaseStep'&gt;&lt;div class='spCaseBubble spCaseBubble--active'&gt;3&lt;/div&gt;&lt;span class='spCaseLbl spCaseLbl--active'&gt;In Progress&lt;/span&gt;&lt;/div&gt;&lt;div class='spCaseConn'&gt;&lt;/div&gt;&lt;div class='spCaseStep'&gt;&lt;div class='spCaseBubble spCaseBubble--pending'&gt;4&lt;/div&gt;&lt;span class='spCaseLbl spCaseLbl--pending'&gt;Resolved&lt;/span&gt;&lt;/div&gt;&lt;div class='spCaseConn'&gt;&lt;/div&gt;&lt;div class='spCaseStep'&gt;&lt;div class='spCaseBubble spCaseBubble--pending'&gt;5&lt;/div&gt;&lt;span class='spCaseLbl spCaseLbl--pending'&gt;Closed&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" />
+
+				<Toolbar>
+					<Breadcrumbs currentLocationText="TKT-2024-0891">
+						<links>
+							<Link text="Home" press=".onNavHome" />
+							<Link text="My Cases" press=".onNavHome" />
+						</links>
+					</Breadcrumbs>
+					<ToolbarSpacer />
+					<Button text="Edit Case" icon="sap-icon://edit"
+						type="Emphasized" press=".onEdit" />
+					<Button text="Mark Complete" icon="sap-icon://accept"
+						type="Accept" press=".onComplete" />
+					<Button icon="sap-icon://nav-back" text="Back"
+						type="Default" press=".onNavHome" />
+				</Toolbar>
+
+				<VBox class="spContent">
+
+					<!-- Two-column layout: main content (left) + progress checklist (right) -->
+					<l:Grid hSpacing="1" vSpacing="1">
+						<l:content>
+
+							<!-- ── LEFT COLUMN (8/12) ── -->
+							<VBox>
+								<layoutData>
+									<l:GridData span="XL8 L8 M12 S12" />
+								</layoutData>
+
+								<!-- Case Information -->
+								<Panel class="spPanel sapUiSmallMarginBottom">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{service>/technicianCaseDetails/id}" level="H3" />
+											<ObjectStatus
+												text="{service>/technicianCaseDetails/priority}"
+												state="{path: 'service>/technicianCaseDetails/priority', formatter: 'formatter.formatPriorityState'}"
+												class="sapUiTinyMarginBegin" />
+										</Toolbar>
+									</headerToolbar>
+									<content>
+										<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+											<l:Grid defaultSpan="XL6 L6 M6 S12">
+												<l:content>
+													<VBox>
+														<Label text="Customer" design="Bold" />
+														<Text text="{service>/technicianCaseDetails/customer}" class="sapUiSmallMarginBottom" />
+														<Label text="Contact" design="Bold" />
+														<Text text="{service>/technicianCaseDetails/contactName}" class="sapUiSmallMarginBottom" />
+														<Label text="Phone" design="Bold" />
+														<Text text="{service>/technicianCaseDetails/contactPhone}" class="sapUiSmallMarginBottom" />
+													</VBox>
+													<VBox>
+														<Label text="Product" design="Bold" />
+														<Text text="{service>/technicianCaseDetails/product}" class="sapUiSmallMarginBottom" />
+														<Label text="Serial No." design="Bold" />
+														<Text text="{service>/technicianCaseDetails/serialNo}" class="sapUiSmallMarginBottom" />
+														<Label text="Warranty" design="Bold" />
+														<ObjectStatus text="{service>/technicianCaseDetails/warrantyStatus}" state="Success" />
+													</VBox>
+												</l:content>
+											</l:Grid>
+											<Label text="Problem Description" design="Bold" class="sapUiSmallMarginTop" />
+											<Text text="{service>/technicianCaseDetails/problemDescription}" wrapping="true" />
+										</VBox>
+									</content>
+								</Panel>
+
+								<!-- Activity Timeline -->
+								<Panel headerText="Activity Timeline" class="spPanel">
+									<content>
+										<List items="{service>/technicianCaseDetails/timeline}" showSeparators="Inner">
+											<FeedListItem
+												sender="{service>author}"
+												timestamp="{service>time}"
+												text="{service>status}: {service>note}"
+												showIcon="false" />
+										</List>
+										<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+											<Label text="Add Note" design="Bold" class="sapUiTinyMarginTop" />
+											<TextArea placeholder="Describe the work done, observations, next steps..."
+												rows="3" growing="true" width="100%" />
+											<Button text="Add Note" type="Emphasized"
+												class="sapUiTinyMarginTop"
+												press=".onAddNote" />
+										</VBox>
+									</content>
+								</Panel>
+
+							</VBox>
+
+							<!-- ── RIGHT COLUMN (4/12): Resolution Progress ── -->
+							<VBox>
+								<layoutData>
+									<l:GridData span="XL4 L4 M12 S12" />
+								</layoutData>
+
+								<Panel class="spPanel spProgressPanel">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="Resolution Progress" level="H4" />
+											<ToolbarSpacer />
+											<ObjectStatus text="6 / 11 Steps" state="Warning" />
+										</Toolbar>
+									</headerToolbar>
+									<content>
+										<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+
+											<!-- Overall progress bar -->
+											<ProgressIndicator percentValue="55" displayValue="55% complete"
+												state="Warning" class="sapUiSmallMarginBottom" />
+
+											<!-- ── Timeline steps ── -->
+											<VBox class="spProgressTimeline">
+
+												<!-- 1: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Case Assigned to Technician" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 9:30 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 2: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Arrived on Site" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 10:00 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 3: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Initial Inspection Completed" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 10:10 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 4: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Root Cause Identified" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 10:15 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 5: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Replacement Parts Ordered" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 10:30 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 6: Done -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://accept" class="spProgressIconDone" />
+															<core:HTML content="&lt;div class='spProgressLine'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Parts Received" class="spProgressLabelDone" />
+															<Text text="Apr 23 · 11:45 AM" class="spProgressTime" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 7: Current / In Progress -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:Icon src="sap-icon://process" class="spProgressIconCurrent" />
+															<core:HTML content="&lt;div class='spProgressLine spProgressLinePending'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Part Installation" class="spProgressLabelCurrent" />
+															<Text text="In progress · Apr 23, 12:00 PM" class="spProgressTimeCurrent" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 8: Pending -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:HTML content="&lt;div class='spProgressDotPending'&gt;&lt;/div&gt;" />
+															<core:HTML content="&lt;div class='spProgressLine spProgressLinePending'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Connectivity Verified" class="spProgressLabelPending" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 9: Pending -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:HTML content="&lt;div class='spProgressDotPending'&gt;&lt;/div&gt;" />
+															<core:HTML content="&lt;div class='spProgressLine spProgressLinePending'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Driver Reinstallation" class="spProgressLabelPending" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 10: Pending -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:HTML content="&lt;div class='spProgressDotPending'&gt;&lt;/div&gt;" />
+															<core:HTML content="&lt;div class='spProgressLine spProgressLinePending'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Test Prints Successful" class="spProgressLabelPending" />
+														</VBox>
+													</items>
+												</HBox>
+
+												<!-- 11: Pending — last, no line -->
+												<HBox class="spProgressStep" alignItems="FlexStart">
+													<items>
+														<VBox class="spProgressIconCol" alignItems="Center">
+															<core:HTML content="&lt;div class='spProgressDotPending'&gt;&lt;/div&gt;" />
+														</VBox>
+														<VBox class="spProgressContent">
+															<Text text="Customer Final Approval" class="spProgressLabelPending" />
+														</VBox>
+													</items>
+												</HBox>
+
+											</VBox>
+										</VBox>
+									</content>
+								</Panel>
+
+							</VBox>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- ── Parts Used (full width below) ── -->
+					<Panel headerText="Parts Used" class="spPanel">
+						<content>
+							<List items="{service>/technicianCaseDetails/partsUsed}" showSeparators="Inner">
+								<ObjectListItem title="{service>description}">
+									<attributes>
+										<ObjectAttribute title="Part No." text="{service>partNo}" />
+										<ObjectAttribute title="Cost" text="{service>cost}" />
+										<ObjectAttribute title="Coverage" text="{service>covered}" />
+										<ObjectAttribute title="Status" text="{service>status}" />
+									</attributes>
+								</ObjectListItem>
+							</List>
+						</content>
+					</Panel>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

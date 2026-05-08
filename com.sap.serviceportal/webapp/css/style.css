@@ -1,0 +1,1757 @@
+/* SAP Service Portal - Custom Styles */
+
+/* Hero Banner */
+.spHeroBanner {
+	background: linear-gradient(135deg, #1d4b98 0%, #2b54a1 100%);
+	padding: 24px 32px;
+	width: 100%;
+}
+.spHeroBanner .spHeroDate {
+	color: rgba(255,255,255,0.8);
+	font-size: 0.75rem;
+	margin-bottom: 4px;
+}
+.spHeroBanner .spHeroTitle {
+	color: #fff !important;
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+.spHeroBanner .spHeroStats {
+	color: rgba(255,255,255,0.9);
+	font-size: 0.75rem;
+}
+
+/* Top Bar overrides */
+.spTopBar.sapMTB {
+	background: #fff;
+	border-bottom: 1px solid #d9d9d9;
+	height: 48px;
+	padding: 0 16px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+.spAiTopBar.sapMTB {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+.spSapLogoImg.sapMImg {
+	height: 26px;
+	width: auto;
+	display: block;
+}
+.spAppTitle.sapMText {
+	font-size: 0.875rem;
+	font-weight: 600;
+	margin-left: 8px;
+}
+
+/* Content Padding */
+.spContent {
+	padding: 24px 32px;
+}
+
+/* KPI Row */
+.spKpiRow {
+	margin-bottom: 24px;
+	gap: 16px;
+}
+.spKpiTile.sapMGT {
+	flex: 1;
+	min-width: 180px;
+	border-left: 4px solid #0a6ed1;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.spKpiTileBlue.sapMGT  { border-left-color: #0a6ed1; }
+.spKpiTileOrange.sapMGT { border-left-color: #cc6600; }
+.spKpiTileTeal.sapMGT   { border-left-color: #007b8a; }
+.spKpiTileGreen.sapMGT  { border-left-color: #107e3e; }
+.spKpiTileRed.sapMGT    { border-left-color: #bb0000; }
+
+/* Section Panels */
+.spPanel.sapMPanel {
+	border: 1px solid #e0e1e3;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+	margin-bottom: 16px;
+}
+
+/* Quick Action Buttons */
+.spQuickActionTile.sapMBtn {
+	min-height: 100px !important;
+	border: 1px solid #e8eaed !important;
+	border-bottom: 3px solid #1b4f9b !important;
+	border-radius: 8px !important;
+	width: 100% !important;
+}
+.spQuickActionTile.sapMBtn > .sapMBtnInner {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: center !important;
+	justify-content: center !important;
+	height: 100px !important;
+	gap: 8px !important;
+	padding: 12px 8px !important;
+	width: 100% !important;
+}
+.spQuickActionTile.sapMBtn > .sapMBtnInner > .sapUiIcon {
+	margin: 0 !important;
+	font-size: 1.6rem !important;
+	color: #1b4f9b !important;
+	line-height: 1 !important;
+}
+.spQuickActionTile.sapMBtn > .sapMBtnInner > .sapMBtnText {
+	font-size: 0.8rem !important;
+	color: #32363a !important;
+	margin: 0 !important;
+	text-align: center !important;
+	line-height: 1.2 !important;
+}
+
+/* Performance KPI cells */
+.spPerfKpiCell.sapMVBox {
+	flex: 1;
+	align-items: center;
+	padding: 4px 8px;
+	border-right: 1px solid #f0f0f0;
+}
+.spPerfKpiCell.sapMVBox:last-child {
+	border-right: none;
+}
+
+/* Status Flow Bar (Case Details) */
+.spCaseStatusBar {
+	display: flex;
+	align-items: flex-start;
+	padding: 16px 32px;
+	background: #fff;
+	border-bottom: 1px solid #e8eaed;
+	width: 100%;
+	box-sizing: border-box;
+}
+.spCaseStep {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+}
+.spCaseBubble {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	font-weight: 700;
+	box-sizing: border-box;
+}
+.spCaseBubble--done    { background: #107e3e; color: #fff; }
+.spCaseBubble--active  { background: #cc6600; color: #fff; box-shadow: 0 0 0 5px #fff3e0; }
+.spCaseBubble--pending { background: #fff; border: 2px solid #c8cdd3; color: #9ea8b4; }
+.spCaseLbl {
+	font-size: 0.72rem;
+	margin-top: 6px;
+	white-space: nowrap;
+}
+.spCaseLbl--done    { color: #107e3e; font-weight: 600; }
+.spCaseLbl--active  { color: #cc6600; font-weight: 700; }
+.spCaseLbl--pending { color: #9ea8b4; font-weight: 400; }
+.spCaseConn {
+	flex: 1;
+	height: 2px;
+	background: #e0e3e8;
+	min-width: 32px;
+	margin-top: 16px;
+}
+.spCaseConn--done { background: #107e3e; }
+
+/* Tech Notes List */
+.spNoteTime.sapMLabel {
+	font-weight: 600;
+	color: #32363a;
+}
+.spNoteText.sapMText {
+	color: #6a6d70;
+	font-size: 0.75rem;
+}
+
+/* Onboarding Stepper override */
+.spWizard.sapMWizard {
+	box-shadow: none;
+}
+
+/* ── AI Auto Assignment panel header toolbar ────── */
+.spAiPanelHdrTB.sapMTB {
+	background: #1d3461 !important;
+}
+.spAiPanelHdrTitle.sapMTitle > .sapMTitleText {
+	color: #fff !important;
+}
+
+.spNewTicketBanner {
+	background: #fff3e0;
+	border-left: 4px solid #cc6600;
+	padding: 12px 20px;
+}
+.spAiPanel .sapMPanelHdr {
+	background: #1d3461;
+	color: white;
+}
+.spAiReasoningBox {
+	background: #e8f4fd;
+	border-left: 4px solid #0a6ed1;
+	border-radius: 4px;
+	padding: 10px 14px;
+	margin: 8px 0;
+}
+.spMatchRow {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+}
+.spMatchLabel {
+	min-width: 160px;
+	font-size: 0.75rem;
+	color: #32363a;
+}
+.spDynAlertBar {
+	background: #fff3e0;
+	border-top: 2px solid #cc6600;
+	padding: 10px 20px;
+}
+
+/* ── Technician Home ───────────────────────────── */
+.spTechCard {
+	background: white;
+	border: 1px solid #e0e1e3;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+	padding: 16px;
+}
+.spStageRow {
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #f0f0f0;
+}
+.spStageDot {
+	width: 4px;
+	height: 32px;
+	border-radius: 2px;
+	margin-right: 12px;
+}
+.spStageBlue   { background: #0a6ed1; }
+.spStageGreen  { background: #107e3e; }
+.spStageOrange { background: #cc6600; }
+.spStageGray   { background: #c0c0c0; }
+
+/* ── Technician Management ─────────────────────── */
+.spTechGridCard {
+	border: 1px solid #e0e1e3;
+	border-radius: 8px;
+	background: white;
+	padding: 16px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* ── Learning Journeys ─────────────────────────── */
+.spCourseCard {
+	border: 1px solid #e0e1e3;
+	border-radius: 8px;
+	background: white;
+	padding: 20px;
+	margin-bottom: 16px;
+}
+
+/* ── TechnicianHome replacements for inline style ── */
+.spTechStageText.sapMText  { font-size: 0.8125rem !important; width: 160px; }
+.spTechCountText.sapMText  { font-size: 1.125rem !important; font-weight: 700; color: #32363a !important; margin-left: auto; }
+.spTechKpiLabel.sapMText   { font-size: 0.7rem !important; color: #6a6d70 !important; text-align: center; }
+.spTechKpiGreen.sapMTitle > .sapMTitleText  { color: #107e3e !important; }
+.spTechKpiOrange.sapMTitle > .sapMTitleText { color: #cc6600 !important; }
+.spTechKpiBlue.sapMTitle > .sapMTitleText   { color: #0a6ed1 !important; }
+.spTechTargetLabel.sapMText { font-size: 0.7rem !important; color: #6a6d70 !important; text-align: right; }
+.spMicCaseBtn.sapMBtn > .sapMBtnInner { color: #0a6ed1 !important; }
+
+/* ── KYC Document Upload ─────────────────────────── */
+.spKycDocPanel.sapMPanel {
+	margin-bottom: 12px;
+	border-left: 4px solid #e0e1e3;
+	border-radius: 6px;
+}
+.spKycDocRow.sapMHBox {
+	padding: 12px 16px;
+	align-items: center;
+}
+.spKycDocIcon {
+	width: 48px;
+	height: 48px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 16px;
+	flex-shrink: 0;
+}
+.spKycIconBlue   { background: #e8f0fe; }
+.spKycIconGreen  { background: #e8f5e9; }
+.spKycIconOrange { background: #fff3e0; }
+.spKycIconPurple { background: #f3e5f5; }
+.spKycIconText.sapMText {
+	font-weight: 700 !important;
+	font-size: 0.65rem !important;
+	color: #555 !important;
+	text-align: center;
+	width: 100%;
+}
+.spKycDocInfo.sapMVBox { flex: 1; }
+.spKycDocDesc.sapMText { color: #888 !important; font-size: 0.75rem; margin-top: 2px; }
+
+/* ── User Popover ────────────────────────────────── */
+.spPopoverHeader {
+	background: linear-gradient(135deg, #1b4f9b, #0a6ed1);
+	padding: 16px 20px;
+	border-radius: 4px 4px 0 0;
+}
+.spPopoverName.sapMText {
+	color: #fff !important;
+	font-weight: 700;
+	font-size: 0.95rem;
+}
+.spPopoverRole.sapMText {
+	color: rgba(255,255,255,0.75) !important;
+	font-size: 0.78rem;
+	margin-top: 2px;
+}
+
+/* ── Back button in blue top bar ─────────────────── */
+.spTopBarBackBtn.sapMBtn > .sapMBtnInner {
+	color: rgba(255,255,255,0.85) !important;
+}
+.spTopBarBackBtn.sapMBtn > .sapMBtnInner:hover {
+	color: #fff !important;
+	background: rgba(255,255,255,0.1) !important;
+}
+
+/* ── Voice button ────────────────────────────────── */
+.spVoiceBtn.sapMBtn > .sapMBtnInner {
+	border: 2px solid #1b4f9b !important;
+	color: #1b4f9b !important;
+	border-radius: 6px;
+}
+
+/* ── Login Page ─────────────────────────────────── */
+.spLoginPage.sapMPage,
+.spLoginPage.sapMPage > .sapMPageSection {
+	height: 100%;
+	overflow: hidden;
+}
+
+.spLoginWrapper.sapMHBox {
+	width: 100%;
+	height: 100vh;
+}
+
+/* Left: industrial sunset gradient panel */
+.spLoginImagePanel.sapMVBox {
+	flex: 1 0 50%;
+	min-height: 100vh;
+	background:
+		linear-gradient(to bottom, rgba(30,50,90,0.45) 0%, rgba(10,20,40,0.75) 100%),
+		linear-gradient(160deg, #87CEEB 0%, #e8a87c 30%, #c07850 55%, #5a3020 78%, #1a0f08 100%);
+	padding: 40px;
+	box-sizing: border-box;
+}
+
+.spLoginBrandOverlay.sapMVBox {
+	padding-bottom: 8px;
+}
+
+.spLoginBrandTitle.sapMTitle > .sapMTitleText {
+	color: #fff !important;
+	font-size: 2rem;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.spLoginBrandSubtitle.sapMText {
+	color: rgba(255,255,255,0.85) !important;
+	font-size: 1rem;
+	margin-top: 8px;
+	text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* Right: form panel */
+.spLoginFormPanel.sapMVBox {
+	flex: 1 0 50%;
+	min-height: 100vh;
+	background: #f2f4f7;
+}
+
+/* Login card */
+.spLoginCard.sapMVBox {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+	padding: 40px 36px;
+	width: 380px;
+}
+
+.spLoginCard.sapMVBox > .sapMVBoxItem {
+	margin-bottom: 12px;
+}
+
+.spLoginCard.sapMVBox > .sapMVBoxItem:last-child {
+	margin-bottom: 0;
+}
+
+/* Logo banner */
+.spLoginLogoBanner.sapMVBox {
+	align-items: center;
+	padding: 12px 24px 4px;
+	margin-bottom: 8px;
+}
+
+.spLoginSapLogoImg.sapMImg {
+	height: 44px;
+	width: auto;
+}
+
+.spLoginPortalLabel.sapMText {
+	color: #1d4b98 !important;
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-top: 6px;
+	text-align: center;
+}
+
+/* Inputs */
+.spLoginInput.sapMInput {
+	border-radius: 6px;
+}
+
+/* Forgot password row */
+.spLoginForgotRow.sapMHBox {
+	margin-top: -6px;
+}
+
+.spLoginForgotLink.sapMLnk {
+	color: #0070f2 !important;
+	font-size: 0.8rem;
+}
+
+/* Language select */
+.spLoginSelect.sapMSelect {
+	border-radius: 6px;
+}
+
+/* Technician button — blue */
+.spLoginBtnTech.sapMBtn > .sapMBtnInner {
+	background: #7c6af5 !important;
+	border-color: #7c6af5 !important;
+	border-radius: 6px;
+}
+
+/* ASP button — outline style */
+.spLoginBtnAsp.sapMBtn > .sapMBtnInner {
+	background: transparent !important;
+	border: 2px solid #0070f2 !important;
+	color: #0070f2 !important;
+	border-radius: 6px;
+}
+
+.spLoginBtnAsp.sapMBtn > .sapMBtnInner > .sapMBtnText {
+	color: #0070f2 !important;
+	font-weight: 600;
+}
+
+/* Role toggle */
+.spLoginToggle.sapMSegB {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+/* Sign In button */
+.spLoginBtnSignIn.sapMBtn > .sapMBtnInner {
+	background: #7c6af5 !important;
+	border-color: #7c6af5 !important;
+	border-radius: 6px;
+}
+
+/* Register button — outlined */
+.spLoginBtnRegister.sapMBtn > .sapMBtnInner {
+	background: transparent !important;
+	border: 2px solid #7c6af5 !important;
+	border-radius: 6px;
+}
+
+.spLoginBtnRegister.sapMBtn > .sapMBtnInner > .sapMBtnText {
+	color: #7c6af5 !important;
+	font-weight: 600;
+}
+
+/* Register section spacing */
+.spLoginRegisterSection.sapMVBox {
+	width: 100%;
+}
+
+/* Divider */
+.spLoginDivider.sapMHBox {
+	position: relative;
+	margin: 4px 0;
+}
+
+.spLoginOrText.sapMText {
+	color: #999 !important;
+	font-size: 0.8rem;
+	padding: 0 12px;
+	background: #fff;
+	z-index: 1;
+}
+
+/* ── AI Voice Onboarding Page ────────────────────── */
+
+.spAiOnboardPage.sapMPage,
+.spAiOnboardPage.sapMPage > .sapMPageSection {
+	height: 100%;
+	overflow: hidden;
+}
+
+.spAiOnboardRoot.sapMVBox {
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* Top bar */
+.spAiTopBar.sapMTB {
+	background: #1b4f9b !important;
+	border-bottom: none;
+	flex-shrink: 0;
+}
+.spAiPortalTitle.sapMText {
+	color: #fff !important;
+	font-size: 0.95rem;
+	font-weight: 600;
+	margin-left: 8px;
+}
+.spAiRegisterHint.sapMText {
+	color: rgba(255,255,255,0.8) !important;
+	font-size: 0.75rem;
+}
+.spHelpBtn.sapMBtn > .sapMBtnInner {
+	background: #2e7d32 !important;
+	border-color: #2e7d32 !important;
+	color: #fff !important;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+/* Step progress bar */
+.spAiStepBar.sapMHBox {
+	background: #fff;
+	padding: 16px 60px;
+	border-bottom: 1px solid #e8eaed;
+	flex-shrink: 0;
+}
+.spAiStepItem.sapMVBox {
+	min-width: 110px;
+	align-items: center;
+}
+.spAiStepConnector.sapMText {
+	color: #c8d4e8 !important;
+	align-self: flex-start;
+	margin-top: 12px;
+	letter-spacing: 2px;
+}
+.spAiStepTitle.sapMText {
+	font-size: 0.75rem;
+	color: #888 !important;
+	font-weight: 500;
+	text-align: center;
+	margin-top: 6px;
+}
+.spAiStepTitleActive.sapMText {
+	color: #1b4f9b !important;
+	font-weight: 700;
+}
+.spAiStepSub.sapMText {
+	font-size: 0.68rem;
+	color: #aaa !important;
+	text-align: center;
+}
+.spAiStepSubActive.sapMText {
+	color: #1b4f9b !important;
+}
+
+/* Two-panel row */
+.spAiPanelsRow.sapMHBox {
+	flex: 1;
+	overflow: hidden;
+}
+
+/* ── LEFT: Voice Panel ── */
+.spAiVoicePanel.sapMVBox {
+	width: 45%;
+	background: #1e2233;
+	padding: 20px 18px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	border-right: 2px solid #2d3450;
+	flex-shrink: 0;
+}
+.spAiVoiceTitle.sapMTitle > .sapMTitleText {
+	color: #fff !important;
+	font-size: 0.95rem;
+}
+.spAiVoiceSubtitle.sapMText {
+	color: #8892a4 !important;
+	font-size: 0.75rem;
+	margin: 4px 0 14px 0;
+}
+
+/* Language buttons */
+.spAiLangRow.sapMHBox {
+	margin-bottom: 14px;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+.spLangBtnActive.sapMBtn > .sapMBtnInner {
+	background: #1b4f9b !important;
+	border-color: #1b4f9b !important;
+	border-radius: 20px !important;
+	color: #fff !important;
+	min-width: 0 !important;
+	padding: 0 12px !important;
+	font-size: 0.75rem !important;
+	height: 28px !important;
+}
+.spLangBtn.sapMBtn > .sapMBtnInner {
+	background: #2d3450 !important;
+	border: 1px solid #3d4460 !important;
+	border-radius: 20px !important;
+	color: #c0c8d8 !important;
+	min-width: 0 !important;
+	padding: 0 12px !important;
+	font-size: 0.75rem !important;
+	height: 28px !important;
+}
+
+/* Chat area */
+.spAiChatScroll.sapMScrollCont {
+	background: #151929 !important;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+.spAiChatInner.sapMVBox {
+	padding: 14px;
+}
+.spAiMsgRow.sapMHBox {
+	width: 100%;
+	margin-bottom: 8px;
+}
+.spAiMsgBubble.sapMVBox {
+	background: #2a2f45;
+	border-radius: 10px 10px 10px 2px;
+	padding: 9px 12px;
+	max-width: 82%;
+}
+.spAiMsgText.sapMText {
+	color: #d0d8e8 !important;
+	font-size: 0.78rem;
+	line-height: 1.45;
+}
+.spUserMsgBubble.sapMVBox {
+	background: #1e5fb5;
+	border-radius: 10px 10px 2px 10px;
+	padding: 9px 12px;
+	max-width: 72%;
+}
+.spUserMsgText.sapMText {
+	color: #fff !important;
+	font-size: 0.78rem;
+	line-height: 1.45;
+}
+
+/* Listening row */
+.spAiListeningRow.sapMHBox {
+	margin-bottom: 6px;
+	padding: 2px 0;
+}
+.spAiListeningText.sapMText {
+	color: #4db6ac !important;
+	font-size: 0.78rem;
+	font-weight: 600;
+	margin-right: 10px;
+}
+.spAiWaveform.sapMText {
+	color: #4db6ac !important;
+	font-size: 0.85rem;
+	letter-spacing: 1px;
+	font-family: monospace;
+}
+
+/* Mic button */
+.spAiMicRow.sapMHBox {
+	margin: 10px 0 6px 0;
+}
+.spAiMicBtn.sapMBtn {
+	width: 76px !important;
+	height: 76px !important;
+	border-radius: 50% !important;
+}
+.spAiMicBtn.sapMBtn > .sapMBtnInner {
+	width: 76px !important;
+	height: 76px !important;
+	border-radius: 50% !important;
+	border-color: transparent !important;
+}
+.spAiMicBtn.sapMBtn > .sapMBtnInner > .sapUiIcon {
+	font-size: 1.6rem !important;
+}
+.spAiMicHint.sapMText {
+	color: #7a8499 !important;
+	font-size: 0.7rem;
+	text-align: center;
+	margin-bottom: 14px;
+}
+
+/* Confidence box */
+.spAiConfidenceBox.sapMVBox {
+	background: #1a3a1f;
+	border: 1px solid #2e7d32;
+	border-radius: 6px;
+	padding: 10px 14px;
+}
+.spAiConfidenceTitle.sapMText {
+	color: #4caf50 !important;
+	font-weight: 700;
+	font-size: 0.82rem;
+	margin-bottom: 4px;
+}
+.spAiConfidenceDetail.sapMText {
+	color: #81c784 !important;
+	font-size: 0.7rem;
+	line-height: 1.4;
+}
+
+/* ── RIGHT: Form Panel ── */
+.spAiFormPanel.sapMVBox {
+	flex: 1;
+	background: #f8f9fa;
+	padding: 20px 24px;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+.spAiFormHeaderRow.sapMHBox {
+	margin-bottom: 6px;
+}
+.spAiFormTitle.sapMTitle > .sapMTitleText {
+	font-size: 0.92rem;
+	color: #1a1a1a;
+}
+.spAiFormProgressLabel.sapMText {
+	color: #888 !important;
+	font-size: 0.78rem;
+	white-space: nowrap;
+}
+.spAiFormProgressBar.sapMPI {
+	margin-bottom: 14px;
+}
+.spAiFieldBox.sapMVBox {
+	padding: 2px 0 6px 0;
+}
+.spAiFieldLabel.sapMLabel {
+	font-size: 0.75rem;
+	color: #666;
+	margin-bottom: 3px;
+}
+.spAiFieldFilled.sapMInput {
+	background-color: #f0faf0 !important;
+}
+
+/* Skills section */
+.spAiSkillsSection.sapMVBox {
+	margin: 10px 0;
+}
+.spAiSkillsLabel.sapMText {
+	font-size: 0.75rem;
+	color: #555 !important;
+	margin-bottom: 6px;
+}
+.spAiSkillsRow.sapMHBox {
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.spAiSkillChip.sapMText {
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.75rem;
+	font-weight: 500;
+}
+.spAiSkillChipTeal.sapMText {
+	background: #e0f2f1 !important;
+	color: #00796b !important;
+	border: 1px solid #80cbc4;
+}
+.spAiSkillChipBlue.sapMText {
+	background: #e3f2fd !important;
+	color: #1565c0 !important;
+	border: 1px solid #90caf9;
+}
+.spAiSkillChipAdd.sapMText {
+	background: #f5f5f5 !important;
+	color: #888 !important;
+	border: 1px dashed #ccc;
+	border-radius: 20px;
+	padding: 4px 12px;
+	font-size: 0.75rem;
+}
+
+/* KYC Banner */
+.spAiKycBanner.sapMHBox {
+	background: #e8f0fe;
+	border: 1px solid #c2d4f8;
+	border-radius: 8px;
+	padding: 14px 16px;
+	margin-top: 14px;
+}
+.spAiKycInfo.sapMVBox {
+	flex: 1;
+	margin-right: 12px;
+}
+.spAiKycTitle.sapMText {
+	color: #1b4f9b !important;
+	font-weight: 700;
+	font-size: 0.82rem;
+	margin-bottom: 4px;
+}
+.spAiKycDesc.sapMText {
+	color: #555 !important;
+	font-size: 0.72rem;
+	line-height: 1.4;
+}
+.spAiNextBtn.sapMBtn > .sapMBtnInner {
+	background: #1b4f9b !important;
+	border-color: #1b4f9b !important;
+	border-radius: 8px !important;
+	min-width: 90px;
+	white-space: normal !important;
+	text-align: center;
+	height: auto !important;
+	min-height: 36px;
+	padding: 6px 12px !important;
+}
+
+/* ── Skills & Zone Page ────────────────────────── */
+.spSkillChipsRow.sapMHBox {
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 8px 0;
+}
+
+.spSkillChipOn.sapMBtn > .sapMBtnInner {
+	background: #1b4f9b !important;
+	border-color: #1b4f9b !important;
+	color: #fff !important;
+	border-radius: 20px !important;
+	height: 32px !important;
+	padding: 0 14px !important;
+	font-size: 0.78rem !important;
+}
+
+.spSkillChipOff.sapMBtn > .sapMBtnInner {
+	background: #f5f5f5 !important;
+	border: 1px solid #c8cdd3 !important;
+	color: #32363a !important;
+	border-radius: 20px !important;
+	height: 32px !important;
+	padding: 0 14px !important;
+	font-size: 0.78rem !important;
+}
+
+.spSkillChipOff.sapMBtn > .sapMBtnInner:hover {
+	background: #e8eef7 !important;
+	border-color: #1b4f9b !important;
+	color: #1b4f9b !important;
+}
+
+.spSkillSummaryBox {
+	background: #e8f0fe;
+	border: 1px solid #c2d4f8;
+	border-radius: 8px;
+	padding: 12px 16px;
+	margin-top: 8px;
+}
+
+/* Custom skill input row */
+.spCustomSkillInputRow.sapMHBox {
+	align-items: center;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.spCustomSkillAddBtn.sapMBtn > .sapMBtnInner {
+	border-radius: 20px !important;
+	height: 32px !important;
+	padding: 0 16px !important;
+	font-size: 0.78rem !important;
+}
+
+/* ── Resolution Progress Timeline ─────────────────── */
+
+.spProgressPanel.sapMPanel {
+	height: 100%;
+}
+
+.spProgressTimeline.sapMVBox {
+	padding: 4px 0;
+}
+
+.spProgressStep.sapMHBox {
+	align-items: flex-start;
+}
+
+/* Icon column — fixed 28px wide, centers the icon and line */
+.spProgressIconCol.sapMVBox {
+	width: 28px !important;
+	min-width: 28px !important;
+	flex-shrink: 0 !important;
+	align-items: center;
+}
+
+/* Connector line between steps */
+.spProgressLine {
+	width: 2px;
+	min-height: 22px;
+	background: #107e3e;
+	margin: 2px 0 0 0;
+	flex: 1;
+}
+.spProgressLinePending {
+	background: #e0e3e8 !important;
+}
+
+/* Done icon: green filled circle */
+.spProgressIconDone.sapUiIcon {
+	width: 24px !important;
+	height: 24px !important;
+	min-width: 24px !important;
+	border-radius: 50% !important;
+	background: #107e3e !important;
+	color: #fff !important;
+	font-size: 0.72rem !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex-shrink: 0;
+}
+
+/* Current step icon: blue filled circle */
+.spProgressIconCurrent.sapUiIcon {
+	width: 24px !important;
+	height: 24px !important;
+	min-width: 24px !important;
+	border-radius: 50% !important;
+	background: #0a6ed1 !important;
+	color: #fff !important;
+	font-size: 0.72rem !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	flex-shrink: 0;
+}
+
+/* Pending dot: hollow gray circle */
+.spProgressDotPending {
+	width: 20px;
+	height: 20px;
+	min-width: 20px;
+	border-radius: 50%;
+	border: 2px solid #c8cdd3;
+	background: #fff;
+	margin: 2px;
+	box-sizing: border-box;
+}
+
+/* Content area (right of icon) */
+.spProgressContent.sapMVBox {
+	margin-left: 12px !important;
+	padding-bottom: 14px !important;
+	flex: 1;
+}
+
+/* Labels */
+.spProgressLabelDone.sapMText {
+	font-size: 0.82rem !important;
+	font-weight: 600 !important;
+	color: #32363a !important;
+}
+.spProgressLabelCurrent.sapMText {
+	font-size: 0.82rem !important;
+	font-weight: 700 !important;
+	color: #0a6ed1 !important;
+}
+.spProgressLabelPending.sapMText {
+	font-size: 0.82rem !important;
+	color: #9ea8b4 !important;
+}
+
+/* Timestamps */
+.spProgressTime.sapMText {
+	font-size: 0.7rem !important;
+	color: #8c9cb0 !important;
+	margin-top: 2px !important;
+}
+.spProgressTimeCurrent.sapMText {
+	font-size: 0.7rem !important;
+	color: #0a6ed1 !important;
+	font-style: italic;
+	margin-top: 2px !important;
+}
+
+.spReviewRow.sapMHBox {
+	padding: 6px 0;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.spReviewRow.sapMHBox:last-child {
+	border-bottom: none;
+}
+
+/* ── Learning Portal ─────────────────────────────── */
+
+/* Top bar — white, SAP Learning style */
+.spLearnTopBar.sapMTB {
+	background: #fff !important;
+	border-bottom: 1px solid #e0e1e3;
+	height: 52px;
+	padding: 0 16px;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+.spLearnNavTitle.sapMText {
+	font-size: 1.1rem !important;
+	font-weight: 700 !important;
+	color: #32363a !important;
+	margin-left: 4px;
+}
+.spLearnSep.sapMTBSeparator {
+	margin: 0 8px;
+}
+.spLearnNavLink.sapMBtn > .sapMBtnInner {
+	color: #32363a !important;
+	font-size: 0.85rem !important;
+}
+.spLearnNavActive.sapMBtn > .sapMBtnInner {
+	background: #1b4f9b !important;
+	border-color: #1b4f9b !important;
+	border-radius: 20px !important;
+	font-size: 0.85rem !important;
+	padding: 0 16px !important;
+}
+.spLearnBackBtn.sapMBtn > .sapMBtnInner {
+	color: #32363a !important;
+}
+
+/* Page header */
+.spLearnPageHeader {
+	background: #f5f7fa;
+	border-bottom: 1px solid #e8eaed;
+	padding: 20px 48px 16px;
+}
+.spLearnPageTitle.sapMTitle > .sapMTitleText {
+	font-size: 1.4rem !important;
+	color: #1b1f23 !important;
+}
+.spLearnPageSubtitle.sapMText {
+	color: #6a6d70 !important;
+	font-size: 0.85rem;
+	margin-top: 4px;
+}
+
+/* ── Course Card ── */
+
+/* Force equal-height cards within each grid row */
+.spLearnGrid .sapUiLayoutGridC {
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.spLearnCardsGrid.sapMFlexBox {
+	display: flex !important;
+	flex-wrap: wrap !important;
+	gap: 18px !important;
+	align-items: stretch !important;
+}
+.spLearnCardsGrid.sapMFlexBox > .sapMFlexItem {
+	width: calc(33.333% - 13px) !important;
+	min-width: 260px;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.spLearnCard.sapMVBox {
+	background: #fff;
+	border: 1px solid #e0e3e8;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+	padding: 18px 20px;
+	display: flex !important;
+	flex-direction: column !important;
+	flex: 1;
+	box-sizing: border-box;
+}
+.spLearnCard.sapMVBox:hover {
+	box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+}
+
+/* Badge row */
+.spLearnBadgeRow.sapMHBox {
+	margin-bottom: 10px;
+	min-height: 24px;
+}
+.spLearnBadge.sapMText {
+	border-radius: 20px;
+	padding: 2px 10px;
+	font-size: 0.72rem !important;
+	font-weight: 700 !important;
+}
+.spLearnBadgeMandatory.sapMText {
+	background: #ff6d00 !important;
+	color: #fff !important;
+}
+.spLearnBadgePartner.sapMText {
+	background: #1f1f1f !important;
+	color: #fff !important;
+}
+.spLearnBadgeFree.sapMText {
+	background: #e0f4ef !important;
+	color: #00695c !important;
+	border: 1px solid #80cbc4;
+}
+.spLearnBadgeRecording.sapMText {
+	background: #f0f0f0 !important;
+	color: #555 !important;
+	border: 1px solid #d0d0d0;
+	border-radius: 20px;
+	padding: 2px 10px;
+	font-size: 0.72rem !important;
+}
+
+/* Course type row */
+.spLearnTypeRow.sapMHBox {
+	margin-bottom: 6px;
+	align-items: center;
+	gap: 5px;
+}
+.spLearnTypeIcon.sapUiIcon {
+	color: #5c47cc !important;
+	font-size: 0.78rem !important;
+}
+.spLearnTypeText.sapMText {
+	font-size: 0.72rem !important;
+	font-weight: 700 !important;
+	color: #5c47cc !important;
+	letter-spacing: 0.04em;
+}
+
+/* Card titles */
+.spLearnCardTitle.sapMTitle > .sapMTitleText {
+	font-size: 1rem !important;
+	font-weight: 700 !important;
+	color: #1b1f23 !important;
+	line-height: 1.35 !important;
+}
+.spLearnTitleBlue.sapMTitle > .sapMTitleText {
+	color: #1b4f9b !important;
+}
+
+/* Description — fills remaining space so button pins to bottom */
+.spLearnCardDesc.sapMText {
+	font-size: 0.82rem !important;
+	color: #6a6d70 !important;
+	line-height: 1.5 !important;
+	margin: 8px 0 10px !important;
+	flex: 1 !important;
+}
+
+/* Meta row */
+.spLearnMetaRow.sapMHBox {
+	margin-top: auto;
+	padding-top: 10px;
+	border-top: 1px solid #f0f0f0;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 3px;
+}
+.spLearnMetaIcon.sapUiIcon {
+	color: #8c9cb0 !important;
+	font-size: 0.72rem !important;
+}
+.spLearnMetaText.sapMText {
+	font-size: 0.75rem !important;
+	color: #6a6d70 !important;
+}
+.spLearnMetaDot.sapMText {
+	color: #c0c0c0 !important;
+	font-size: 0.75rem !important;
+}
+
+/* Leads to badge */
+.spLearnLeadsStatus.sapMObjStatus {
+	font-size: 0.72rem !important;
+	margin: 4px 0 6px !important;
+}
+
+/* ── Circular gauge (Technician Status / SLA Overview) ── */
+.spAspGaugeWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 12px 0 4px;
+}
+.spAspGaugeSvg {
+	width: 110px;
+	height: 110px;
+	overflow: visible;
+}
+.spAspGaugeLabel {
+	margin: 4px 0 0;
+	font-size: 0.78rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+/* Stat list below the gauge */
+.spAspStatList {
+	width: 100%;
+	padding: 4px 0 2px;
+}
+.spAspStatItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 16px;
+	border-top: 1px solid #f0f0f0;
+	font-size: 0.8rem;
+}
+.spAspStatDot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+.spAspStatLabel {
+	flex: 1;
+	color: #3c4858;
+}
+.spAspStatVal {
+	font-weight: 700;
+	font-size: 0.85rem;
+}
+
+/* Progress bar */
+.spLearnProgressBar.sapMPI {
+	margin: 8px 0 4px;
+}
+
+/* Start/Continue button */
+.spLearnCardBtn.sapMBtn {
+	margin-top: 10px !important;
+	border-radius: 6px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AI VOICE ASSISTANT PAGE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Page + root layout */
+.spVaPage.sapMPage > .sapMPageHeader { display: none !important; }
+.spVaPage.sapMPage > .sapMPageSubHeader { display: none !important; }
+.spVaPage.sapMPage > section { height: 100% !important; overflow: hidden !important; }
+
+.spVaRoot.sapMVBox {
+	height: 100vh;
+	flex-direction: column !important;
+}
+
+/* Top bar */
+.spTopBar.sapMTB {
+	background: #1b4f9b !important;
+	border-bottom: none !important;
+	padding: 0 12px !important;
+	min-height: 48px !important;
+	flex-shrink: 0;
+}
+.spTopBar.sapMTB .sapMTBShrinkItem { flex-shrink: 0; }
+.spSapLogoImg.sapMImg { height: 24px !important; margin: 0 8px !important; }
+.spAppTitle.sapMText {
+	color: #fff !important;
+	font-size: 0.95rem !important;
+	font-weight: 600 !important;
+}
+.spTopBar.sapMTB .sapMObjStatus .sapMObjStatusText { color: #fff !important; font-size: 0.78rem !important; }
+.spTopBar.sapMTB .sapMObjStatus.sapMObjStatusSuccess .sapMObjStatusText { color: #72e572 !important; }
+
+/* Two-panel row — fills remaining height */
+.spVaPanelsRow.sapMHBox {
+	flex: 1 !important;
+	min-height: 0 !important;
+	overflow: hidden !important;
+}
+.spVaPanelsRow.sapMHBox > .sapMFlexItem:first-child { display: flex; flex-direction: column; }
+.spVaPanelsRow.sapMHBox > .sapMFlexItem:last-child  { display: flex; flex-direction: column; flex: 1; }
+
+/* ── LEFT dark panel ── */
+.spVaLeft.sapMVBox {
+	background: #0d1b2e !important;
+	width: 420px !important;
+	min-width: 380px !important;
+	flex-shrink: 0 !important;
+	padding: 24px 20px 16px !important;
+	overflow-y: auto !important;
+	box-sizing: border-box !important;
+	height: 100% !important;
+	gap: 12px !important;
+}
+
+/* Title */
+.spVaTitle.sapMTitle > .sapMTitleText {
+	color: #ffffff !important;
+	font-size: 1.05rem !important;
+	font-weight: 700 !important;
+	line-height: 1.35 !important;
+}
+
+/* Status chips row */
+.spVaStatusRow.sapMHBox {
+	gap: 8px !important;
+	flex-wrap: wrap !important;
+	margin: 4px 0 !important;
+}
+.spVaChip {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 3px 10px;
+	border-radius: 20px;
+	font-size: 0.72rem;
+	font-weight: 600;
+}
+.spVaChipGreen { background: #0f2d1c; color: #4de584; border: 1px solid #2a6640; }
+.spVaChipOrange { background: #2d1c0f; color: #f59c42; border: 1px solid #66421a; }
+.spVaDot {
+	width: 7px; height: 7px;
+	border-radius: 50%;
+	display: inline-block;
+	flex-shrink: 0;
+}
+.spVaDotGreen { background: #4de584; }
+.spVaDotOrange { background: #f59c42; }
+
+/* Case info bar */
+.spVaCaseBar {
+	background: #112240;
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 0.76rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3px 0;
+	align-items: center;
+}
+.spVaCaseId { color: #7eb8f5; font-weight: 700; }
+.spVaCaseSep { color: #456; margin: 0 4px; }
+.spVaCaseMeta { color: #a0b8d0; }
+.spVaCaseSla { color: #f59c42; font-weight: 600; }
+
+/* Chat scroll area */
+.spVaChatScroll.sapMScrollCont {
+	background: #112240 !important;
+	border-radius: 8px !important;
+	flex-shrink: 0 !important;
+}
+.spVaChatInner.sapMVBox {
+	padding: 10px 10px 6px !important;
+	gap: 8px !important;
+}
+.spVaMsgRow.sapMHBox {
+	width: 100% !important;
+	gap: 0 !important;
+}
+
+/* AI bubble (left-aligned) */
+.spVaAiBubble.sapMVBox {
+	background: #1e3a5f !important;
+	border-radius: 0 10px 10px 10px !important;
+	padding: 8px 12px !important;
+	max-width: 85% !important;
+}
+/* AI response bubble (slightly lighter) */
+.spVaRespBubble.sapMVBox {
+	background: #162e4a !important;
+	border-radius: 0 10px 10px 10px !important;
+	padding: 8px 12px !important;
+	max-width: 85% !important;
+	border-left: 3px solid #2f7ef5 !important;
+}
+/* User bubble (right-aligned) */
+.spVaUserBubble.sapMVBox {
+	background: #1b4f9b !important;
+	border-radius: 10px 10px 0 10px !important;
+	padding: 8px 12px !important;
+	max-width: 85% !important;
+}
+.spVaMsgText.sapMText {
+	color: #d0e4f7 !important;
+	font-size: 0.8rem !important;
+	line-height: 1.5 !important;
+}
+.spVaUserMsgText.sapMText {
+	color: #ffffff !important;
+	font-size: 0.8rem !important;
+	line-height: 1.5 !important;
+}
+
+/* Voice input box */
+.spVaInputBox.sapMVBox {
+	background: #112240 !important;
+	border-radius: 8px !important;
+	padding: 10px 12px !important;
+	gap: 6px !important;
+	flex-shrink: 0 !important;
+}
+.spVaInputLabel.sapMText {
+	color: #7eb8f5 !important;
+	font-size: 0.72rem !important;
+	font-weight: 600 !important;
+}
+.spVaInput.sapMInputBase > .sapMInputBaseInner {
+	background: #0d1b2e !important;
+	border: 1px solid #2a4a6e !important;
+	color: #d0e4f7 !important;
+	border-radius: 6px !important;
+}
+.spVaInput.sapMInputBase > .sapMInputBaseInner::placeholder { color: #567 !important; }
+.spVaInputHint.sapMText {
+	color: #456 !important;
+	font-size: 0.7rem !important;
+}
+
+/* Mic section */
+.spVaMicSection.sapMVBox {
+	align-items: center !important;
+	gap: 8px !important;
+	padding: 16px 0 8px !important;
+	flex-shrink: 0 !important;
+}
+.spVaMicBtn.sapMBtn > .sapMBtnInner {
+	width: 72px !important;
+	height: 72px !important;
+	border-radius: 50% !important;
+	font-size: 1.6rem !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	transition: box-shadow 0.2s ease, transform 0.1s ease !important;
+}
+.spVaMicBtn.sapMBtn.sapMBtnAccept > .sapMBtnInner {
+	background: #0f9d58 !important;
+	border-color: #0f9d58 !important;
+	box-shadow: 0 0 0 10px rgba(15,157,88,0.2), 0 0 0 20px rgba(15,157,88,0.08) !important;
+}
+.spVaMicBtn.sapMBtn.sapMBtnReject > .sapMBtnInner {
+	background: #e53935 !important;
+	border-color: #e53935 !important;
+	box-shadow: 0 0 0 10px rgba(229,57,53,0.2), 0 0 0 20px rgba(229,57,53,0.08) !important;
+}
+.spVaMicBtn.sapMBtn > .sapMBtnInner > .sapUiIcon {
+	color: #fff !important;
+	font-size: 1.6rem !important;
+}
+.spVaMicActiveText.sapMText {
+	color: #7eb8f5 !important;
+	font-size: 0.78rem !important;
+	font-weight: 600 !important;
+	text-align: center !important;
+}
+.spVaMicSubText.sapMText {
+	color: #456 !important;
+	font-size: 0.7rem !important;
+	text-align: center !important;
+}
+
+/* ── RIGHT light panel ── */
+.spVaRight.sapMScrollCont {
+	flex: 1 1 0% !important;
+	width: 100% !important;
+	min-width: 0 !important;
+	background: #f5f6f8 !important;
+	height: 100% !important;
+}
+/* ScrollContainer inner div must stretch */
+.spVaRight.sapMScrollCont > .sapMScrollContScroll {
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+.spVaRightInner.sapMVBox {
+	padding: 20px 20px 16px !important;
+	gap: 16px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+/* Two-column top row: Actions (left) + Suggestions (right) */
+.spVaTopRow.sapMHBox {
+	gap: 16px !important;
+	width: 100% !important;
+	flex-wrap: wrap !important;
+	align-items: flex-start !important;
+}
+.spVaTopRow.sapMHBox > .sapMFlexItem {
+	flex: 1 1 300px !important;
+	min-width: 280px !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+.spVaHalfSection.sapMVBox {
+	width: 100% !important;
+	height: 100% !important;
+	box-sizing: border-box !important;
+}
+
+/* Action row inputs — read-only looks like plain text, editable shows a field */
+.spVaActInput.sapMInputBase {
+	flex: 1 !important;
+	width: 100% !important;
+	height: auto !important;
+	min-width: 0 !important;
+}
+/* Make the HBox flex-item wrapper containing the input grow to fill remaining space */
+.spVaActionRow.sapMHBox > .sapMFlexItem:has(.spVaActInput) {
+	flex: 1 !important;
+	min-width: 0 !important;
+}
+/* Remove the ToolbarSpacer's flex-grow so it doesn't compete with the input */
+.spVaActionRow.sapMHBox > .sapMFlexItem:has(.sapMTBSpacer) {
+	flex: 0 0 auto !important;
+	width: 0 !important;
+}
+.spVaActInput.sapMInputBase > .sapMInputBaseInner {
+	background: transparent !important;
+	border: none !important;
+	border-bottom: 1px dashed transparent !important;
+	border-radius: 0 !important;
+	padding: 0 2px !important;
+	height: auto !important;
+	font-size: 0.8rem !important;
+	color: #2c3e50 !important;
+	box-shadow: none !important;
+	outline: none !important;
+	width: 100% !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+}
+.spVaActInput.sapMInputBase > .sapMInputBaseInner:not([readonly]) {
+	background: #f0f4ff !important;
+	border: 1px solid #0a6ed1 !important;
+	border-radius: 4px !important;
+	padding: 2px 6px !important;
+	color: #1b1f23 !important;
+	white-space: normal !important;
+	overflow: visible !important;
+}
+.spVaActInputBlue.sapMInputBase > .sapMInputBaseInner {
+	color: #1565c0 !important;
+}
+.spVaActInputBlue.sapMInputBase > .sapMInputBaseInner:not([readonly]) {
+	color: #1b1f23 !important;
+}
+.spVaNoteHeader.sapMHBox {
+	margin-bottom: 10px !important;
+	width: 100% !important;
+}
+.spVaFooterRow.sapMHBox {
+	padding: 4px 0 8px !important;
+}
+
+/* Sections */
+.spVaSection.sapMVBox {
+	background: #ffffff !important;
+	border-radius: 10px !important;
+	padding: 16px 18px !important;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.07) !important;
+	gap: 8px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+.spVaSectionTitle.sapMTitle > .sapMTitleText {
+	font-size: 0.9rem !important;
+	font-weight: 700 !important;
+	color: #1b1f23 !important;
+}
+.spVaSectionSub.sapMText {
+	font-size: 0.75rem !important;
+	color: #8a9ab0 !important;
+	margin-top: -6px !important;
+}
+
+/* Action rows */
+.spVaActionRow.sapMHBox {
+	align-items: center !important;
+	gap: 8px !important;
+	padding: 6px 0 !important;
+	border-bottom: 1px solid #f0f0f0 !important;
+}
+.spVaActionRow.sapMHBox:last-child { border-bottom: none !important; }
+.spVaActDot {
+	width: 10px; height: 10px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+.spVaActDotGreen  { background: #0f9d58; }
+.spVaActDotBlue   { background: #1565c0; }
+.spVaActDotOrange { background: #e65100; }
+.spVaActIcon {
+	font-size: 1rem;
+	width: 24px;
+	text-align: center;
+	flex-shrink: 0;
+}
+.spVaActIconBlue { color: #1565c0; }
+.spVaActText.sapMText {
+	font-size: 0.8rem !important;
+	color: #2c3e50 !important;
+	flex: 1 !important;
+}
+.spVaActTextBlue.sapMText { color: #1565c0 !important; }
+.spVaActTime.sapMText {
+	font-size: 0.72rem !important;
+	color: #8a9ab0 !important;
+	white-space: nowrap !important;
+}
+
+/* AI Suggestion cards */
+.spVaSug {
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 0.8rem;
+	line-height: 1.5;
+}
+.spVaSugNote { opacity: 0.75; font-style: italic; }
+.spVaSugBlue   { background: #e8f1fc; color: #1565c0; border-left: 4px solid #1565c0; }
+.spVaSugYellow { background: #fffde7; color: #7c6200; border-left: 4px solid #f9a825; }
+.spVaSugOrange { background: #fff3e0; color: #bf360c; border-left: 4px solid #e65100; }
+.spVaSugRed    { background: #ffebee; color: #b71c1c; border-left: 4px solid #e53935; }
+.spVaSugGray   { background: #f5f5f5; color: #4a4a4a; border-left: 4px solid #c0c0c0; }
+
+/* Service note box */
+.spVaNoteBox.sapMVBox {
+	background: #f8f9fa !important;
+	border: 1px solid #e0e3e8 !important;
+	border-radius: 8px !important;
+	padding: 14px 16px !important;
+	gap: 6px !important;
+}
+.spVaNoteTitle.sapMText {
+	font-size: 0.82rem !important;
+	font-weight: 700 !important;
+	color: #1b1f23 !important;
+}
+.spVaNoteMeta.sapMText {
+	font-size: 0.75rem !important;
+	color: #8a9ab0 !important;
+	margin-bottom: 4px !important;
+}
+.spVaNoteBody.sapMText {
+	font-size: 0.78rem !important;
+	color: #3c4858 !important;
+	line-height: 1.6 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ASP DASHBOARD — NEW COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Red KPI title (SLA immediate) */
+.spTechKpiRed.sapMTitle > .sapMTitleText { color: #bb0000 !important; }
+
+/* Stat row in Technician Status / SLA panels */
+.spAspStatRow.sapMFlexBox {
+	margin-top: 12px !important;
+	justify-content: space-around !important;
+}
+
+/* Alerts box */
+.spAspAlertsBox.sapMVBox {
+	padding: 4px 0 4px !important;
+	gap: 0 !important;
+}
+.spAspAlert {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 10px 14px;
+	border-bottom: 1px solid #f0f0f0;
+	font-size: 0.78rem;
+	line-height: 1.5;
+}
+.spAspAlert:last-child { border-bottom: none; }
+.spAspAlertIcon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.spAspAlertRed   { background: #fff5f5; border-left: 3px solid #bb0000; }
+.spAspAlertOrange { background: #fff8f0; border-left: 3px solid #cc6600; }
+.spAspAlertBlue   { background: #f0f4ff; border-left: 3px solid #0a6ed1; }
+.spAspAlert b { display: block; color: #1b1f23; margin-bottom: 1px; }
+.spAspAlert div { color: #5a6370; }
+
+/* Team Leaderboard */
+.spAspLeaderboard.sapMVBox {
+	padding: 4px 0 4px !important;
+	gap: 0 !important;
+}
+.spAspLeaderRow {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 16px;
+	border-bottom: 1px solid #f0f0f0;
+}
+.spAspLeaderRow:last-child { border-bottom: none; }
+.spAspLeaderRank {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: #e8eaed;
+	color: #5a6370;
+	font-size: 0.78rem;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.spAspRankGold   { background: #ffd700; color: #7c5300; }
+.spAspRankSilver { background: #c0c0c0; color: #3c3c3c; }
+.spAspRankBronze { background: #cd7f32; color: #fff; }
+.spAspLeaderInfo {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.spAspLeaderInfo b { font-size: 0.82rem; color: #1b1f23; }
+.spAspLeaderInfo span { font-size: 0.72rem; color: #8a9ab0; margin-top: 1px; }
+.spAspLeaderScore {
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: #107e3e;
+	white-space: nowrap;
+}
+

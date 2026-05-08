@@ -1,0 +1,235 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.AiVoiceAssistant"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="false" backgroundDesign="Solid" class="spVaPage">
+		<content>
+			<VBox class="spVaRoot">
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="AI Voice Assistant" class="spAppTitle" />
+					<ToolbarSpacer />
+					<ObjectStatus text="Live" state="Success" />
+					<Button text="Done" type="Emphasized" press=".onBack" />
+				</Toolbar>
+
+				<!-- Main two-panel row -->
+				<HBox class="spVaPanelsRow">
+					<items>
+
+						<!-- ── LEFT: Hands-Free Voice Panel ── -->
+						<VBox class="spVaLeft">
+							<items>
+
+								<!-- Title -->
+								<Title text="AI Field Service Assistant — Hands-Free Mode" class="spVaTitle" />
+
+								<!-- Status chips -->
+								<HBox class="spVaStatusRow" alignItems="Center">
+									<items>
+										<core:HTML content="&lt;div class='spVaChip spVaChipGreen'&gt;&lt;span class='spVaDot spVaDotGreen'&gt;&lt;/span&gt;Online&lt;/div&gt;" />
+										<core:HTML content="&lt;div class='spVaChip spVaChipOrange'&gt;&lt;span class='spVaDot spVaDotOrange'&gt;&lt;/span&gt;Offline sync ready&lt;/div&gt;" />
+									</items>
+								</HBox>
+
+								<!-- Case info bar -->
+								<core:HTML content="&lt;div class='spVaCaseBar'&gt;&lt;span class='spVaCaseId'&gt;TKT-2024-0891&lt;/span&gt;&lt;span class='spVaCaseSep'&gt; • &lt;/span&gt;&lt;span class='spVaCaseMeta'&gt;HVAC unit not cooling&lt;/span&gt;&lt;span class='spVaCaseSep'&gt; • &lt;/span&gt;&lt;span class='spVaCaseMeta'&gt;Greenfield Apartments&lt;/span&gt;&lt;span class='spVaCaseSep'&gt; • &lt;/span&gt;&lt;span class='spVaCaseSla'&gt;SLA: Today 3:00 PM&lt;/span&gt;&lt;/div&gt;" />
+
+								<!-- Chat scroll -->
+								<ScrollContainer class="spVaChatScroll" vertical="true" height="260px">
+									<content>
+										<VBox class="spVaChatInner">
+											<items>
+												<HBox class="spVaMsgRow">
+													<items><VBox class="spVaAiBubble"><items>
+														<Text text="Hello! I'm ready to help with case TKT-2024-0891. What would you like to update?" class="spVaMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox justifyContent="End" class="spVaMsgRow">
+													<items><VBox class="spVaUserBubble"><items>
+														<Text text="I've reached the site — compressor issue, refrigerant is leaking." class="spVaUserMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox class="spVaMsgRow">
+													<items><VBox class="spVaRespBubble"><items>
+														<Text text="Logged: Compressor fault + refrigerant leak. Status updated → On Site (10:48 AM)." class="spVaMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox justifyContent="End" class="spVaMsgRow">
+													<items><VBox class="spVaUserBubble"><items>
+														<Text text="I need a compressor unit CP-220V for replacement." class="spVaUserMsgText" />
+													</items></VBox></items>
+												</HBox>
+												<HBox class="spVaMsgRow">
+													<items><VBox class="spVaRespBubble"><items>
+														<Text text="Parts request created: CP-220V (x1) — RQ-5501. ETA: 2 hrs. Customer informed." class="spVaMsgText" />
+													</items></VBox></items>
+												</HBox>
+											</items>
+										</VBox>
+									</content>
+								</ScrollContainer>
+
+								<!-- Voice input -->
+								<VBox class="spVaInputBox">
+									<items>
+										<Text text="● Voice Input (Type to simulate)" class="spVaInputLabel" />
+										<Input placeholder="Speak or type your update..." class="spVaInput" width="100%" />
+										<Text text="Press Enter to add to service notes" class="spVaInputHint" />
+									</items>
+								</VBox>
+
+								<!-- Mic button area -->
+								<VBox alignItems="Center" class="spVaMicSection">
+									<items>
+										<Button icon="sap-icon://microphone"
+											class="spVaMicBtn"
+											type="{= ${local>/isListening} ? 'Reject' : 'Accept'}"
+											press=".onMicToggle" />
+										<Text text="Hands-Free Mode Active  •  Tap to stop"
+											class="spVaMicActiveText" />
+										<Text text="Works in noisy environments  •  Offline sync enabled"
+											class="spVaMicSubText" />
+									</items>
+								</VBox>
+
+							</items>
+						</VBox>
+
+						<!-- ── RIGHT: AI Actions Panel ── -->
+						<ScrollContainer class="spVaRight" vertical="true" height="100%" width="100%">
+							<layoutData>
+								<FlexItemData growFactor="1" baseSize="0%" />
+							</layoutData>
+							<content>
+								<VBox class="spVaRightInner">
+									<items>
+
+										<!-- ── Row 1: Actions (left) + Suggestions (right) ── -->
+										<HBox class="spVaTopRow" alignItems="FlexStart" wrap="Wrap">
+											<items>
+
+												<!-- Actions Taken by AI -->
+												<VBox class="spVaSection spVaHalfSection">
+													<items>
+														<Title text="Actions Taken by AI" level="H4" class="spVaSectionTitle" />
+														<Text text="Auto-updated based on your voice" class="spVaSectionSub" />
+
+														<HBox alignItems="Center" class="spVaActionRow">
+															<items>
+																<core:HTML content="&lt;div class='spVaActDot spVaActDotGreen'&gt;&lt;/div&gt;" />
+																<core:HTML content="&lt;div class='spVaActIcon'&gt;✓&lt;/div&gt;" />
+																<Input value="Status updated: On Site" class="spVaActInput" editable="false" />
+																<ToolbarSpacer />
+																<Text text="10:48 AM" class="spVaActTime" />
+																<Button icon="sap-icon://write-new" type="Transparent" press=".onEditAction" />
+															</items>
+														</HBox>
+														<HBox alignItems="Center" class="spVaActionRow">
+															<items>
+																<core:HTML content="&lt;div class='spVaActDot spVaActDotBlue'&gt;&lt;/div&gt;" />
+																<core:HTML content="&lt;div class='spVaActIcon spVaActIconBlue'&gt;⊙&lt;/div&gt;" />
+																<Input value="Diagnosis logged: Compressor fault + refrigerant leak" class="spVaActInput spVaActInputBlue" editable="false" />
+																<ToolbarSpacer />
+																<Text text="Auto" class="spVaActTime" />
+																<Button icon="sap-icon://write-new" type="Transparent" press=".onEditAction" />
+															</items>
+														</HBox>
+														<HBox alignItems="Center" class="spVaActionRow">
+															<items>
+																<core:HTML content="&lt;div class='spVaActDot spVaActDotGreen'&gt;&lt;/div&gt;" />
+																<core:HTML content="&lt;div class='spVaActIcon'&gt;📦&lt;/div&gt;" />
+																<Input value="Parts requested: CP-220V x1" class="spVaActInput" editable="false" />
+																<ToolbarSpacer />
+																<Text text="RQ-5501" class="spVaActTime" />
+																<Button icon="sap-icon://write-new" type="Transparent" press=".onEditAction" />
+															</items>
+														</HBox>
+														<HBox alignItems="Center" class="spVaActionRow">
+															<items>
+																<core:HTML content="&lt;div class='spVaActDot spVaActDotGreen'&gt;&lt;/div&gt;" />
+																<core:HTML content="&lt;div class='spVaActIcon'&gt;📝&lt;/div&gt;" />
+																<Input value="Service note auto-generated" class="spVaActInput" editable="false" />
+																<ToolbarSpacer />
+																<Text text="Draft saved" class="spVaActTime" />
+																<Button icon="sap-icon://write-new" type="Transparent" press=".onEditAction" />
+															</items>
+														</HBox>
+														<HBox alignItems="Center" class="spVaActionRow">
+															<items>
+																<core:HTML content="&lt;div class='spVaActDot spVaActDotOrange'&gt;&lt;/div&gt;" />
+																<core:HTML content="&lt;div class='spVaActIcon'&gt;✉&lt;/div&gt;" />
+																<Input value="Customer notified: parts delay 2 hrs" class="spVaActInput" editable="false" />
+																<ToolbarSpacer />
+																<Text text="Sent" class="spVaActTime" />
+																<Button icon="sap-icon://write-new" type="Transparent" press=".onEditAction" />
+															</items>
+														</HBox>
+													</items>
+												</VBox>
+
+												<!-- AI Suggestions -->
+												<VBox class="spVaSection spVaHalfSection">
+													<items>
+														<Title text="AI Suggestions" level="H4" class="spVaSectionTitle" />
+														<Text text="Based on 47 similar cases" class="spVaSectionSub" />
+														<core:HTML content="&lt;div class='spVaSug spVaSugBlue'&gt;Check refrigerant pressure gauge before replacement &lt;span class='spVaSugNote'&gt;— common in TCS fleet&lt;/span&gt;&lt;/div&gt;" />
+														<core:HTML content="&lt;div class='spVaSug spVaSugYellow'&gt;Verify capacitor before replacing compressor &lt;span class='spVaSugNote'&gt;— may avoid parts cost&lt;/span&gt;&lt;/div&gt;" />
+														<core:HTML content="&lt;div class='spVaSug spVaSugOrange'&gt;Estimated repair time: 2–3 hrs with parts. Share ETA with customer now.&lt;/div&gt;" />
+														<core:HTML content="&lt;div class='spVaSug spVaSugRed'&gt;SLA breach risk in 2 hrs 12 mins — &lt;b&gt;expedite parts approval immediately.&lt;/b&gt;&lt;/div&gt;" />
+														<core:HTML content="&lt;div class='spVaSug spVaSugGray'&gt;Similar case TKT-0844 resolved in 2.5 hrs &lt;span class='spVaSugNote'&gt;— reference diagnosis notes available.&lt;/span&gt;&lt;/div&gt;" />
+													</items>
+												</VBox>
+
+											</items>
+										</HBox>
+
+										<!-- ── Row 2: Auto-Generated Service Note (full width) ── -->
+										<VBox class="spVaSection">
+											<items>
+												<HBox justifyContent="SpaceBetween" alignItems="Center" class="spVaNoteHeader">
+													<items>
+														<Title text="Auto-Generated Service Note" level="H4" class="spVaSectionTitle" />
+														<ObjectStatus text="Draft" state="Warning" inverted="true" />
+													</items>
+												</HBox>
+												<VBox class="spVaNoteBox">
+													<items>
+														<Text text="Service Note — TKT-2024-0891" class="spVaNoteTitle" />
+														<Text text="Date: Apr 27, 2026  |  Tech: Ravi Kumar" class="spVaNoteMeta" />
+														<Text text="Arrived on site at 10:48 AM. Introduced to Mr. Suresh Iyer (Facilities Manager). Site hazard assessment completed. AC system shut down safely." class="spVaNoteBody" wrapping="true" />
+														<Text text="Diagnosis: Compressor fault identified. Refrigerant leak detected at junction point. Capacitor checked — within tolerance. Root cause: Compressor failure due to overload." class="spVaNoteBody" wrapping="true" />
+														<Text text="Action: Parts request submitted — Compressor Unit CP-220V (RQ-5501). Customer informed of 2-hour ETA. Work to resume upon parts arrival." class="spVaNoteBody" wrapping="true" />
+													</items>
+												</VBox>
+											</items>
+										</VBox>
+
+										<!-- ── Footer actions ── -->
+										<HBox justifyContent="End" class="spVaFooterRow">
+											<items>
+												<Button text="Discard All" type="Default" press=".onBack" class="sapUiSmallMarginEnd" />
+												<Button text="Apply Updates" type="Emphasized" press=".onApply" />
+											</items>
+										</HBox>
+
+									</items>
+								</VBox>
+							</content>
+						</ScrollContainer>
+
+					</items>
+				</HBox>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

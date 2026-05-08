@@ -1,0 +1,145 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.TechnicianCaseEdit"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack" tooltip="Back to Case Details" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/technicianUser/initials}" backgroundColor="Accent7"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<!-- Breadcrumb + action bar -->
+				<Toolbar>
+					<Breadcrumbs currentLocationText="Edit: TKT-2024-0891">
+						<links>
+							<Link text="Home" press=".onNavHome" />
+							<Link text="My Cases" press=".onBack" />
+						</links>
+					</Breadcrumbs>
+					<ToolbarSpacer />
+					<Button text="Voice" icon="sap-icon://microphone" type="Default"
+						class="spVoiceBtn" press=".onVoiceAssistant" />
+					<Button text="Save Changes" icon="sap-icon://save" type="Emphasized"
+						press=".onSave" />
+					<Button text="Cancel" type="Default" press=".onBack" />
+				</Toolbar>
+
+				<VBox class="spContent">
+					<l:Grid defaultSpan="XL6 L6 M12 S12" hSpacing="1">
+						<l:content>
+
+							<!-- Case Status & Info -->
+							<Panel headerText="Case Details" class="spPanel">
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<Label text="Case ID" design="Bold" />
+										<Text text="TKT-2024-0891" class="sapUiTinyMarginBottom" />
+
+										<Label text="Current Status" design="Bold" class="sapUiTinyMarginTop" />
+										<Select id="editStatus" width="100%" class="sapUiSmallMarginBottom">
+											<items>
+												<core:Item key="new"         text="New" />
+												<core:Item key="assigned"    text="Assigned" />
+												<core:Item key="in_progress" text="In Progress" />
+												<core:Item key="resolved"    text="Resolved" />
+												<core:Item key="closed"      text="Closed" />
+											</items>
+										</Select>
+
+										<Label text="Priority" design="Bold" />
+										<Select id="editPriority" width="100%" class="sapUiSmallMarginBottom">
+											<items>
+												<core:Item key="high"   text="High" />
+												<core:Item key="medium" text="Medium" />
+												<core:Item key="low"    text="Low" />
+											</items>
+										</Select>
+
+										<Label text="Customer" design="Bold" />
+										<Input id="editCustomer" value="{service>/technicianCaseDetails/customer}"
+											width="100%" class="sapUiSmallMarginBottom" />
+
+										<Label text="Product / Equipment" design="Bold" />
+										<Input id="editProduct" value="{service>/technicianCaseDetails/product}"
+											width="100%" class="sapUiSmallMarginBottom" />
+									</VBox>
+								</content>
+							</Panel>
+
+							<!-- Work Notes -->
+							<Panel headerText="Work Notes &amp; Resolution" class="spPanel">
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<Label text="Problem Description" design="Bold" />
+										<TextArea id="editProblem"
+											value="{service>/technicianCaseDetails/problemDescription}"
+											rows="3" growing="true" width="100%"
+											class="sapUiSmallMarginBottom" />
+
+										<Label text="Work Done" design="Bold" />
+										<TextArea id="editWorkDone"
+											placeholder="Describe steps taken, tools used, findings..."
+											rows="4" growing="true" width="100%"
+											class="sapUiSmallMarginBottom" />
+
+										<Label text="Resolution / Next Steps" design="Bold" />
+										<TextArea id="editResolution"
+											placeholder="What was resolved? Any follow-up required?"
+											rows="3" growing="true" width="100%" />
+									</VBox>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- Parts Used (editable) -->
+					<Panel headerText="Parts Used" class="spPanel">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Parts Used" level="H4" />
+								<ToolbarSpacer />
+								<Button text="Add Part" icon="sap-icon://add" type="Transparent" press=".onAddPart" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table items="{service>/technicianCaseDetails/partsUsed}" noDataText="No parts added">
+								<columns>
+									<Column><Text text="Part No." /></Column>
+									<Column><Text text="Description" /></Column>
+									<Column><Text text="Cost" /></Column>
+									<Column><Text text="Covered" /></Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{service>partNo}" />
+											<Text text="{service>description}" />
+											<Text text="{service>cost}" />
+											<Text text="{service>covered}" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+				</VBox>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

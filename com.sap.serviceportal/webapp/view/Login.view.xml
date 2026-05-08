@@ -1,0 +1,104 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.Login"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="false" backgroundDesign="Transparent" class="spLoginPage">
+		<content>
+			<HBox class="spLoginWrapper">
+				<items>
+
+					<!-- Left: Image / brand panel -->
+					<VBox class="spLoginImagePanel" justifyContent="End">
+						<items>
+							<VBox class="spLoginBrandOverlay">
+								<items>
+									<Title text="SAP Service Portal" class="spLoginBrandTitle" titleStyle="H1" />
+									<Text text="Manage your field service operations efficiently" class="spLoginBrandSubtitle" />
+								</items>
+							</VBox>
+						</items>
+					</VBox>
+
+					<!-- Right: Login form panel -->
+					<VBox class="spLoginFormPanel" justifyContent="Center" alignItems="Center">
+						<items>
+							<VBox class="spLoginCard">
+								<items>
+
+									<!-- Logo Banner -->
+									<VBox class="spLoginLogoBanner" alignItems="Center">
+										<items>
+											<Image src="img/sap-logo.svg" class="spLoginSapLogoImg" />
+											<Text text="Service Portal" class="spLoginPortalLabel" />
+										</items>
+									</VBox>
+
+									<!-- Role Toggle -->
+									<SegmentedButton
+										width="100%"
+										class="spLoginToggle"
+										selectionChange=".onRoleToggle">
+										<items>
+											<SegmentedButtonItem key="technician" text="Technician" />
+											<SegmentedButtonItem key="asp" text="ASP" />
+										</items>
+									</SegmentedButton>
+
+									<!-- Username -->
+									<Input id="inpUsername" placeholder="User Name" class="spLoginInput" width="100%" />
+
+									<!-- Password -->
+									<Input id="inpPassword" placeholder="Password" type="Password" class="spLoginInput" width="100%" />
+
+									<!-- Forgot password -->
+									<HBox justifyContent="End" class="spLoginForgotRow">
+										<items>
+											<Link text="Forgot password?" class="spLoginForgotLink" />
+										</items>
+									</HBox>
+
+									<!-- Language -->
+									<Select width="100%" class="spLoginSelect">
+										<items>
+											<core:Item key="en" text="English" />
+											<core:Item key="de" text="German" />
+											<core:Item key="fr" text="French" />
+										</items>
+									</Select>
+
+									<!-- Sign In (always visible) -->
+									<Button text="Sign In"
+										press=".onSignIn"
+										width="100%"
+										type="Emphasized"
+										class="spLoginBtnSignIn" />
+
+									<!-- Register section — Technician only -->
+									<VBox visible="{local>/isTechnician}" class="spLoginRegisterSection">
+										<items>
+											<HBox justifyContent="Center" alignItems="Center" class="spLoginDivider">
+												<items>
+													<Text text="or" class="spLoginOrText" />
+												</items>
+											</HBox>
+											<Button text="Register as Technician"
+												press=".onRegister"
+												width="100%"
+												class="spLoginBtnRegister" />
+										</items>
+									</VBox>
+
+								</items>
+							</VBox>
+						</items>
+					</VBox>
+
+				</items>
+			</HBox>
+		</content>
+	</Page>
+
+</mvc:View>

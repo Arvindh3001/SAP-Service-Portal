@@ -1,0 +1,183 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.AdminCaseDetails"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'com/sap/serviceportal/model/formatter'
+	}">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onNavHome" tooltip="Back to Dashboard" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<SearchField width="240px" placeholder="Search" />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<!-- Status Flow Bar -->
+				<Panel class="spPanel">
+					<content>
+						<FlexBox wrap="NoWrap" class="spStatusFlow">
+							<items>
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--green'&gt;New&lt;/div&gt;" />
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--blue'&gt;Assigned&lt;/div&gt;" />
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--orange'&gt;In Progress&lt;/div&gt;" />
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--gray'&gt;On Hold&lt;/div&gt;" />
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--gray'&gt;Completed&lt;/div&gt;" />
+								<core:HTML content="&lt;div class='spStatusBox spStatusBox--gray'&gt;Escalated&lt;/div&gt;" />
+							</items>
+						</FlexBox>
+					</content>
+				</Panel>
+
+				<!-- Breadcrumb + Action Buttons Row -->
+				<Toolbar>
+					<Breadcrumbs currentLocationText="TKT-2024-0891">
+						<links>
+							<Link text="Home" press=".onNavHome" />
+							<Link text="Cases" />
+						</links>
+					</Breadcrumbs>
+					<ToolbarSpacer />
+					<Button text="{i18n>btnEditCase}" icon="sap-icon://edit"
+						type="Emphasized" press=".onEditCase" />
+					<Button text="{i18n>btnAssignTechnician}" icon="sap-icon://employee-approvals"
+						type="Accept" press=".onAssignTechnician" />
+				</Toolbar>
+
+				<!-- Main Content Grid -->
+				<VBox class="spContent">
+					<l:Grid defaultSpan="XL8 L8 M12 S12" hSpacing="1" vSpacing="1">
+						<l:content>
+
+							<!-- LEFT: Case Information (2/3 width) -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="{service>/selectedCase/id}" level="H3" />
+										<ObjectStatus
+											text="{service>/selectedCase/priority}"
+											state="{path: 'service>/selectedCase/priority', formatter: 'formatter.formatPriorityState'}"
+											class="sapUiTinyMarginBegin" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<Text text="{service>/selectedCase/subtitle}"
+											class="sapUiSmallMarginBottom" />
+
+										<l:Grid defaultSpan="XL6 L6 M6 S12">
+											<l:content>
+												<VBox>
+													<Label text="{i18n>labelCustomer}" design="Bold" />
+													<Text text="{service>/selectedCase/customer}" class="sapUiSmallMarginBottom" />
+													<Label text="{i18n>labelProduct}" design="Bold" />
+													<Text text="{service>/selectedCase/product}" class="sapUiSmallMarginBottom" />
+													<Label text="{i18n>labelSerialNo}" design="Bold" />
+													<Text text="{service>/selectedCase/serialNo}" class="sapUiSmallMarginBottom" />
+												</VBox>
+												<VBox>
+													<Label text="{i18n>labelServiceZone}" design="Bold" />
+													<Text text="{service>/selectedCase/serviceZone}" class="sapUiSmallMarginBottom" />
+													<Label text="{i18n>labelAssignedTo}" design="Bold" />
+													<Text text="{service>/selectedCase/assignedTo}" class="sapUiSmallMarginBottom" />
+													<Label text="{i18n>labelWarrantyStatus}" design="Bold" />
+													<ObjectStatus text="{service>/selectedCase/warrantyStatus}"
+														state="Success" class="sapUiSmallMarginBottom" />
+												</VBox>
+											</l:content>
+										</l:Grid>
+
+										<Label text="{i18n>labelProblemDesc}" design="Bold"
+											class="sapUiSmallMarginTop" />
+										<Text text="{service>/selectedCase/problemDescription}"
+											wrapping="true" class="sapUiSmallMarginBottom" />
+
+										<Label text="{i18n>labelServiceHistory}" design="Bold" />
+										<Text text="{service>/selectedCase/serviceHistory}"
+											wrapping="true" />
+									</VBox>
+								</content>
+							</Panel>
+
+							<!-- RIGHT: Technician Notes (1/3 width) -->
+							<Panel headerText="{i18n>techNotesTitle}" class="spPanel">
+								<content>
+									<List items="{service>/selectedCase/techNotes}"
+										showSeparators="Inner">
+										<FeedListItem
+											sender="{service>author}"
+											timestamp="{service>time}"
+											text="{service>note}"
+											showIcon="false" />
+									</List>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- Bottom Row: Parts Used + Case Status -->
+					<l:Grid defaultSpan="XL6 L6 M12 S12" hSpacing="1">
+						<l:content>
+
+							<!-- Parts Used -->
+							<Panel headerText="{i18n>partsUsedTitle}" class="spPanel">
+								<content>
+									<List items="{service>/selectedCase/partsUsed}" showSeparators="Inner">
+										<ObjectListItem title="{service>description}">
+											<attributes>
+												<ObjectAttribute title="{i18n>labelPartNo}" text="{service>partNo}" />
+												<ObjectAttribute title="{i18n>labelCost}" text="{service>cost}" />
+												<ObjectAttribute title="{i18n>labelStatus}" text="{service>status}"
+													active="false" />
+											</attributes>
+										</ObjectListItem>
+									</List>
+								</content>
+							</Panel>
+
+							<!-- Case Status -->
+							<Panel headerText="{i18n>caseStatusTitle}" class="spPanel">
+								<content>
+									<HBox class="sapUiSmallMargin" wrap="Wrap">
+										<items>
+											<ObjectStatus text="In Warranty" state="Success"
+												class="sapUiSmallMarginEnd" />
+											<ObjectStatus text="Completed" state="Success"
+												class="sapUiSmallMarginEnd" />
+											<ObjectStatus text="Escalated" state="None" />
+										</items>
+									</HBox>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- Exit Button -->
+					<FlexBox justifyContent="End" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+						<items>
+							<Button text="{i18n>btnExit}" icon="sap-icon://nav-back"
+								type="Emphasized" press=".onNavHome" />
+						</items>
+					</FlexBox>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

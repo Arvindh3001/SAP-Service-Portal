@@ -1,0 +1,181 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.OnboardingPersonal"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Blue Registration Top Bar -->
+				<Toolbar class="spAiTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to AI Voice Onboarding" class="spTopBarBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Technician Self-Registration Portal" class="spAiPortalTitle" />
+					<ToolbarSpacer />
+					<Text text="Already registered?" class="spAiRegisterHint" />
+				</Toolbar>
+
+				<!-- Step indicator -->
+				<HBox class="spAiStepBar" alignItems="Center" justifyContent="Center">
+					<items>
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="1" backgroundColor="Accent1" displaySize="XS" />
+								<Text text="Personal Details" class="spAiStepTitle spAiStepTitleActive" />
+								<Text text="Fill in details" class="spAiStepSub spAiStepSubActive" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="2" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="KYC Documents" class="spAiStepTitle" />
+								<Text text="Aadhaar, PAN, Certs" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="3" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Skills &amp; Zone" class="spAiStepTitle" />
+								<Text text="Experience &amp; area" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="4" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Review &amp; Submit" class="spAiStepTitle" />
+								<Text text="Confirm &amp; submit" class="spAiStepSub" />
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+
+				<!-- Personal Details Form -->
+				<Panel class="sapUiLargeMarginBeginEnd sapUiMediumMarginTopBottom">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="{i18n>personalFormTitle}" level="H2" />
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<VBox class="sapUiMediumMarginBeginEnd sapUiMediumMarginBottom">
+							<Text text="{i18n>personalFormDesc}" class="sapUiSmallMarginBottom" />
+
+							<f:Form editable="true">
+								<f:layout>
+									<f:ColumnLayout columnsM="2" columnsL="2" columnsXL="2" />
+								</f:layout>
+								<f:formContainers>
+									<f:FormContainer>
+										<f:formElements>
+											<f:FormElement label="{i18n>labelFirstName}">
+												<f:fields>
+													<Input id="firstName" placeholder="e.g. Ravi" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelLastName}">
+												<f:fields>
+													<Input id="lastName" placeholder="e.g. Kumar" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelDob}">
+												<f:fields>
+													<DatePicker id="dob" placeholder="dd-mm-yyyy"
+														valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelGender}">
+												<f:fields>
+													<Select id="gender">
+														<items>
+															<core:Item key="" text="Select" />
+															<core:Item key="M" text="Male" />
+															<core:Item key="F" text="Female" />
+															<core:Item key="O" text="Other" />
+														</items>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelMobile}">
+												<f:fields>
+													<Input id="mobile" placeholder="+91 98765 43210" type="Tel" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelAltMobile}">
+												<f:fields>
+													<Input id="altMobile" placeholder="+91 xxxxx xxxxx" type="Tel" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelEmail}">
+												<f:fields>
+													<Input id="email" placeholder="ravi.kumar@email.com" type="Email" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelAadhaar}">
+												<f:fields>
+													<Input id="aadhaar" placeholder="XXXX XXXX XXXX" maxLength="14" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelAddress}">
+												<f:fields>
+													<TextArea id="address" placeholder="Street, Area, City, PIN"
+														rows="2" growing="true" />
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelServiceZoneField}">
+												<f:fields>
+													<Select id="serviceZone">
+														<items>
+															<core:Item key="BLR-N" text="Bangalore North" />
+															<core:Item key="BLR-S" text="Bangalore South" />
+															<core:Item key="BLR-E" text="Bangalore East" />
+															<core:Item key="HYD"   text="Hyderabad Zone" />
+															<core:Item key="MUM"   text="Mumbai Zone" />
+														</items>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+											<f:FormElement label="{i18n>labelExperience}">
+												<f:fields>
+													<Select id="experience">
+														<items>
+															<core:Item key="0-2"  text="0-2 years" />
+															<core:Item key="2-5"  text="2-5 years" />
+															<core:Item key="5-10" text="5-10 years" />
+															<core:Item key="10+"  text="10+ years" />
+														</items>
+													</Select>
+												</f:fields>
+											</f:FormElement>
+										</f:formElements>
+									</f:FormContainer>
+								</f:formContainers>
+							</f:Form>
+
+							<!-- Navigation button -->
+							<HBox justifyContent="End" class="sapUiMediumMarginTop">
+								<items>
+									<Button text="Next: KYC Documents"
+										type="Emphasized"
+										icon="sap-icon://arrow-right"
+										iconFirst="false"
+										press=".onNext" />
+								</items>
+							</HBox>
+
+						</VBox>
+					</content>
+				</Panel>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

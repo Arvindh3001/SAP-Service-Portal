@@ -1,0 +1,227 @@
+================================================================================
+  SAP SERVICE PORTAL — PROTOTYPE FLOWS
+  Technician Flow  |  ASP (Admin) Flow
+================================================================================
+
+
+════════════════════════════════════════════════════════════════════════════════
+  FLOW 1 — TECHNICIAN
+════════════════════════════════════════════════════════════════════════════════
+
+  PART A · Onboarding (New Technician Registration)
+  ─────────────────────────────────────────────────
+
+  Step 1 · Login
+    Screen  : Login
+    Route   : login (default)
+    Action  : Click "Register as Technician"  →  Step 2
+
+  Step 2 · AI Voice Onboarding
+    Screen  : AI Voice Onboarding
+    Route   : aiVoiceOnboarding
+    Purpose : Conversational AI ("Ava") walks the technician through the
+              registration steps. Language selector, live voice-to-form fill,
+              mic toggle (green = idle, red = listening).
+    Action  : Click "Next: KYC Documents"  →  Step 3
+
+  Step 3 · Personal Details
+    Screen  : Onboarding — Personal Details
+    Route   : onboardingPersonal
+    Purpose : Collect name, DOB, gender, email, mobile, address, experience,
+              and zone preference.
+    Action  : Click "Next: KYC Documents"  →  Step 4
+
+  Step 4 · KYC Documents
+    Screen  : Technician KYC
+    Route   : technicianKyc
+    Purpose : Upload Aadhaar, PAN, certification, passport photo, and address
+              proof. Each document shows upload status (Uploaded / Verified /
+              Pending).
+    Action  : Click "Next: Skills & Zone"  →  Step 5
+
+  Step 5 · Skills & Zone
+    Screen  : Skills & Zone
+    Route   : skillsZone
+    Purpose : Select skill chips from preset categories (HVAC & Mechanical,
+              Electrical & Power, IT & Networking) or add custom skills via
+              text input. Set service zone, secondary zone, experience level,
+              specialisation, certification level, and availability.
+    Action  : Click "Next: Review & Submit"  →  Step 6
+
+  Step 6 · Review & Submit
+    Screen  : Onboarding Review
+    Route   : onboardingReview
+    Purpose : 3-column summary of Personal Details / KYC Documents / Skills &
+              Zone, each with an Edit button. Warning strip if any document is
+              pending. Consent checkbox.
+    Action  : Click "Submit Application"  →  Step 7
+
+  Step 7 · Learning Journeys
+    Screen  : Learning Journeys
+    Route   : learningJourneys
+    Purpose : 6 course cards (SAP Learning portal style). Mandatory, Partner,
+              and Free badges. Live Session / Learning Journey / Course types.
+              Courses cover HVAC, SAP Service Cloud, Electrical, Customer
+              Service, Safety & Compliance, and AI Field Service.
+              Complete all courses before going live.
+    Action  : Click "Continue to Dashboard"  →  Step 8
+
+
+  PART B · Daily Work (Active Technician)
+  ────────────────────────────────────────
+
+  Step 8 · Technician Home
+    Screen  : Technician Home
+    Route   : technicianHome
+    Purpose : Welcome banner, Quick Actions (View Cases / Accept Case /
+              Mark En Route / Update Status / Request Parts / My Learning),
+              My Cases by Stage (Assigned / En Route / On Site / Parts
+              Pending), Today's Performance KPIs (resolved tickets, fix rate,
+              SLA risk, customer rating + SLA compliance bar), and Today's
+              Scheduled Jobs table.
+    Actions :
+      → Click "View Cases" or any job row  →  Step 9
+      → Click "My Learning"               →  Step 7 (Learning Journeys)
+      → Click "AI Voice Assistant"        ��  Step 11
+
+  Step 9 · Technician Case Details
+    Screen  : Technician Case Details
+    Route   : technicianCase
+    Purpose : Full case info — customer, product, issue, priority badge,
+              status flow bar, technician notes timeline, parts used, and
+              customer satisfaction rating.
+    Actions :
+      → Click "Edit Case"         →  Step 10
+      → Click "AI Assistant" mic  →  Step 11
+      → Click back / Exit         →  Step 8
+
+  Step 10 · Technician Case Edit
+    Screen  : Technician Case Edit
+    Route   : technicianCaseEdit
+    Purpose : Edit service notes, add/remove parts, update labor time, change
+              case status, upload photos/evidence. Save & Complete closes the
+              case.
+    Actions :
+      → Click "Save Changes"      →  Step 9
+      → Click "Save & Complete"   →  Step 8 (case closed)
+      → Click "Cancel"            →  Step 9
+
+  Step 11 · AI Voice Service Assistant
+    Screen  : AI Voice Assistant
+    Route   : aiVoiceAssistant
+    Purpose : Hands-free assistant for on-site use. Speech-to-text for case
+              notes, error code lookup, wiring diagrams, parts ordering, and
+              step-by-step repair guidance.
+    Action  : Click Exit  →  Step 8
+
+
+  Back Navigation
+  ───────────────
+  Each screen has a nav-back button in the top bar that follows the
+  reverse of the flow above.
+
+
+════════════════════════════════════════════════════════════════════════════════
+  FLOW 2 — ASP (ADMIN / AUTHORIZED SERVICE PROVIDER)
+════════════════════════════════════════════════════════════════════════════════
+
+  Step 1 · Login
+    Screen  : Login
+    Route   : login (default)
+    Action  : Click "Sign In as ASP"  →  Step 2
+
+  Step 2 · ASP Dashboard (Main)
+    Screen  : Main Dashboard
+    Route   : main
+    Purpose : Command center. KPI tiles (Active Cases, Technicians Available,
+              SLA Compliance, Avg Resolution Time, Customer Satisfaction,
+              Revenue). Quick Action tiles (Technicians, Approvals, Cases,
+              Reports, Inventory, Allocate). Full case table with all
+              technicians' cases. Alerts panel (critical, warnings, updates).
+              Team leaderboard.
+    Actions :
+      → Click "Technicians" tile      →  Step 3
+      → Click "Approvals" tile        →  Step 4
+      → Click "Allocate" tile         →  Step 5
+      → Click any case row "View"     →  Step 6
+      → Click any case row "Assign"   →  Step 5
+
+  Step 3 · Technician Management
+    Screen  : Technician Management
+    Route   : technicianMgmt
+    Purpose : IconTabBar with 3 tabs:
+              • Active Technicians — table with Name, Emp ID, Skills, Zone,
+                Status (colored badge), Active Cases, Attendance (colored
+                badge), SLA%, and Edit/View actions.
+              • Onboarding Pipeline — technicians in training.
+              • Offboarded — historical records.
+              Top bar has "Add New Technician" button.
+    Actions :
+      → Click "Add New Technician"    →  Flow 1, Step 2 (AI Voice Onboarding)
+      → Click "Edit"                  →  Edit technician (toast: coming soon)
+      → Click "View"                  →  View profile (toast: coming soon)
+      → Click nav-back                →  Step 2
+
+  Step 4 · Admin Approvals
+    Screen  : Admin Approvals
+    Route   : adminApprovals
+    Purpose : Tabbed approval queue — Leave Requests, Expense Claims, Parts
+              Orders, New Technician Applications. Each item shows detail,
+              urgency, and Approve / Reject / Request Info actions.
+              Summary stats: total pending, urgent today, avg approval time.
+    Action  : Click nav-back  →  Step 2
+
+  Step 5 · AI Auto Assignment
+    Screen  : AI Auto Assignment
+    Route   : aiAutoAssignment
+    Purpose : AI recommendation engine for case-to-technician matching.
+              Alert banner shows the unassigned urgent case. Left panel shows
+              case details. Center panel shows ranked technician matches with
+              match score, reasoning across 15 factors (skills, ETA, workload,
+              customer history, language, etc.), and predicted outcome. Right
+              panel shows bar-chart score breakdown.
+    Actions :
+      → Click "Assign to [Technician]"     →  Step 2 (with toast confirmation)
+      → Click "Override & Manual Assign"   →  Manual assignment
+      → Click nav-back                     →  Step 2
+
+  Step 6 · Admin Case Details
+    Screen  : Admin Case Details
+    Route   : caseDetails
+    Purpose : Admin view of a case — same case info as technician view PLUS
+              assignment history (AI match score, alternatives considered),
+              business metrics (financial details, SLA tracking, customer
+              impact), admin action panel (Reassign, Escalate, Extend SLA,
+              Contact Customer, Generate Report, Audit Log), and full customer
+              account details (contract, SLA terms, service history).
+    Actions :
+      → Click "Edit Case"           →  Edit mode
+      → Click "Assign Technician"   →  Step 5
+      → Click nav-back / Exit       →  Step 2
+
+
+  Back Navigation
+  ───────────────
+  Every screen has a nav-back button in the top blue bar that returns to
+  the Main Dashboard (Step 2).
+
+
+================================================================================
+  NAVIGATION SUMMARY
+================================================================================
+
+  Technician Onboarding:
+    Login → AI Voice Onboarding → Personal Details → KYC Documents
+         → Skills & Zone → Review & Submit → Learning Journeys → Home
+
+  Technician Daily:
+    Home → Case Details → Case Edit → (back to Home)
+    Home → AI Voice Assistant → (back to Home)
+
+  ASP Admin:
+    Login → Main Dashboard → Technician Management
+                           → Admin Approvals
+                           → AI Auto Assignment
+                           → Admin Case Details
+
+================================================================================

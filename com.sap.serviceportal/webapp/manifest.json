@@ -1,0 +1,101 @@
+{
+	"_version": "2.0.0",
+
+	"sap.app": {
+		"id": "com.sap.serviceportal",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": { "version": "${version}" },
+		"sourceTemplate": { "id": "@ui5/mcp-server:ts", "version": "0.2.11" }
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": { "desktop": true, "tablet": true, "phone": true }
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.sap.serviceportal.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.136.17",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+
+		"flexEnabled": false,
+		"handleValidation": true,
+		"contentDensities": { "compact": true, "cozy": true },
+
+		"resources": {
+			"css": [ { "uri": "css/style.css" } ]
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": { "bundleName": "com.sap.serviceportal.i18n.i18n", "async": true }
+			},
+			"service": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/serviceData.json"
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"type": "View",
+				"viewType": "XML",
+				"path": "com.sap.serviceportal.view",
+				"controlId": "app",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{ "pattern": "",                    "name": "login",                  "target": "login" },
+				{ "pattern": "main",                "name": "main",                   "target": "main" },
+				{ "pattern": "caseDetails",         "name": "caseDetails",            "target": "caseDetails" },
+				{ "pattern": "onboardingPersonal",  "name": "onboardingPersonal",     "target": "onboardingPersonal" },
+				{ "pattern": "technicianKyc",       "name": "technicianKyc",          "target": "technicianKyc" },
+				{ "pattern": "onboardingReview",    "name": "onboardingReview",       "target": "onboardingReview" },
+				{ "pattern": "aiAutoAssignment",    "name": "aiAutoAssignment",       "target": "aiAutoAssignment" },
+				{ "pattern": "technicianHome",      "name": "technicianHome",         "target": "technicianHome" },
+				{ "pattern": "technicianCase",      "name": "technicianCase",         "target": "technicianCase" },
+				{ "pattern": "technicianCaseEdit",  "name": "technicianCaseEdit",     "target": "technicianCaseEdit" },
+				{ "pattern": "aiVoiceAssistant",    "name": "aiVoiceAssistant",       "target": "aiVoiceAssistant" },
+				{ "pattern": "adminApprovals",      "name": "adminApprovals",         "target": "adminApprovals" },
+				{ "pattern": "technicianMgmt",      "name": "technicianMgmt",         "target": "technicianMgmt" },
+				{ "pattern": "learningJourneys",    "name": "learningJourneys",       "target": "learningJourneys" },
+				{ "pattern": "aiVoiceOnboarding",   "name": "aiVoiceOnboarding",      "target": "aiVoiceOnboarding" },
+				{ "pattern": "skillsZone",          "name": "skillsZone",             "target": "skillsZone" }
+			],
+			"targets": {
+				"login":              { "id": "login",              "name": "Login" },
+				"main":               { "id": "main",               "name": "Main" },
+				"caseDetails":        { "id": "caseDetails",        "name": "AdminCaseDetails" },
+				"onboardingPersonal": { "id": "onboardingPersonal", "name": "OnboardingPersonal" },
+				"technicianKyc":      { "id": "technicianKyc",      "name": "TechnicianKyc" },
+				"onboardingReview":   { "id": "onboardingReview",   "name": "OnboardingReview" },
+				"aiAutoAssignment":   { "id": "aiAutoAssignment",   "name": "AiAutoAssignment" },
+				"technicianHome":     { "id": "technicianHome",     "name": "TechnicianHome" },
+				"technicianCase":     { "id": "technicianCase",     "name": "TechnicianCaseDetails" },
+				"technicianCaseEdit": { "id": "technicianCaseEdit", "name": "TechnicianCaseEdit" },
+				"aiVoiceAssistant":   { "id": "aiVoiceAssistant",   "name": "AiVoiceAssistant" },
+				"adminApprovals":     { "id": "adminApprovals",     "name": "AdminApprovals" },
+				"technicianMgmt":     { "id": "technicianMgmt",     "name": "TechnicianManagement" },
+				"learningJourneys":   { "id": "learningJourneys",   "name": "LearningJourneys" },
+				"aiVoiceOnboarding":  { "id": "aiVoiceOnboarding",  "name": "AiVoiceOnboarding" },
+				"skillsZone":         { "id": "skillsZone",         "name": "SkillsZone" }
+			}
+		}
+	}
+}

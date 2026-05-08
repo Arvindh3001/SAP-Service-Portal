@@ -1,0 +1,252 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.Main"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	core:require="{
+		formatter: 'com/sap/serviceportal/model/formatter'
+	}">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://menu2" type="Transparent" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<SearchField width="240px" placeholder="Search" />
+					<Button icon="sap-icon://bell" type="Transparent" tooltip="Notifications" />
+					<Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings" />
+					<Avatar initials="{service>/currentUser/initials}" press=".onAvatarPress" backgroundColor="Accent6" />
+				</Toolbar>
+
+				<!-- Hero Banner -->
+				<FlexBox direction="Column" class="spHeroBanner">
+					<items>
+						<Text text="{service>/welcomeDate}" class="spHeroDate" />
+						<Title text="Good morning, {service>/currentUser/name} ({service>/currentUser/id})" class="spHeroTitle" titleStyle="H3" />
+						<Text text="{service>/welcomeStats}" class="spHeroStats" />
+					</items>
+				</FlexBox>
+
+				<VBox class="spContent">
+
+					<!-- ── KPI Row ── -->
+					<FlexBox wrap="Wrap" class="spKpiRow" alignItems="Stretch">
+						<items>
+							<GenericTile header="Active Cases" class="spKpiTile spKpiTileBlue">
+								<tileContent><TileContent><content>
+									<NumericContent value="{service>/kpis/newCases}" withMargin="false" valueColor="Neutral" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Technicians Available" class="spKpiTile spKpiTileGreen">
+								<tileContent><TileContent><content>
+									<NumericContent value="14" withMargin="false" valueColor="Good" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="SLA Compliance" class="spKpiTile spKpiTileTeal">
+								<tileContent><TileContent><content>
+									<NumericContent value="87" withMargin="false" valueColor="Good" scale="%" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Avg Resolution Time" class="spKpiTile spKpiTileOrange">
+								<tileContent><TileContent><content>
+									<NumericContent value="3.2" withMargin="false" valueColor="Critical" scale=" hrs" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="Customer Satisfaction" class="spKpiTile spKpiTileGreen">
+								<tileContent><TileContent><content>
+									<NumericContent value="4.6" withMargin="false" valueColor="Good" scale=" / 5" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+							<GenericTile header="SLA Breach Risk" class="spKpiTile spKpiTileRed">
+								<tileContent><TileContent><content>
+									<NumericContent value="{service>/kpis/slaBreachRisk}" withMargin="false" valueColor="Error" />
+								</content></TileContent></tileContent>
+							</GenericTile>
+						</items>
+					</FlexBox>
+
+					<!-- ── Row 1: Quick Actions | Technician Status | SLA + Alerts ── -->
+					<l:Grid hSpacing="1" vSpacing="1" class="sapUiSmallMarginBottom">
+						<l:content>
+
+							<!-- Quick Actions tile grid -->
+							<Panel headerText="Quick Actions" class="spPanel">
+								<layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>
+								<content>
+									<l:Grid defaultSpan="XL4 L4 M4 S4" hSpacing="0.5" vSpacing="0.5" class="sapUiSmallMargin">
+										<l:content>
+											<Button text="Technicians"  icon="sap-icon://employee"        type="Transparent" width="100%" class="spQuickActionTile" press=".onTechnicians" />
+											<Button text="Approvals"    icon="sap-icon://task"            type="Transparent" width="100%" class="spQuickActionTile" press=".onApprovals" />
+											<Button text="Cases"        icon="sap-icon://activity-items"  type="Transparent" width="100%" class="spQuickActionTile" press=".onNewCase" />
+											<Button text="Reports"      icon="sap-icon://bar-chart"       type="Transparent" width="100%" class="spQuickActionTile" press=".onReports" />
+											<Button text="Inventory"    icon="sap-icon://product"         type="Transparent" width="100%" class="spQuickActionTile" />
+											<Button text="Allocate"     icon="sap-icon://process"         type="Transparent" width="100%" class="spQuickActionTile" press=".onAllocate" />
+										</l:content>
+									</l:Grid>
+								</content>
+							</Panel>
+
+							<!-- Technician Status -->
+							<Panel headerText="Technician Status" class="spPanel">
+								<layoutData><l:GridData span="XL3 L3 M6 S12" /></layoutData>
+								<content>
+									<core:HTML content="&lt;div class='spAspGaugeWrap'&gt;&lt;svg viewBox='0 0 100 100' class='spAspGaugeSvg'&gt;&lt;circle cx='50' cy='50' r='40' fill='none' stroke='#e8f5e9' stroke-width='8'/&gt;&lt;circle cx='50' cy='50' r='40' fill='none' stroke='#107e3e' stroke-width='8' stroke-dasharray='251.3' stroke-dashoffset='90.5' stroke-linecap='round' transform='rotate(-90 50 50)'/&gt;&lt;text x='50' y='47' text-anchor='middle' font-size='22' font-weight='700' fill='#1b1f23'&gt;9&lt;/text&gt;&lt;text x='50' y='63' text-anchor='middle' font-size='9.5' fill='#107e3e'&gt;9 / 14&lt;/text&gt;&lt;/svg&gt;&lt;p class='spAspGaugeLabel' style='color:#107e3e'&gt;On Field&lt;/p&gt;&lt;/div&gt;&lt;div class='spAspStatList'&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#107e3e'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;Available&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#107e3e'&gt;3&lt;/b&gt;&lt;/div&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#0a6ed1'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;On Field&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#0a6ed1'&gt;9&lt;/b&gt;&lt;/div&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#8a9ab0'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;Offline&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#5a6370'&gt;2&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" />
+											</content>
+							</Panel>
+
+							<!-- SLA Overview -->
+							<Panel headerText="SLA Overview" class="spPanel">
+								<layoutData><l:GridData span="XL3 L3 M6 S12" /></layoutData>
+								<content>
+									<core:HTML content="&lt;div class='spAspGaugeWrap'&gt;&lt;svg viewBox='0 0 100 100' class='spAspGaugeSvg'&gt;&lt;circle cx='50' cy='50' r='40' fill='none' stroke='#ffebee' stroke-width='8'/&gt;&lt;circle cx='50' cy='50' r='40' fill='none' stroke='#bb0000' stroke-width='8' stroke-dasharray='251.3' stroke-dashoffset='188.5' stroke-linecap='round' transform='rotate(-90 50 50)'/&gt;&lt;text x='50' y='47' text-anchor='middle' font-size='22' font-weight='700' fill='#1b1f23'&gt;4&lt;/text&gt;&lt;text x='50' y='63' text-anchor='middle' font-size='9.5' fill='#bb0000'&gt;Breach Risk&lt;/text&gt;&lt;/svg&gt;&lt;p class='spAspGaugeLabel' style='color:#bb0000'&gt;4 Cases Critical&lt;/p&gt;&lt;/div&gt;&lt;div class='spAspStatList'&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#bb0000'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;Immediate&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#bb0000'&gt;4&lt;/b&gt;&lt;/div&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#cc6600'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;Urgent&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#cc6600'&gt;12&lt;/b&gt;&lt;/div&gt;&lt;div class='spAspStatItem'&gt;&lt;span class='spAspStatDot' style='background:#107e3e'&gt;&lt;/span&gt;&lt;span class='spAspStatLabel'&gt;Normal&lt;/span&gt;&lt;b class='spAspStatVal' style='color:#107e3e'&gt;36&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;" />
+											</content>
+							</Panel>
+
+							<!-- Alerts Panel -->
+							<Panel class="spPanel">
+								<layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Alerts" level="H4" />
+										<ToolbarSpacer />
+										<ObjectStatus text="3 Critical" state="Error" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="spAspAlertsBox">
+										<items>
+											<core:HTML content="&lt;div class='spAspAlert spAspAlertRed'&gt;&lt;span class='spAspAlertIcon'&gt;🔴&lt;/span&gt;&lt;div&gt;&lt;b&gt;SLA Breach Imminent&lt;/b&gt;&lt;br/&gt;TKT-2024-0891 breaches in 47 min&lt;/div&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspAlert spAspAlertOrange'&gt;&lt;span class='spAspAlertIcon'&gt;🟠&lt;/span&gt;&lt;div&gt;&lt;b&gt;Parts Delay&lt;/b&gt;&lt;br/&gt;RQ-5501 delayed by 2 hrs — 3 cases affected&lt;/div&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspAlert spAspAlertOrange'&gt;&lt;span class='spAspAlertIcon'&gt;🟠&lt;/span&gt;&lt;div&gt;&lt;b&gt;Technician Unavailable&lt;/b&gt;&lt;br/&gt;Amit Sharma marked sick — 2 cases unassigned&lt;/div&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspAlert spAspAlertBlue'&gt;&lt;span class='spAspAlertIcon'&gt;🔵&lt;/span&gt;&lt;div&gt;&lt;b&gt;New Application&lt;/b&gt;&lt;br/&gt;Technician onboarding pending approval&lt;/div&gt;&lt;/div&gt;" />
+										</items>
+									</VBox>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- ── Row 2: Pending Assignment Table | Team Leaderboard ── -->
+					<l:Grid hSpacing="1" vSpacing="1" class="sapUiSmallMarginBottom">
+						<l:content>
+
+							<!-- Pending Assignment Table -->
+							<Panel class="spPanel">
+								<layoutData><l:GridData span="XL8 L8 M12 S12" /></layoutData>
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Pending Assignment" level="H4" />
+										<ToolbarSpacer />
+										<ObjectStatus text="8 Pending" state="Warning" />
+										<Button text="Auto-Assign All" icon="sap-icon://process" type="Emphasized" press=".onAllocate" class="sapUiTinyMarginBegin" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<Table items="{service>/casesPending}" growing="true" growingThreshold="5"
+										noDataText="No cases pending" fixedLayout="false">
+										<columns>
+											<Column><Text text="Case ID" /></Column>
+											<Column><Text text="Customer" /></Column>
+											<Column><Text text="Issue" /></Column>
+											<Column><Text text="Priority" /></Column>
+											<Column><Text text="Created" /></Column>
+											<Column><Text text="Action" /></Column>
+										</columns>
+										<items>
+											<ColumnListItem press=".onCasePress" type="Navigation">
+												<cells>
+													<Text text="{service>id}" />
+													<Text text="{service>customer}" />
+													<Text text="{service>issue}" />
+													<ObjectStatus text="{service>priority}"
+														state="{path: 'service>priority', formatter: 'formatter.formatPriorityState'}" />
+													<Text text="{service>created}" />
+													<Button text="Assign" type="Emphasized" press=".onAllocate" />
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</Panel>
+
+							<!-- Team Leaderboard -->
+							<Panel headerText="Team Leaderboard" class="spPanel">
+								<layoutData><l:GridData span="XL4 L4 M12 S12" /></layoutData>
+								<content>
+									<VBox class="spAspLeaderboard">
+										<items>
+											<core:HTML content="&lt;div class='spAspLeaderRow'&gt;&lt;span class='spAspLeaderRank spAspRankGold'&gt;1&lt;/span&gt;&lt;div class='spAspLeaderInfo'&gt;&lt;b&gt;Ravi Kumar&lt;/b&gt;&lt;span&gt;12 cases · 98% SLA · ⭐ 4.9&lt;/span&gt;&lt;/div&gt;&lt;span class='spAspLeaderScore'&gt;98%&lt;/span&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspLeaderRow'&gt;&lt;span class='spAspLeaderRank spAspRankSilver'&gt;2&lt;/span&gt;&lt;div class='spAspLeaderInfo'&gt;&lt;b&gt;Priya Singh&lt;/b&gt;&lt;span&gt;10 cases · 95% SLA · ⭐ 4.8&lt;/span&gt;&lt;/div&gt;&lt;span class='spAspLeaderScore'&gt;95%&lt;/span&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspLeaderRow'&gt;&lt;span class='spAspLeaderRank spAspRankBronze'&gt;3&lt;/span&gt;&lt;div class='spAspLeaderInfo'&gt;&lt;b&gt;Amit Sharma&lt;/b&gt;&lt;span&gt;9 cases · 91% SLA · ⭐ 4.6&lt;/span&gt;&lt;/div&gt;&lt;span class='spAspLeaderScore'&gt;91%&lt;/span&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspLeaderRow'&gt;&lt;span class='spAspLeaderRank'&gt;4&lt;/span&gt;&lt;div class='spAspLeaderInfo'&gt;&lt;b&gt;Suresh Nair&lt;/b&gt;&lt;span&gt;8 cases · 88% SLA · ⭐ 4.5&lt;/span&gt;&lt;/div&gt;&lt;span class='spAspLeaderScore'&gt;88%&lt;/span&gt;&lt;/div&gt;" />
+											<core:HTML content="&lt;div class='spAspLeaderRow'&gt;&lt;span class='spAspLeaderRank'&gt;5&lt;/span&gt;&lt;div class='spAspLeaderInfo'&gt;&lt;b&gt;Deepa Iyer&lt;/b&gt;&lt;span&gt;7 cases · 86% SLA · ⭐ 4.4&lt;/span&gt;&lt;/div&gt;&lt;span class='spAspLeaderScore'&gt;86%&lt;/span&gt;&lt;/div&gt;" />
+										</items>
+									</VBox>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- ── Row 3: All Active Cases (full width) ── -->
+					<Panel class="spPanel sapUiSmallMarginBottom">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="All Active Cases" level="H4" />
+								<ToolbarSpacer />
+								<Button icon="sap-icon://filter" type="Transparent" />
+								<Button icon="sap-icon://download" type="Transparent" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table items="{service>/activeCases}" growing="true" growingThreshold="6"
+								noDataText="No active cases" fixedLayout="false">
+								<columns>
+									<Column><Text text="Case ID" /></Column>
+									<Column><Text text="Customer" /></Column>
+									<Column><Text text="Issue" /></Column>
+									<Column><Text text="Technician" /></Column>
+									<Column><Text text="Stage" /></Column>
+									<Column><Text text="SLA Due" /></Column>
+									<Column><Text text="Priority" /></Column>
+									<Column><Text text="Actions" /></Column>
+								</columns>
+								<items>
+									<ColumnListItem press=".onActiveCasePress" type="Navigation">
+										<cells>
+											<Text text="{service>id}" />
+											<Text text="{service>customer}" />
+											<Text text="{service>issue}" />
+											<Text text="{service>tech}" />
+											<ObjectStatus text="{service>stage}"
+												state="{path: 'service>stage', formatter: 'formatter.formatStageState'}" />
+											<Text text="{service>due}" />
+											<ObjectStatus text="{service>priority}"
+												state="{path: 'service>priority', formatter: 'formatter.formatPriorityState'}" />
+											<HBox>
+												<items>
+													<Button text="View" type="Transparent" press=".onActiveCasePress" />
+													<Button text="Assign" type="Emphasized" press=".onAllocate" />
+												</items>
+											</HBox>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

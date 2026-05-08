@@ -1,0 +1,256 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.LearningJourneys"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Learning Portal Top Bar -->
+				<Toolbar class="spLearnTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to Dashboard" class="spLearnBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Learning" class="spLearnNavTitle" />
+					<ToolbarSeparator class="spLearnSep" />
+					<Button text="Browse" type="Transparent" class="spLearnNavLink" />
+					<Button text="Get Certified" type="Transparent" class="spLearnNavLink" />
+					<Button text="My Learning" type="Emphasized" class="spLearnNavActive" />
+					<ToolbarSpacer />
+					<SearchField width="240px" placeholder="Search courses, skills..." />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/technicianUser/initials}" backgroundColor="Accent7"
+						displaySize="XS" press=".onAvatarPress" />
+				</Toolbar>
+
+				<!-- Page header -->
+				<VBox class="spLearnPageHeader">
+					<Title text="My Learning Journey" level="H2" class="spLearnPageTitle" />
+					<Text text="Complete these courses to get certified and unlock premium case assignments."
+						class="spLearnPageSubtitle" />
+				</VBox>
+
+				<VBox class="sapUiLargeMarginBeginEnd sapUiMediumMarginTopBottom">
+
+					<MessageStrip
+						text="2 of 6 courses completed — keep going! Finish all to receive high-priority service requests."
+						type="Information" showIcon="true" class="sapUiSmallMarginBottom" />
+
+					<!-- ── Course Cards Grid ── -->
+					<l:Grid defaultSpan="XL4 L4 M6 S12" hSpacing="1" vSpacing="1"
+						class="spLearnGrid sapUiMediumMarginTop">
+						<l:content>
+
+							<!-- Card 1: HVAC — Completed -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Mandatory" class="spLearnBadge spLearnBadgeMandatory" />
+										<ObjectStatus text="Completed" state="Success" inverted="true" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://e-learning" class="spLearnTypeIcon" />
+										<Text text="LIVE SESSION" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="HVAC Service Fundamentals — Maintenance &amp; Diagnostics"
+									level="H4" class="spLearnCardTitle spLearnTitleBlue" wrapping="true" />
+								<Text text="Covers HVAC system installation, fault diagnosis, preventive maintenance, and safety compliance for L1–L2 technicians."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Beginner" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="3 Courses" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="4 hr" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<Button text="Review" type="Default" class="spLearnCardBtn" />
+							</VBox>
+
+							<!-- Card 2: SAP Service Cloud — In Progress -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Partner" class="spLearnBadge spLearnBadgePartner" />
+										<Text text="⏵ Recording" class="spLearnBadgeRecording" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://e-learning" class="spLearnTypeIcon" />
+										<Text text="LIVE SESSION" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="SAP Service Cloud — Mobile App &amp; Field Technician Workflow"
+									level="H4" class="spLearnCardTitle spLearnTitleBlue" wrapping="true" />
+								<Text text="Learn to use the SAP Service Cloud mobile app for case acceptance, status updates, and real-time collaboration on the field."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Intermediate" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="What's New" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="1 hr" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<Button text="Continue (40%)" type="Emphasized" class="spLearnCardBtn" press=".onStartCourse" />
+							</VBox>
+
+							<!-- Card 3: Electrical Systems — Not Started -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Free" class="spLearnBadge spLearnBadgeFree" />
+										<Text text="" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://journey-arrive" class="spLearnTypeIcon" />
+										<Text text="LEARNING JOURNEY" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="Electrical Systems Certification Path — L2 to L3"
+									level="H4" class="spLearnCardTitle" wrapping="true" />
+								<Text text="Structured path covering power distribution, UPS systems, panel wiring, and advanced fault isolation leading to L3 certification."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Intermediate" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="4 Courses" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="5 hr +" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<ObjectStatus text="Leads to Certification" icon="sap-icon://badge"
+									state="Information" class="spLearnLeadsStatus" />
+								<Button text="Start" type="Emphasized" class="spLearnCardBtn" press=".onStartCourse" />
+							</VBox>
+
+							<!-- Card 4: Customer Service Excellence -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Free" class="spLearnBadge spLearnBadgeFree" />
+										<Text text="" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://learning-assistant" class="spLearnTypeIcon" />
+										<Text text="COURSE" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="Customer Service Excellence for Field Technicians"
+									level="H4" class="spLearnCardTitle" wrapping="true" />
+								<Text text="Build communication, professionalism, and escalation skills to boost customer satisfaction scores and first-visit fix rates."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Beginner" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="SL_SVC100" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="2 hr +" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<Button text="Start" type="Emphasized" class="spLearnCardBtn" press=".onStartCourse" />
+							</VBox>
+
+							<!-- Card 5: Safety & Compliance — Mandatory -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Mandatory" class="spLearnBadge spLearnBadgeMandatory" />
+										<Text text="" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://journey-arrive" class="spLearnTypeIcon" />
+										<Text text="LEARNING JOURNEY" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="Safety &amp; Compliance Training — Site Operations"
+									level="H4" class="spLearnCardTitle" wrapping="true" />
+								<Text text="Mandatory training covering PPE requirements, electrical safety, fire hazard protocols, and on-site incident reporting for SAP Service Network partners."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Beginner" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="1 Course" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="1.5 hr" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<Button text="Start" type="Emphasized" class="spLearnCardBtn" press=".onStartCourse" />
+							</VBox>
+
+							<!-- Card 6: AI Field Service — Partner + Recording -->
+							<VBox class="spLearnCard">
+								<HBox justifyContent="SpaceBetween" alignItems="Center" class="spLearnBadgeRow">
+									<items>
+										<Text text="Partner" class="spLearnBadge spLearnBadgePartner" />
+										<Text text="⏵ Recording" class="spLearnBadgeRecording" />
+									</items>
+								</HBox>
+								<HBox alignItems="Center" class="spLearnTypeRow">
+									<items>
+										<core:Icon src="sap-icon://e-learning" class="spLearnTypeIcon" />
+										<Text text="LIVE SESSION" class="spLearnTypeText" />
+									</items>
+								</HBox>
+								<Title text="AI-Assisted Field Service — SAP 2026: Smart Diagnostics &amp; Auto-Assignment"
+									level="H4" class="spLearnCardTitle spLearnTitleBlue" wrapping="true" />
+								<Text text="Explore how AI-powered case assignment, voice onboarding, and predictive diagnostics are reshaping field service delivery."
+									class="spLearnCardDesc" wrapping="true" />
+								<HBox alignItems="Center" class="spLearnMetaRow">
+									<items>
+										<core:Icon src="sap-icon://customer-financial-fact-sheet" class="spLearnMetaIcon" />
+										<Text text="Intermediate" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://e-learning" class="spLearnMetaIcon" />
+										<Text text="What's New" class="spLearnMetaText" />
+										<Text text=" • " class="spLearnMetaDot" />
+										<core:Icon src="sap-icon://time-entry-request" class="spLearnMetaIcon" />
+										<Text text="1 hr" class="spLearnMetaText" />
+									</items>
+								</HBox>
+								<Button text="Start" type="Emphasized" class="spLearnCardBtn" press=".onStartCourse" />
+							</VBox>
+
+						</l:content>
+					</l:Grid>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

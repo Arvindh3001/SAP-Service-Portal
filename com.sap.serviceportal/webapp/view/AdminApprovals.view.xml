@@ -1,0 +1,116 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.AdminApprovals"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onNavHome" tooltip="Back to Dashboard" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<VBox class="spContent">
+					<HBox justifyContent="SpaceBetween" alignItems="Center"
+						class="sapUiSmallMarginBottom">
+						<items>
+							<Title text="Admin Approvals" level="H2" />
+							<Button text="Exit" icon="sap-icon://nav-back" type="Emphasized"
+								press=".onNavHome" />
+						</items>
+					</HBox>
+
+					<IconTabBar>
+						<items>
+
+							<!-- Leave Requests -->
+							<IconTabFilter text="Leave Requests" count="2" icon="sap-icon://calendar">
+								<content>
+									<Table items="{service>/approvals/leaveRequests}" noDataText="No pending leave requests">
+										<columns>
+											<Column><Text text="TECHNICIAN" /></Column>
+											<Column><Text text="TYPE" /></Column>
+											<Column><Text text="DATES" /></Column>
+											<Column><Text text="REASON" /></Column>
+											<Column><Text text="IMPACT" /></Column>
+											<Column><Text text="ACTIONS" /></Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<Text text="{service>name}" />
+													<ObjectStatus text="{service>type}" state="Warning" />
+													<Text text="{service>dates}" />
+													<Text text="{service>reason}" wrapping="true" />
+													<Text text="{service>impact}" wrapping="true" />
+													<HBox>
+														<items>
+															<Button text="Approve" type="Accept"
+																press=".onApprove"
+																class="sapUiTinyMarginEnd" />
+															<Button text="Reject" type="Reject"
+																press=".onReject" />
+														</items>
+													</HBox>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</IconTabFilter>
+
+							<!-- Expense Claims -->
+							<IconTabFilter text="Expense Claims" count="2" icon="sap-icon://sales-document">
+								<content>
+									<Table items="{service>/approvals/expenseClaims}" noDataText="No pending claims">
+										<columns>
+											<Column><Text text="TECHNICIAN" /></Column>
+											<Column><Text text="TYPE" /></Column>
+											<Column><Text text="AMOUNT" /></Column>
+											<Column><Text text="DATE" /></Column>
+											<Column><Text text="DETAILS" /></Column>
+											<Column><Text text="COMPLIANT" /></Column>
+											<Column><Text text="ACTIONS" /></Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<Text text="{service>name}" />
+													<Text text="{service>type}" />
+													<Text text="{service>amount}" />
+													<Text text="{service>date}" />
+													<Text text="{service>details}" wrapping="true" />
+													<ObjectStatus
+														text="{= ${service>compliant} ? 'Within limits' : 'Exceeds limit'}"
+														state="{= ${service>compliant} ? 'Success' : 'Error'}" />
+													<HBox>
+														<items>
+															<Button text="Approve" type="Accept"
+																press=".onApprove"
+																class="sapUiTinyMarginEnd" />
+															<Button text="Reject" type="Reject"
+																press=".onReject" />
+														</items>
+													</HBox>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</content>
+							</IconTabFilter>
+
+						</items>
+					</IconTabBar>
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

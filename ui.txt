@@ -1,0 +1,126 @@
+Create an Admin Case Details page for a SAP-styled service management system with the following specifications:
+
+Overall Layout
+Canvas: 1440px × 900px
+Background: #f3f3f4 (light gray)
+Design language: SAP Fiori with '72' font family and 'SAP-icons' icon font
+All cards have white background with 8px border radius, 1px #e0e1e3 border, and subtle shadow (0px 1px 6px rgba(0,0,0,0.08))
+Top Bar (0-48px)
+Full-width white header with bottom border (#d9d9d9), 48px height
+Left side: Hamburger menu icon, SAP logo, "Sales and Service Cloud" title
+Right side: Search bar (240px wide), notification bell icon, settings icon, user avatar "AS" (blue circle)
+Case Flow Progress Bar (60-96px, left: 16px)
+Width: 936px, Height: 36px
+6 sequential status boxes with rounded corners (6px), each 156px wide:
+New - Background: #dff4e9, Text: #107e3e (green)
+Assigned - Background: #e0f0ff, Text: #0a6ed1 (blue)
+In Progress - Background: #fef0e0, Text: #cc6600 (orange)
+On Hold - Background: #f3f3f4, Text: #6a6d70 (gray)
+Completed - Background: #f3f3f4, Text: #6a6d70 (gray)
+Escalated - Background: #f3f3f4, Text: #6a6d70 (gray)
+Status text: 10px, centered in each box
+Breadcrumb Navigation (108px from top, left: 16px)
+Text: "Home › Cases › TKT-2024-0891" (11px font)
+Use SAP right chevron icon (›) between items
+Last item (TKT-2024-0891) in bold #32363a, others in #6a6d70
+Action Buttons Row (108px from top)
+Edit Case Button - Position: left 968px
+
+Blue (#0a6ed1), 130px × 40px, 6px border radius
+White text "Edit Case" with edit icon (pencil)
+Hover state: #0858a8
+Assign Technician Button - Position: left 1116px
+
+Green (#107e3e), 180px × 40px, 6px border radius
+White text "Assign Technician" with assignment icon
+Hover state: #0d6631
+Main Content Area (144px from top)
+Left Card - Case Information (left: 16px, width: 936px, height: 388px)
+Header Section:
+
+Title: "TKT-2024-0891" (18px bold, #32363a)
+Priority badge next to title: "High" - red background (#fee0e0), red text (#bb0000), rounded pill, 70px × 22px
+Subtitle: "HP LaserJet Pro M404dn — Not Printing • Infosys Limited, Bangalore • Floor 12, IT Department" (11px, #6a6d70)
+Horizontal divider line (#e0e1e3) at 71px
+Two Column Layout: Left Column (starts at 83px from card top):
+
+Customer: "Infosys Limited, Bangalore"
+Product: "HP LaserJet Pro M404dn"
+Serial No.: "CNBXJ34570"
+Right Column (starts at 83px from card top, left: 477px):
+
+Service Zone: "Bangalore North"
+Assigned To: "Ravi Kumar"
+Warranty Status: "In Warranty"
+Each label is bold 11px (#32363a), values are regular 11px (#6a6d70), 18px spacing between rows
+
+Problem Description Section (after divider at 207px):
+
+Label: "Problem Description" (bold, 11px)
+Text: "Printer stopped printing. Error message 'Paper Jam' but no visible jam. Power cycled multiple times. Display shows ready but jobs stuck in queue."
+Service History Section (after divider at 281px):
+
+Label: "Service History" (bold, 11px)
+Text:
+Last service: 2 months ago — Toner replacement
+Previous issue: Print quality degradation (resolved)
+Maintenance schedule: Up to date
+Right Card - Technician Notes (left: 968px, width: 456px, height: 388px)
+Header: "Technician Notes" (13px bold)
+Divider at 35px
+Notes content (11px, #6a6d70):
+Apr 23, 10:00 AM — Ravi Kumar
+Checked printer — paper feed roller worn. Ordered replacement part.
+
+Apr 23, 11:30 AM — Ravi Kumar
+Part arrived. Installing now.
+
+Apr 23, 12:45 PM — Ravi Kumar
+Roller replaced. Running test prints. All working normally.
+Bottom Section (548px from top)
+Parts Used Card (left: 16px, width: 468px, height: 184px)
+Header: "Parts Used" (13px bold)
+Divider at 35px
+Content:
+1x Paper Feed Roller (HP RM1-6414)
+   Part No: RM1-6414-000CN
+   Cost: ₹1,250
+   Status: Installed
+
+No additional parts required.
+Case Status Card (left: 500px, width: 452px, height: 184px)
+Header: "Case Status" (13px bold)
+Divider at 35px
+Three status badges (22px height, rounded pills, 11px semibold text):
+In Warranty - Green (#dff4e9 bg, #107e3e text), 90px wide, left: 15px
+Completed - Green (#dff4e9 bg, #107e3e text), 81px wide, left: 113px
+Escalated - Gray (#f3f3f4 bg, #6a6d70 text), 81px wide, left: 202px
+Exit Button (bottom right: 830px from top, left: 1300px)
+Blue (#0a6ed1), 120px × 48px
+White text "Exit" with left arrow icon
+Hover state: #0858a8
+Higher z-index (appears above other elements)
+Typography System
+Headings (18px): '72:Bold', #32363a
+Subheadings (13px): '72:Bold', #32363a
+Labels (11px): '72:Bold', #32363a
+Body text (11px): '72:Regular', #6a6d70
+Status badges (11px): '72:Semibold', various colors
+Icons: 'SAP-icons:Regular', 14-16px
+Interactive States
+All buttons have cursor: pointer
+Hover states darken button colors by ~15%
+All buttons use smooth transitions (transition-all)
+Functionality Requirements
+Edit Case button navigates to case-details-edit screen
+Assign Technician button navigates to ai-auto-assignment screen
+Exit button returns to asp-home (ASP Dashboard)
+All navigation uses data-nav attributes for routing
+Additional Notes:
+
+Maintain consistent 16px margin from screen edges
+Use absolute positioning for precise layout control
+All text should be left-aligned within containers
+Preserve exact spacing and alignment as specified
+Cards should have proper shadow and border styling for depth
+Status colors follow SAP Fiori semantic color guidelines

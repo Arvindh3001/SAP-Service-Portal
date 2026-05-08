@@ -1,0 +1,256 @@
+[
+  {
+    "id": "admin-home",
+    "name": "Admin Dashboard",
+    "width": 1440,
+    "height": 1024,
+    "backgroundColor": "#F3F3F4",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Top Bar",
+        "width": 1440,
+        "height": 60,
+        "backgroundColor": "#FFFFFF",
+        "children": [
+          { "type": "TEXT", "name": "Logo", "content": "SAP Service Portal", "x": 20, "y": 20, "fontSize": 16, "fontWeight": "Bold" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "Hero Banner",
+        "width": 1400,
+        "height": 120,
+        "x": 20,
+        "y": 80,
+        "backgroundColor": "#0A6ED1",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "name": "Greeting", "content": "Good morning, Admin", "x": 20, "y": 20, "fontSize": 24, "color": "#FFFFFF", "fontWeight": "Bold" },
+          { "type": "TEXT", "name": "Stats", "content": "52 active cases • 9 technicians on field", "x": 20, "y": 60, "fontSize": 14, "color": "#FFFFFF" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "KPI Row",
+        "layoutMode": "HORIZONTAL",
+        "itemSpacing": 20,
+        "x": 20,
+        "y": 220,
+        "children": [
+          {
+            "type": "FRAME",
+            "name": "KPI Card 1",
+            "width": 200,
+            "height": 100,
+            "backgroundColor": "#FFFFFF",
+            "cornerRadius": 8,
+            "children": [
+              { "type": "TEXT", "content": "New Cases Today", "x": 16, "y": 16, "fontSize": 12, "color": "#6A6D70" },
+              { "type": "TEXT", "content": "12", "x": 16, "y": 40, "fontSize": 24, "color": "#0A6ED1", "fontWeight": "Bold" }
+            ]
+          },
+          {
+            "type": "FRAME",
+            "name": "KPI Card 2",
+            "width": 200,
+            "height": 100,
+            "backgroundColor": "#FFFFFF",
+            "cornerRadius": 8,
+            "children": [
+              { "type": "TEXT", "content": "Pending Assignment", "x": 16, "y": 16, "fontSize": 12, "color": "#6A6D70" },
+              { "type": "TEXT", "content": "8", "x": 16, "y": 40, "fontSize": 24, "color": "#CC6600", "fontWeight": "Bold" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "onboarding-personal",
+    "name": "Onboarding Personal Details",
+    "width": 1440,
+    "height": 1024,
+    "backgroundColor": "#F3F3F4",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Top Bar",
+        "width": 1440,
+        "height": 60,
+        "backgroundColor": "#0A6ED1",
+        "children": [
+          { "type": "TEXT", "name": "Logo", "content": "Technician Self-Registration", "x": 20, "y": 20, "fontSize": 16, "fontWeight": "Bold", "color": "#FFFFFF" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "Form Container",
+        "width": 800,
+        "height": 600,
+        "x": 320,
+        "y": 100,
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "content": "Personal Details", "x": 24, "y": 24, "fontSize": 24, "fontWeight": "Bold" },
+          {
+            "type": "FRAME",
+            "name": "Input Group - Name",
+            "y": 80,
+            "x": 24,
+            "children": [
+              { "type": "TEXT", "content": "First Name *", "fontSize": 12 },
+              { "type": "FRAME", "width": 300, "height": 40, "y": 20, "backgroundColor": "#F3F3F4", "cornerRadius": 4 }
+            ]
+          },
+          {
+            "type": "FRAME",
+            "name": "Primary Button",
+            "width": 200,
+            "height": 48,
+            "x": 24,
+            "y": 500,
+            "backgroundColor": "#0A6ED1",
+            "cornerRadius": 4,
+            "children": [
+              { "type": "TEXT", "content": "Next: KYC Documents", "x": 30, "y": 16, "fontSize": 14, "color": "#FFFFFF", "fontWeight": "Bold" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "onboarding-review",
+    "name": "Onboarding Review & Submit",
+    "width": 1440,
+    "height": 1024,
+    "backgroundColor": "#F3F3F4",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Top Bar",
+        "width": 1440,
+        "height": 60,
+        "backgroundColor": "#0A6ED1",
+        "children": [
+          { "type": "TEXT", "content": "Technician Self-Registration", "x": 20, "y": 20, "fontSize": 16, "fontWeight": "Bold", "color": "#FFFFFF" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "Summary Container",
+        "width": 800,
+        "height": 400,
+        "x": 320,
+        "y": 100,
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "content": "Review Your Information", "x": 24, "y": 24, "fontSize": 18, "fontWeight": "Bold" },
+          {
+            "type": "FRAME",
+            "name": "Submit Button",
+            "width": 200,
+            "height": 48,
+            "x": 24,
+            "y": 300,
+            "backgroundColor": "#107E3E",
+            "cornerRadius": 4,
+            "children": [
+              { "type": "TEXT", "content": "Submit Application", "x": 30, "y": 16, "fontSize": 14, "color": "#FFFFFF", "fontWeight": "Bold" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "admin-case-details",
+    "name": "Admin Case Details (TKT-0891)",
+    "width": 1440,
+    "height": 1024,
+    "backgroundColor": "#F3F3F4",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Top Bar",
+        "width": 1440,
+        "height": 60,
+        "backgroundColor": "#FFFFFF",
+        "children": [
+          { "type": "TEXT", "content": "SAP Service Portal", "x": 20, "y": 20, "fontSize": 16, "fontWeight": "Bold" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "Case Info Card",
+        "width": 936,
+        "height": 388,
+        "x": 16,
+        "y": 96,
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "content": "TKT-2024-0891", "x": 20, "y": 16, "fontSize": 18, "fontWeight": "Bold" },
+          { "type": "TEXT", "content": "HP LaserJet Pro M404dn — Not Printing", "x": 20, "y": 44, "fontSize": 11, "color": "#6A6D70" }
+        ]
+      },
+      {
+        "type": "FRAME",
+        "name": "Technician Notes Card",
+        "width": 456,
+        "height": 388,
+        "x": 968,
+        "y": 96,
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "content": "Technician Notes", "x": 16, "y": 14, "fontSize": 13, "fontWeight": "Bold" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "technician-home",
+    "name": "Technician Home",
+    "width": 1440,
+    "height": 1024,
+    "backgroundColor": "#F3F3F4",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Hero Banner",
+        "width": 1400,
+        "height": 120,
+        "x": 20,
+        "y": 80,
+        "backgroundColor": "#107E3E",
+        "cornerRadius": 8,
+        "children": [
+          { "type": "TEXT", "content": "Welcome back, Ravi Kumar", "x": 20, "y": 20, "fontSize": 24, "color": "#FFFFFF", "fontWeight": "Bold" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ai-voice-assistant",
+    "name": "AI Voice Assistant",
+    "width": 400,
+    "height": 800,
+    "backgroundColor": "#FFFFFF",
+    "children": [
+      {
+        "type": "FRAME",
+        "name": "Voice Header",
+        "width": 400,
+        "height": 100,
+        "backgroundColor": "#0A6ED1",
+        "children": [
+          { "type": "TEXT", "content": "Listening...", "x": 160, "y": 40, "fontSize": 18, "color": "#FFFFFF", "fontWeight": "Bold" }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,264 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.SkillsZone"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Blue Registration Top Bar -->
+				<Toolbar class="spAiTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to KYC Documents" class="spTopBarBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Technician Self-Registration Portal" class="spAiPortalTitle" />
+					<ToolbarSpacer />
+					<Text text="Already registered?" class="spAiRegisterHint" />
+				</Toolbar>
+
+				<!-- Step indicator (step 3 active) -->
+				<HBox class="spAiStepBar" alignItems="Center" justifyContent="Center">
+					<items>
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="1" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="Personal Details" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="2" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="KYC Documents" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="3" backgroundColor="Accent1" displaySize="XS" />
+								<Text text="Skills &amp; Zone" class="spAiStepTitle spAiStepTitleActive" />
+								<Text text="Experience &amp; area" class="spAiStepSub spAiStepSubActive" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="4" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Review &amp; Submit" class="spAiStepTitle" />
+								<Text text="Confirm &amp; submit" class="spAiStepSub" />
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+
+				<VBox class="sapUiLargeMarginBeginEnd sapUiMediumMarginTopBottom">
+
+					<!-- ── Technical Skills Panel ── -->
+					<Panel class="spPanel sapUiMediumMarginBottom">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Technical Skills" level="H3" />
+								<ToolbarSpacer />
+								<Text text="Click to select / deselect skills" class="spAiFormProgressLabel" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<VBox class="sapUiMediumMarginBeginEnd sapUiMediumMarginBottom">
+
+								<Text text="Select all skills that apply to your expertise. These are used for AI-based case assignment."
+									class="sapUiSmallMarginBottom sapUiSmallMarginTop" />
+
+								<!-- HVAC & Mechanical -->
+								<Label text="HVAC &amp; Mechanical" design="Bold" class="sapUiTinyMarginBottom sapUiSmallMarginTop" />
+								<HBox wrap="Wrap" class="spSkillChipsRow">
+									<items>
+										<Button text="✓  HVAC Systems (L2)" class="spSkillChipOn" type="Emphasized" press=".onSkillToggle" />
+										<Button text="Air Conditioning"      class="spSkillChipOff" type="Default"   press=".onSkillToggle" />
+										<Button text="Refrigeration"         class="spSkillChipOff" type="Default"   press=".onSkillToggle" />
+										<Button text="Ventilation Systems"   class="spSkillChipOff" type="Default"   press=".onSkillToggle" />
+										<Button text="Industrial Cooling"    class="spSkillChipOff" type="Default"   press=".onSkillToggle" />
+									</items>
+								</HBox>
+
+								<!-- Electrical & Power -->
+								<Label text="Electrical &amp; Power" design="Bold" class="sapUiTinyMarginBottom sapUiSmallMarginTop" />
+								<HBox wrap="Wrap" class="spSkillChipsRow">
+									<items>
+										<Button text="✓  Electrical Systems" class="spSkillChipOn"  type="Emphasized" press=".onSkillToggle" />
+										<Button text="UPS Systems"           class="spSkillChipOff" type="Default"    press=".onSkillToggle" />
+										<Button text="Power Distribution"    class="spSkillChipOff" type="Default"    press=".onSkillToggle" />
+										<Button text="Generator Maintenance" class="spSkillChipOff" type="Default"    press=".onSkillToggle" />
+										<Button text="Solar Panels"          class="spSkillChipOff" type="Default"    press=".onSkillToggle" />
+									</items>
+								</HBox>
+
+								<!-- IT & Networking -->
+								<Label text="IT &amp; Networking" design="Bold" class="sapUiTinyMarginBottom sapUiSmallMarginTop" />
+								<HBox wrap="Wrap" class="spSkillChipsRow">
+									<items>
+										<Button text="Network Setup"           class="spSkillChipOff" type="Default" press=".onSkillToggle" />
+										<Button text="CCTV &amp; Surveillance" class="spSkillChipOff" type="Default" press=".onSkillToggle" />
+										<Button text="Fire Safety Systems"     class="spSkillChipOff" type="Default" press=".onSkillToggle" />
+										<Button text="Printing &amp; MFP"      class="spSkillChipOff" type="Default" press=".onSkillToggle" />
+										<Button text="Server Maintenance"      class="spSkillChipOff" type="Default" press=".onSkillToggle" />
+									</items>
+								</HBox>
+
+								<!-- Custom Skills -->
+								<Label text="Custom Skills" design="Bold" class="sapUiTinyMarginBottom sapUiSmallMarginTop" />
+								<Text text="Can't find your skill above? Type it below and add it."
+									class="sapUiTinyMarginBottom" style="font-size:0.78rem;color:#6a6d70;" />
+								<HBox alignItems="Center" class="spCustomSkillInputRow">
+									<items>
+										<Input id="customSkillInput"
+											placeholder="e.g. Plumbing, Solar Inverter, BMS..."
+											width="300px"
+											submit=".onAddCustomSkill" />
+										<Button text="+ Add Skill"
+											type="Emphasized"
+											press=".onAddCustomSkill"
+											class="spCustomSkillAddBtn sapUiSmallMarginBegin" />
+									</items>
+								</HBox>
+								<HBox wrap="Wrap" class="spSkillChipsRow" id="customSkillChipsRow">
+									<items />
+								</HBox>
+
+								<!-- Selected summary -->
+								<VBox class="spSkillSummaryBox sapUiSmallMarginTop">
+									<items>
+										<Text text="Selected Skills:" class="spAiSkillsLabel" />
+										<HBox wrap="Wrap" class="spAiSkillsRow">
+											<items>
+												<Text text="● HVAC Systems (L2)"    class="spAiSkillChip spAiSkillChipTeal" />
+												<Text text="● Electrical Systems"   class="spAiSkillChip spAiSkillChipBlue" />
+												<Text text="+ Click chips to add more" class="spAiSkillChipAdd" />
+											</items>
+										</HBox>
+									</items>
+								</VBox>
+
+							</VBox>
+						</content>
+					</Panel>
+
+					<!-- ── Service Zone & Experience Panel ── -->
+					<Panel class="spPanel sapUiMediumMarginBottom">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Service Zone &amp; Experience" level="H3" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<VBox class="sapUiMediumMarginBeginEnd sapUiMediumMarginBottom">
+								<l:Grid defaultSpan="XL4 L4 M6 S12" hSpacing="1" vSpacing="1">
+									<l:content>
+
+										<VBox>
+											<Label text="Primary Service Zone" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key="BLR-N" text="North Bangalore" />
+													<core:Item key="BLR-S" text="South Bangalore" />
+													<core:Item key="BLR-E" text="East Bangalore" />
+													<core:Item key="BLR-W" text="West Bangalore" />
+													<core:Item key="HYD"   text="Hyderabad" />
+													<core:Item key="MUM"   text="Mumbai" />
+													<core:Item key="DEL"   text="Delhi NCR" />
+												</items>
+											</Select>
+										</VBox>
+
+										<VBox>
+											<Label text="Secondary Zone (optional)" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key=""      text="None" />
+													<core:Item key="BLR-N" text="North Bangalore" />
+													<core:Item key="BLR-S" text="South Bangalore" />
+													<core:Item key="BLR-E" text="East Bangalore" />
+													<core:Item key="HYD"   text="Hyderabad" />
+												</items>
+											</Select>
+										</VBox>
+
+										<VBox>
+											<Label text="Years of Experience" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key="0-2"  text="0–2 years" />
+													<core:Item key="2-5"  text="2–5 years (selected)" />
+													<core:Item key="5-10" text="5–10 years" />
+													<core:Item key="10+"  text="10+ years" />
+												</items>
+											</Select>
+										</VBox>
+
+										<VBox>
+											<Label text="Primary Specialisation" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key="hvac"       text="HVAC Systems" />
+													<core:Item key="electrical" text="Electrical Systems" />
+													<core:Item key="it"         text="IT &amp; Networking" />
+													<core:Item key="ups"        text="UPS &amp; Power" />
+													<core:Item key="cctv"       text="CCTV &amp; Safety" />
+												</items>
+											</Select>
+										</VBox>
+
+										<VBox>
+											<Label text="Certification Level" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key="L1" text="Level 1 — Basic" />
+													<core:Item key="L2" text="Level 2 — Intermediate" />
+													<core:Item key="L3" text="Level 3 — Advanced" />
+													<core:Item key="L4" text="Level 4 — Expert / Certified" />
+												</items>
+											</Select>
+										</VBox>
+
+										<VBox>
+											<Label text="Availability" design="Bold" class="sapUiTinyMarginBottom" />
+											<Select width="100%">
+												<items>
+													<core:Item key="fulltime" text="Full-time (Mon–Sat)" />
+													<core:Item key="weekdays" text="Weekdays only" />
+													<core:Item key="weekends" text="Weekends only" />
+													<core:Item key="flexible" text="Flexible / On-call" />
+												</items>
+											</Select>
+										</VBox>
+
+									</l:content>
+								</l:Grid>
+							</VBox>
+						</content>
+					</Panel>
+
+					<!-- Navigation -->
+					<HBox justifyContent="End" class="sapUiSmallMarginBottom">
+						<items>
+							<Button text="Back" icon="sap-icon://nav-back" type="Default"
+								press=".onBack" class="sapUiSmallMarginEnd" />
+							<Button text="Next: Review &amp; Submit"
+								type="Emphasized"
+								icon="sap-icon://arrow-right"
+								iconFirst="false"
+								press=".onNext" />
+						</items>
+					</HBox>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

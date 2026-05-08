@@ -1,0 +1,1331 @@
+SAP SERVICE MANAGEMENT PORTAL - COMPLETE APPLICATION PROMPT
+BUSINESS CONTEXT
+Create a comprehensive service management portal for an Authorized Service Provider (ASP) managing field technicians who service HP printers and IT equipment for enterprise customers across India. The system handles the complete lifecycle from technician onboarding to case resolution.
+
+USER PERSONAS
+1. Field Technician (Ravi Kumar)
+Role: On-ground service engineer
+Needs: Register in system, complete training, view assigned cases, update service status
+Access Level: Limited to own cases and profile
+2. ASP Admin/Manager (Amit Sharma - "AS")
+Role: Service center administrator
+Needs: Oversee all operations, manage technicians, assign cases, approve requests, monitor performance
+Access Level: Full visibility across all cases, technicians, and operations
+APPLICATION STRUCTURE & FLOW
+The application has THREE MAIN FLOWS:
+
+FLOW A: TECHNICIAN ONBOARDING (New Technician Journey)
+FLOW B: TECHNICIAN OPERATIONS (Daily Work)
+FLOW C: ADMIN OPERATIONS (Management & Oversight)
+FLOW A: TECHNICIAN ONBOARDING JOURNEY
+Screen 1: AI Voice Onboarding
+Purpose: Welcome new technicians and explain registration process through conversational AI
+
+Content:
+
+Hero Section: "Welcome to SAP Service Network"
+AI Assistant Avatar: Animated character named "Ava"
+Conversation Flow:
+Ava: "Hi! I'm Ava, your AI assistant. Let's get you registered as an authorized service technician."
+
+Ava: "I'll guide you through three simple steps:
+1. Personal & Professional Details
+2. Document Verification (KYC)
+3. Review & Submit"
+
+Ava: "The entire process takes about 10 minutes. Ready to begin?"
+Action Buttons:
+
+Primary: "Start Registration" (blue, navigates to Screen 2)
+Secondary: "Learn More" (shows video about ASP network)
+Background: Light gradient with service icons (wrench, printer, mobile)
+
+Screen 2: Registration - Personal Details
+Purpose: Collect technician's personal and professional information
+
+Form Sections:
+
+Personal Information
+First Name: [Text input] e.g., "Ravi"
+Last Name: [Text input] e.g., "Kumar"
+Date of Birth: [Date picker] e.g., "15/08/1992"
+Gender: [Dropdown] Options: Male, Female, Other, Prefer not to say
+Email: [Email input] e.g., "ravi.kumar@techservice.com"
+Mobile: [Phone input] e.g., "+91 98765 43210"
+Address Information
+Street Address: [Text input] e.g., "Block C, Whitefield Apartments"
+City: [Text input] e.g., "Bangalore"
+State: [Dropdown] e.g., "Karnataka"
+Pincode: [Number input] e.g., "560066"
+Professional Information
+Years of Experience: [Dropdown] Options: 0-2 years, 2-5 years, 5-10 years, 10+ years
+Example: "5-10 years"
+Service Zone Preference: [Dropdown] Options: Bangalore North, Bangalore South, Bangalore East, Bangalore West, Hyderabad Zone, Mumbai Zone, Delhi NCR
+Example: "Bangalore North"
+Validation Rules:
+
+All fields mandatory
+Email must be valid format
+Mobile must be 10 digits
+Age must be 18+
+Progress Indicator: "Step 1 of 3" (top of screen)
+
+Action Buttons:
+
+Primary: "Next: KYC Documents" (blue, navigates to Screen 4 after validation)
+Secondary: "Save as Draft" (gray)
+Helper Text: "All information will be kept confidential and used only for verification purposes"
+
+Screen 3: Registration - KYC Documents
+(Note: This screen exists in the flow but shows Review & Submit content)
+
+Screen 4: Registration - Review & Submit
+Purpose: Upload identity documents and review all entered information before submission
+
+Document Upload Section: 5 required documents with drag-and-drop zones:
+
+Aadhaar Card (Identity Proof)
+
+Accepted formats: JPG, PNG, PDF
+Max size: 2MB
+Status: "Not Uploaded" → "Uploaded ✓"
+PAN Card (Tax ID)
+
+Accepted formats: JPG, PNG, PDF
+Max size: 2MB
+Technical Certification
+
+Examples: HP Service Certification, Dell Certified Technician, CompTIA A+
+Accepted formats: PDF
+Max size: 5MB
+Passport Photo
+
+Requirements: White background, recent (within 6 months)
+Accepted formats: JPG, PNG
+Max size: 1MB
+Address Proof
+
+Examples: Utility bill, Rental agreement, Bank statement
+Accepted formats: JPG, PNG, PDF
+Max size: 2MB
+Review Summary Section: Display all information from Screen 2 in read-only format with "Edit" buttons next to each section
+
+Terms & Conditions:
+
+Checkbox: "I agree to the Service Provider Terms and Conditions"
+Link to full T&C document
+Action Buttons:
+
+Primary: "Submit Application" (green, large, navigates to Screen 5)
+Secondary: "Back to Details" (navigates to Screen 2)
+Status Message After Upload: "All documents uploaded successfully ✓ Ready to submit"
+
+Screen 5: Learning Journeys
+Purpose: Mandatory training courses before technician can start taking cases
+
+Header: "Complete Your Training" Subtitle: "Finish these courses to get certified and start receiving service requests"
+
+Course Cards (3 courses):
+
+Course 1: HP LaserJet Series - Service Fundamentals
+Duration: 2 hours
+Modules: 8
+Topics:
+Printer architecture and components
+Common paper jam troubleshooting
+Toner cartridge replacement
+Print quality diagnostics
+Network connectivity issues
+Progress: 0% → Updates as course progresses
+Status: "Not Started"
+Button: "Start Course"
+Course 2: SAP Service Cloud - Mobile App Training
+Duration: 1 hour
+Modules: 5
+Topics:
+Using the mobile app
+Case assignment and acceptance
+Real-time updates and notes
+Parts ordering workflow
+Customer satisfaction surveys
+Progress: 0%
+Status: "Locked" (unlocks after Course 1)
+Button: "Start Course" (disabled initially)
+Course 3: Customer Service Excellence
+Duration: 1.5 hours
+Modules: 6
+Topics:
+Professional communication
+Customer expectation management
+Complaint handling
+Safety protocols
+Time management
+Progress: 0%
+Status: "Locked"
+Button: "Start Course" (disabled)
+Completion Requirements:
+
+All 3 courses must reach 100%
+Pass quizzes at end of each course (80% minimum)
+Total estimated time: 4.5 hours
+Action Buttons:
+
+Primary: "Continue to Dashboard" (appears only after all 3 courses completed, navigates to Screen 6)
+Secondary: "Take a Break" (saves progress)
+Motivational Message: "You're almost there! Complete training to start earning with SAP Service Network"
+
+Screen 6: Technician Home Dashboard
+Purpose: Daily workspace for field technicians to view and manage assigned cases
+
+Content Sections:
+
+Welcome Banner (top)
+"Welcome back, Ravi Kumar | Bangalore North Zone"
+
+Today's Statistics Cards:
+Cases Assigned Today: 3
+Pending Cases: 5
+Completed This Month: 47
+Average Rating: 4.8 ⭐
+Active Cases Table (Primary focus area)
+Columns: Case ID | Customer | Product | Issue | Priority | Status | Assigned Date | Action
+
+Data Rows (5 cases):
+
+TKT-2024-0891 (Main case used in detail screens)
+
+Customer: Infosys Limited, Bangalore
+Product: HP LaserJet Pro M404dn
+Issue: Not Printing - Paper Jam Error
+Priority: HIGH (red badge)
+Status: In Progress (orange badge)
+Assigned: Apr 23, 2024, 9:30 AM
+Action: "View Details" button
+TKT-2024-0887
+
+Customer: Wipro Technologies, Electronic City
+Product: HP OfficeJet Pro 9025
+Issue: Scan to Email Not Working
+Priority: MEDIUM (yellow badge)
+Status: New (green badge)
+Assigned: Apr 23, 2024, 11:00 AM
+Action: "View Details" button
+TKT-2024-0883
+
+Customer: TCS, Whitefield
+Product: HP Color LaserJet MFP M281fdw
+Issue: Frequent Paper Misfeeds
+Priority: LOW (gray badge)
+Status: New (green badge)
+Assigned: Apr 22, 2024, 2:15 PM
+Action: "View Details" button
+TKT-2024-0879
+
+Customer: Accenture, Bellandur
+Product: HP Deskjet 2720
+Issue: Wireless Connection Drops
+Priority: MEDIUM (yellow badge)
+Status: On Hold (gray badge) - Waiting for customer availability
+Assigned: Apr 22, 2024, 10:00 AM
+Action: "View Details" button
+TKT-2024-0875
+
+Customer: IBM India, Manyata Tech Park
+Product: HP LaserJet Enterprise M506
+Issue: Error Code 49.4C02
+Priority: HIGH (red badge)
+Status: New (green badge)
+Assigned: Apr 21, 2024, 4:30 PM
+Action: "View Details" button
+Quick Actions Panel (right sidebar):
+"Start New Visit" (with GPS check-in)
+"View My Schedule"
+"Parts Inventory"
+"Training Resources"
+Notifications Bell:
+"New case assigned: TKT-2024-0891"
+"Customer confirmed availability for TKT-2024-0879"
+"Parts order approved for TKT-2024-0883"
+Bottom Navigation:
+
+Clicking any case row navigates to Screen 7: Case Details
+Screen 7: Case Details (Technician View)
+Purpose: Complete information about assigned case with ability to update status and add notes
+
+Header Section:
+
+Case ID: TKT-2024-0891
+Priority Badge: HIGH (red)
+Status Flow Bar: Shows current stage among [New → Assigned → In Progress → Resolved → Closed]
+Current: "In Progress" (highlighted orange)
+Breadcrumb: Home › My Cases › TKT-2024-0891
+
+Main Content (3-column layout):
+
+Left Column - Case Information Card:
+Customer Details:
+
+Name: Infosys Limited, Bangalore
+Contact Person: Rajesh Menon (IT Manager)
+Phone: +91 80 4152 8000
+Email: rajesh.menon@infosys.com
+Location: Floor 12, IT Department, Building 3
+Address: Electronics City Phase 1, Bangalore 560100
+Product Information:
+
+Model: HP LaserJet Pro M404dn
+Serial Number: CNBXJ34570
+Purchase Date: Jan 15, 2023
+Warranty Status: In Warranty (expires Jan 14, 2026)
+Last Service: Feb 15, 2024 (2 months ago)
+Problem Description:
+
+Reported Issue: Printer stopped printing completely
+
+Symptoms:
+- Error message "Paper Jam" displayed on screen
+- No visible paper jam found
+- Power cycled device multiple times
+- Display shows "Ready" status but print jobs stuck in queue
+- Issue started morning of Apr 23, 2024
+
+Impact: Critical - 50+ employees unable to print documents
+Priority set to HIGH due to business impact
+
+Customer available: Mon-Fri, 9 AM - 6 PM
+Access requirements: Sign in at reception, visitor badge needed
+Service History:
+
+Last Service: Feb 15, 2024
+- Technician: Suresh Patel
+- Issue: Print quality degradation (faded prints)
+- Resolution: Toner cartridge replaced
+- Parts used: HP 59A Toner (CF259A)
+- Duration: 45 minutes
+- Customer rating: 5/5
+
+Previous Service: Dec 10, 2023
+- Routine maintenance
+- Firmware updated to latest version
+- All consumables checked
+
+Maintenance Schedule: Up to date
+Next scheduled maintenance: May 2024
+Middle Column - Technician Notes & Updates:
+Activity Timeline:
+
+Apr 23, 10:00 AM — Ravi Kumar (You)
+Status: Arrived at customer location
+Note: Checked in via mobile app. Met with Rajesh Menon. Beginning diagnostics.
+
+Apr 23, 10:15 AM — Ravi Kumar
+Status: Diagnosis in progress
+Note: Opened all printer access points. Found worn paper feed roller causing misalignment. This is root cause of false "paper jam" errors. Part needs replacement.
+
+Apr 23, 10:30 AM — Ravi Kumar
+Status: Parts ordered
+Note: Ordered HP Paper Feed Roller (RM1-6414-000CN) from warehouse. Estimated arrival: 1 hour. Customer informed.
+
+Apr 23, 11:30 AM — System Update
+Notification: Parts order approved. Delivery in progress.
+
+Apr 23, 11:45 AM — Ravi Kumar
+Status: Parts received
+Note: Replacement roller arrived. Beginning installation.
+
+Apr 23, 12:00 PM — Ravi Kumar
+Status: Repair in progress
+Note: Old roller removed. Installing new roller. Cleaning paper path.
+
+Apr 23, 12:45 PM — Ravi Kumar
+Status: Testing
+Note: Roller replaced successfully. Running test prints (10 pages). All prints successful, no errors. Print quality excellent.
+
+Apr 23, 1:00 PM — Ravi Kumar
+Status: Ready to complete
+Note: Repair complete. Printer functioning normally. Customer verified with 3 test documents. Ready to close case.
+Add Note Section: [Text area for new notes] Quick Status Updates:
+
+"Arrived at location"
+"Parts required"
+"Repair in progress"
+"Testing complete"
+Right Column - Parts & Actions:
+Parts Used:
+
+1× HP Paper Feed Roller
+   Part Number: RM1-6414-000CN
+   Cost: ₹1,250
+   Warranty Coverage: Yes (no charge to customer)
+   Status: Installed
+   Installed by: Ravi Kumar
+   Installation time: Apr 23, 12:00 PM
+
+Labor Time: 2 hours 30 minutes
+Travel Time: 30 minutes (one way)
+Total Service Time: 3 hours 30 minutes
+
+No additional parts required.
+Customer Signature: [Digital signature pad] Customer Satisfaction: [5-star rating selector]
+
+Action Buttons:
+
+Edit Case (blue, large) - Navigate to Screen 8
+Mark Complete (green, large) - Complete the case
+Request Support (yellow) - Escalate to senior technician
+Exit (blue, bottom right) - Return to Technician Home
+Screen 8: Case Details - Edit Mode
+Purpose: Add detailed service notes, update parts used, and modify case information
+
+All fields from Screen 7 become editable:
+
+Editable Sections:
+
+Service Notes:
+
+Large text area for detailed observations
+Placeholder: "Describe the issue found, steps taken, and resolution..."
+Current text editable
+Problem Description:
+
+Can add more details to original description
+Append technical findings
+Parts Used:
+
+Add/remove parts from list
+Each part entry includes:
+Part name [text input]
+Part number [text input]
+Quantity [number]
+Cost [number]
+Warranty covered [checkbox]
+Labor Time:
+
+On-site time [time input]
+Travel time [time input]
+Total calculated automatically
+Status Update:
+
+Dropdown to change status:
+In Progress
+On Hold (requires reason)
+Resolved
+Escalated
+Photos/Evidence:
+
+Upload before/after photos
+Upload part serial numbers
+Upload customer signature
+Example Editable Content:
+
+Service Notes Field (editable):
+"Detailed Findings:
+- Paper feed roller (RM1-6414) showed significant wear on rubber surface
+- Roller not gripping paper properly, causing misfeeds
+- Sensor misinterpreting misfeeds as paper jams
+- No actual paper jams found during inspection
+
+Resolution Steps:
+1. Removed old worn roller
+2. Cleaned paper path and sensors
+3. Installed new roller (RM1-6414-000CN)
+4. Calibrated paper feed mechanism
+5. Updated firmware to v5.2.3 (latest)
+6. Ran 50-page test print - all successful
+
+Preventive Recommendations:
+- Schedule roller inspection every 6 months
+- Clean paper path monthly
+- Use recommended paper grade (75-90 GSM)
+
+Customer trained on:
+- Proper paper loading technique
+- Monthly cleaning procedure
+- When to call for service
+
+Customer satisfaction: 5/5
+Customer feedback: 'Excellent service, very professional'"
+Validation:
+
+Must add at least one service note before completing
+If parts used, part numbers must be entered
+If status = "On Hold", reason is mandatory
+Customer signature required to mark complete
+Action Buttons:
+
+Save Changes (blue, large) - Save and return to view mode
+Save & Complete (green, large) - Save and close case
+Cancel (gray) - Discard changes
+Screen 9: AI Voice Service Assistant
+Purpose: Hands-free assistance while technician is working on-site
+
+Layout:
+
+Large AI Avatar (center):
+
+Animated voice wave visualization
+Microphone button (tap to speak)
+Voice Interaction Examples:
+
+Technician: "Show me the wiring diagram for HP M404dn"
+AI: "Displaying wiring diagram. I've sent it to your screen. Would you like me to zoom in on any section?"
+
+Technician: "What's the part number for the fuser assembly?"
+AI: "The fuser assembly for HP LaserJet Pro M404dn is RM2-5692-000CN. Current inventory shows 3 units available at Bangalore North warehouse. Would you like me to order one?"
+
+Technician: "Add note: Replaced pickup roller"
+AI: "Note added to case TKT-2024-0891 at 2:35 PM: 'Replaced pickup roller.' Anything else?"
+
+Technician: "How do I reset the maintenance counter?"
+AI: "To reset maintenance counter on M404dn: 1. Press Menu. 2. Navigate to Service. 3. Select Reset Maintenance Count. 4. Enter admin code 1234. 5. Confirm reset. Should I show you a video?"
+
+Technician: "Order one RM1-6414 roller"
+AI: "Ordering 1× HP Paper Feed Roller (RM1-6414-000CN) from Bangalore North warehouse. Estimated delivery: 45 minutes to Infosys, Electronics City. Order confirmed. Tracking number: WH-2024-0445."
+Features:
+
+Speech-to-text for notes
+Technical manual search
+Parts lookup and ordering
+Step-by-step repair guidance
+Error code database
+Video tutorials
+Bottom Quick Commands:
+
+"Order parts"
+"Show manual"
+"Add note"
+"Call support"
+"End session"
+FLOW B: ADMIN OPERATIONS
+Screen 10: ASP Home Dashboard (Admin View)
+Purpose: Command center for service center manager to oversee all operations
+
+Content:
+
+Welcome Header:
+"Good Morning, Amit Sharma | ASP Manager - Bangalore North Zone"
+
+KPI Cards (Top Row):
+Active Cases
+
+Number: 127
+Trend: ↑ 12% vs yesterday
+Color: Blue
+Technicians Available
+
+Number: 34 out of 45
+Status: 11 on active visits
+Color: Green
+SLA Compliance
+
+Percentage: 94.2%
+Trend: ↑ 2.1% vs last week
+Color: Green
+Avg Resolution Time
+
+Time: 4.2 hours
+Trend: ↓ 0.8h vs last month
+Color: Green
+Customer Satisfaction
+
+Rating: 4.7 / 5.0
+Based on: 89 responses this week
+Color: Yellow-Green
+Revenue This Month
+
+Amount: ₹14,52,000
+Target: ₹15,00,000 (97% achieved)
+Color: Blue
+Quick Actions Panel (6 tiles with icons):
+Technicians 👷
+
+Icon: User group
+Navigate to: Technician Management (Screen 12)
+Approvals ✓
+
+Icon: Checkmark list
+Badge: "5 pending"
+Navigate to: Admin Approvals (Screen 11)
+Cases 📋
+
+Icon: Clipboard
+Navigate to: Case management
+Reports 📊
+
+Icon: Bar chart
+Navigate to: Analytics dashboard
+Inventory 📦
+
+Icon: Box
+Navigate to: Parts inventory
+Allocate 🤖
+
+Icon: AI brain
+Navigate to: AI Auto Assignment (Screen 13)
+Active Cases Table (Admin View):
+Shows ALL cases across all technicians, not just one person's cases
+
+Columns: Case ID | Customer | Technician | Product | Priority | Status | SLA | Action
+
+Sample Data (10 rows shown, scrollable):
+
+TKT-2024-0891
+
+Customer: Infosys Limited
+Technician: Ravi Kumar
+Product: HP LaserJet Pro M404dn
+Priority: HIGH
+Status: In Progress
+SLA: 2h 15m remaining (green)
+Action: "View" → Navigate to Admin Case Details (Screen 14)
+TKT-2024-0890
+
+Customer: Tech Mahindra
+Technician: Priya Sharma
+Product: HP OfficeJet Pro 8025
+Priority: MEDIUM
+Status: Assigned
+SLA: 4h 30m remaining
+Action: "View"
+TKT-2024-0889
+
+Customer: HCL Technologies
+Technician: Unassigned (red highlight)
+Product: HP Color LaserJet M454dw
+Priority: HIGH
+Status: New
+SLA: 1h 45m remaining (yellow warning)
+Action: "Assign" → Opens AI Auto Assignment
+TKT-2024-0888
+
+Customer: Cognizant
+Technician: Suresh Patel
+Product: HP DeskJet 2720
+Priority: LOW
+Status: On Hold
+SLA: Paused
+Action: "View"
+TKT-2024-0887
+
+Customer: Wipro Technologies
+Technician: Amit Verma
+Product: HP OfficeJet Pro 9025
+Priority: MEDIUM
+Status: New
+SLA: 5h 20m remaining
+Action: "View"
+(Continue with 5 more rows...)
+
+Alerts Panel (Right Sidebar):
+🔴 CRITICAL ALERTS:
+- TKT-2024-0885: SLA breach in 15 minutes (Customer: Goldman Sachs)
+- 3 unassigned high-priority cases
+
+🟡 WARNINGS:
+- Ravi Kumar: 3 cases in progress (high workload)
+- Parts shortage: HP 59A Toner (only 2 left in stock)
+- Suresh Patel: Last check-in 3 hours ago
+
+🟢 UPDATES:
+- 12 cases completed today
+- Priya Sharma received 5-star rating from Microsoft
+- New technician application: Vikram Singh (pending approval)
+Team Performance Leaderboard:
+Top Performers This Week:
+🥇 Priya Sharma - 23 cases, 5.0★ avg rating
+🥈 Ravi Kumar - 21 cases, 4.9★ avg rating  
+🥉 Suresh Patel - 19 cases, 4.8★ avg rating
+Bottom Action Bar:
+
+"Generate Report"
+"Export Data"
+"Settings"
+Screen 11: Admin Approvals Dashboard
+Purpose: Review and approve pending requests (leave, expense claims, part orders, etc.)
+
+Content Tabs:
+
+Tab 1: Leave Requests (5 pending)
+Ravi Kumar
+
+Type: Sick Leave
+Dates: May 10-12, 2024 (3 days)
+Reason: "Medical procedure scheduled"
+Impact: 4 cases will need reassignment
+Submitted: May 5, 2024
+Actions: [Approve] [Reject] [Request Info]
+Priya Sharma
+
+Type: Vacation
+Dates: Jun 1-7, 2024 (7 days)
+Reason: "Family wedding"
+Impact: Peak period - coverage needed
+Submitted: May 4, 2024
+Actions: [Approve] [Reject] [Request Info]
+Tab 2: Expense Claims (8 pending)
+Amit Verma - Travel Reimbursement
+
+Amount: ₹850
+Date: Apr 22, 2024
+Details: "Travel to customer site - Sarjapur Road (45km)"
+Receipts: 2 attached (Uber receipt, Toll receipt)
+Policy compliance: ✓ Within limits
+Actions: [Approve] [Reject] [Request Info]
+Suresh Patel - Parts Purchase
+
+Amount: ₹3,200
+Date: Apr 20, 2024
+Details: "Emergency HP fuser assembly purchase - urgent case"
+Receipts: 1 attached (Vendor invoice)
+Policy compliance: ⚠️ Above limit (requires manager approval)
+Actions: [Approve] [Reject] [Request Info]
+Tab 3: Large Parts Orders (3 pending)
+Bulk Order Request - Ravi Kumar
+Items: 10× HP 59A Toner, 5× Fuser Assemblies
+Total Value: ₹25,000
+Justification: "Stock running low, 8 cases in queue need these parts"
+Approval needed: Budget impact
+Actions: [Approve] [Reject] [Request Info]
+Tab 4: New Technician Applications (2 pending)
+Vikram Singh
+Experience: 6 years
+Certifications: HP Certified, Dell Certified
+Zone preference: Bangalore East
+Documents: All submitted ✓
+Background check: Pending
+Interview score: 85/100
+Actions: [Approve] [Reject] [Schedule Interview]
+Summary Stats:
+
+Total pending approvals: 18
+Urgent (expiring today): 3
+Average approval time: 4.2 hours
+Exit Button: Returns to ASP Home Dashboard (Screen 10)
+
+Screen 12: Technician Management
+Purpose: View, manage, and monitor all technicians in the service network
+
+Content:
+
+Technician Grid View:
+Filters (Top Bar):
+
+Status: [All / Active / On Visit / Available / On Leave]
+Zone: [All Zones / Bangalore North / Bangalore South...]
+Performance: [All / Top Performers / Needs Improvement]
+Workload: [All / Overloaded / Normal / Underutilized]
+Technician Cards (Grid layout, 6 cards visible):
+
+Card 1: Ravi Kumar ⭐ Top Performer
+Photo: [Avatar]
+Status: 🟢 On Active Visit
+Zone: Bangalore North
+
+Current Stats:
+- Cases Today: 3
+- Cases This Week: 12
+- Cases This Month: 47
+- Completion Rate: 98%
+- Avg Rating: 4.8⭐
+- Avg Resolution Time: 3.2 hours
+
+Current Location: Infosys, Electronics City
+Current Case: TKT-2024-0891 (In Progress)
+Last Check-in: 15 minutes ago
+
+Skills:
+• HP LaserJet Expert
+• Network Troubleshooting
+• Certified Trainer
+
+Availability:
+Mon-Fri: 9 AM - 6 PM
+Weekend: On-call
+
+Actions:
+[View Profile] [Assign Case] [Message] [View Schedule]
+Card 2: Priya Sharma ⭐ Top Performer
+Photo: [Avatar]
+Status: 🟢 Available
+Zone: Bangalore South
+
+Current Stats:
+- Cases Today: 4 (New record!)
+- Cases This Week: 15
+- Cases This Month: 52
+- Completion Rate: 100%
+- Avg Rating: 5.0⭐ (Perfect score!)
+- Avg Resolution Time: 2.8 hours
+
+Current Location: Office (ready for assignment)
+Last Completed: TKT-2024-0886 (30 min ago) - 5★ rating
+Last Check-in: 5 minutes ago
+
+Skills:
+• HP OfficeJet Specialist
+• Customer Service Excellence
+• Multi-brand Certified
+
+Availability:
+Mon-Fri: 8 AM - 5 PM
+Weekend: Available
+
+Actions:
+[View Profile] [Assign Case] [Message] [View Schedule]
+Card 3: Suresh Patel
+Photo: [Avatar]
+Status: 🟡 On Extended Visit (3+ hours)
+Zone: Bangalore North
+
+Current Stats:
+- Cases Today: 2
+- Cases This Week: 9
+- Cases This Month: 41
+- Completion Rate: 95%
+- Avg Rating: 4.6⭐
+- Avg Resolution Time: 4.1 hours
+
+Current Location: TCS, Whitefield
+Current Case: TKT-2024-0883 (Complex issue)
+Last Check-in: 2 hours ago ⚠️
+
+Skills:
+• HP Enterprise Series
+• Server Maintenance
+• 15+ years experience
+
+Availability:
+Mon-Fri: 9 AM - 6 PM
+Weekend: Not available
+
+⚠️ Alert: Long visit time, may need support
+
+Actions:
+[View Profile] [Check Status] [Send Support] [Message]
+Card 4: Amit Verma
+Photo: [Avatar]
+Status: 🟢 On Active Visit
+Zone: Bangalore East
+
+Current Stats:
+- Cases Today: 3
+- Cases This Week: 11
+- Cases This Month: 38
+- Completion Rate: 92%
+- Avg Rating: 4.5⭐
+- Avg Resolution Time: 3.8 hours
+
+Current Location: Wipro, Electronic City
+Current Case: TKT-2024-0887 (Scan issues)
+Last Check-in: 20 minutes ago
+
+Skills:
+• MFP Specialist
+• Wireless Connectivity
+• Quick Response Time
+
+Availability:
+Mon-Sat: 9 AM - 7 PM
+Weekend: On-call
+
+Actions:
+[View Profile] [Assign Case] [Message] [View Schedule]
+Card 5: Neha Reddy
+Photo: [Avatar]
+Status: 🔴 On Leave
+Zone: Bangalore West
+
+Leave Details:
+- Type: Vacation
+- Duration: May 6-8, 2024 (3 days)
+- Return: May 9, 2024
+- Coverage: Cases redistributed
+
+Recent Stats (before leave):
+- Cases This Month: 35
+- Completion Rate: 97%
+- Avg Rating: 4.7⭐
+
+Skills:
+• Color Printers
+• Print Quality Expert
+• Fast Learner
+
+Actions:
+[View Profile] [View Leave Details]
+Card 6: Rajesh Gupta 🆕 New Hire
+Photo: [Avatar]
+Status: 🟡 In Training
+Zone: Bangalore North
+
+Onboarding Progress:
+✓ Documentation complete
+✓ Course 1: HP Fundamentals (100%)
+⏳ Course 2: SAP Service Cloud (65%)
+⏳ Course 3: Customer Service (Not started)
+
+Expected completion: May 12, 2024
+Will be available for assignments: May 13, 2024
+
+Certifications:
+• HP Certified Technician
+• 4 years experience
+
+Actions:
+[View Profile] [Track Training] [Message]
+Summary Dashboard (Top Right):
+Total Technicians: 45
+├─ Active on visits: 18
+├─ Available: 16
+├─ On leave: 4
+├─ In training: 3
+└─ Overloaded (3+ active cases): 4
+
+Zone Distribution:
+├─ Bangalore North: 15
+├─ Bangalore South: 12
+├─ Bangalore East: 10
+└─ Bangalore West: 8
+
+Average Performance:
+├─ Completion Rate: 95.3%
+├─ Avg Rating: 4.6⭐
+└─ Avg Resolution Time: 3.5 hours
+Actions Bar (Bottom):
+
+"Add New Technician"
+"Bulk Assign Cases"
+"Generate Performance Report"
+"Schedule Training"
+Exit Button: Returns to ASP Home Dashboard (Screen 10)
+
+Screen 13: AI Auto Assignment
+Purpose: AI-powered recommendation system for optimal case-to-technician matching
+
+Scenario: Unassigned case TKT-2024-0892 needs immediate assignment
+
+Content:
+
+Alert Banner (Top - Red/Orange):
+⚠️ URGENT: High Priority Case Requires Immediate Assignment
+Case ID: TKT-2024-0892
+Customer: Goldman Sachs India
+Location: Prestige Tech Park, Bangalore
+Issue: HP LaserJet Enterprise M506 - Network print failure
+SLA: 1 hour 45 minutes remaining
+Business Impact: CRITICAL - Trading floor unable to print reports
+Case Details Panel (Left):
+Case Information:
+━━━━━━━━━━━━━━━━
+Customer: Goldman Sachs India
+Priority: 🔴 CRITICAL
+Product: HP LaserJet Enterprise M506
+Serial: JPBXK98234
+Issue: Network printing completely failed
+Symptoms: 
+- Printer shows as offline on network
+- Cannot ping printer IP address
+- Physical display shows "Network Error 79"
+- Issue affecting 40+ workstations
+
+Customer Requirements:
+- Immediate response required
+- Technician must have network troubleshooting expertise
+- Customer available now (10 AM - 8 PM)
+- Security clearance needed for premises
+- English + Hindi speaking preferred
+
+Location Details:
+- Address: Prestige Tech Park, Outer Ring Road
+- Floor: 8th Floor, Trading Desk Area
+- Distance from office: 12 km
+- Parking: Available (basement)
+- Access: Register at security, escort required
+AI Recommendation Panel (Center - Main Focus):
+🤖 AI ANALYSIS COMPLETE
+
+Based on 15 factors analyzed:
+✓ Technician skills & certifications
+✓ Current location & travel time
+✓ Current workload
+✓ Historical performance with similar cases
+✓ Customer preferences
+✓ SLA urgency
+✓ Expertise level required
+✓ Language requirements
+✓ Availability status
+✓ Recent performance ratings
+✓ Parts inventory access
+✓ Security clearances
+✓ Past experience with this customer
+✓ Equipment specialization
+✓ Real-time traffic conditions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RECOMMENDED TECHNICIAN:
+
+🥇 Ravi Kumar - 94% Match Score (BEST FIT)
+Recommended Technician Card (Large, Center):
+Ravi Kumar
+📍 Currently at: Infosys, Electronics City (7 km away)
+🚗 Estimated arrival: 25 minutes
+
+Why Ravi is the best choice:
+
+1. ✓ EXPERTISE MATCH (95%)
+   • HP Enterprise LaserJet Specialist
+   • Network Troubleshooting Certified
+   • Has resolved 15 similar "Network Error 79" cases
+   • 100% success rate with network issues
+
+2. ✓ AVAILABILITY (100%)
+   • Current case (TKT-2024-0891) is 95% complete
+   • Can depart in 10 minutes
+   • No other assignments in queue
+   • Available until 6 PM today
+
+3. ✓ LOCATION (92%)
+   • Only 7 km from customer site
+   • 25-minute ETA (accounting for current traffic)
+   • Closest qualified technician
+   • Has parts in vehicle inventory
+
+4. ✓ CUSTOMER HISTORY (90%)
+   • Serviced Goldman Sachs 3 times before
+   • 5.0★ average rating from this customer
+   • Has active security clearance for premises
+   • Familiar with site layout and procedures
+
+5. ✓ PERFORMANCE (98%)
+   • Overall rating: 4.8⭐
+   • Avg resolution time: 3.2 hours (20% faster than average)
+   • SLA compliance: 99%
+   • Recent form: 12 consecutive cases completed successfully
+
+6. ✓ COMMUNICATION (100%)
+   • Fluent in English and Hindi ✓
+   • Excellent customer feedback on communication
+   • Professional demeanor
+
+Predicted outcome:
+├─ Resolution probability: 92%
+├─ Estimated resolution time: 1.5 hours
+├─ SLA compliance: WILL MEET (with 15 min buffer)
+└─ Expected customer rating: 4.8⭐
+
+Parts likely needed (in Ravi's vehicle):
+✓ Network cable (Cat6)
+✓ Ethernet adapter
+✓ Firmware update tools
+Action Button (Large, Green): [Assign to Ravi Kumar] ← Primary recommendation
+
+Alternative Technicians (Ranked Below):
+🥈 Alternative #2: Priya Sharma - 78% Match Score
+
+📍 Location: Office (12 km away, 35 min ETA)
+⚠️ Lower match because:
+- Not currently in the field
+- Less experience with Enterprise series (only 5 cases)
+- No prior history with this customer
+✓ Advantages:
+- Currently available (no active case)
+- High overall rating (5.0★)
+- Fast resolution times
+🥉 Alternative #3: Suresh Patel - 72% Match Score
+
+📍 Location: TCS, Whitefield (18 km away, 55 min ETA)
+⚠️ Lower match because:
+- Currently on extended visit (3+ hours on current case)
+- Farther away (will breach SLA)
+- Slower avg resolution time (4.1 hours)
+✓ Advantages:
+- Most experienced (15+ years)
+- Enterprise equipment specialist
+- Has resolved similar issues before
+❌ Not Recommended: Amit Verma - 45% Match
+
+📍 Location: Wipro, Electronic City
+⚠️ Not recommended because:
+- Already handling high-priority case
+- Limited network troubleshooting experience
+- No security clearance for Goldman Sachs
+- Will breach SLA if assigned
+Decision Factors Visualization (Right Panel):
+Match Score Breakdown for Ravi Kumar:
+
+Skills Match:        ████████████████████ 95%
+Location/ETA:        ███████████████████░ 92%
+Availability:        ████████████████████ 100%
+Performance:         ████████████████████ 98%
+Customer History:    ███████████████████░ 90%
+Language:            ████████████████████ 100%
+Workload:            ████████████████████ 100%
+Parts Access:        ████████████████████ 100%
+Security Clearance:  ████████████████████ 100%
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OVERALL:             ███████████████████░ 94%
+
+AI Confidence: VERY HIGH
+Recommendation: ASSIGN IMMEDIATELY
+Historical AI Accuracy Stats:
+AI Assignment Success Rate: 96.3%
+- Correct match first try: 94.1%
+- Cases completed within predicted time: 89.7%
+- Customer satisfaction when following AI: 4.9⭐
+- SLA compliance when following AI: 98.2%
+
+Manual Assignment Success Rate: 87.5%
+- For comparison
+Action Buttons:
+
+[Assign to Ravi Kumar] (Large, Green, Primary)
+[View Alternative Options] (Expands to show Priya and Suresh cards)
+[Override & Manual Assign] (Yellow, for admin override)
+[Refresh Recommendations] (Updates based on real-time changes)
+Exit Button: Returns to ASP Home Dashboard (Screen 10)
+
+Screen 14: Admin Case Details
+Purpose: Admin view of case with additional controls (assign, edit, escalate)
+
+Content: Same as Screen 7 (Case Details) BUT with these additions:
+
+Additional Admin-Only Features:
+Top Action Bar (below breadcrumb):
+
+[Edit Case] (Blue button, left: 968px)
+[Assign Technician] (Green button, left: 1116px) → Opens Screen 13
+Additional Information Panels:
+
+Assignment History:
+Assignment Timeline:
+━━━━━━━━━━━━━━━━━━
+Apr 23, 9:30 AM - Auto-assigned to Ravi Kumar
+├─ Assignment method: AI Recommendation (Match: 94%)
+├─ Other candidates: Priya Sharma (78%), Suresh Patel (72%)
+└─ Assignment reason: Best location, expertise, availability
+
+Apr 23, 9:32 AM - Ravi Kumar accepted assignment
+├─ Response time: 2 minutes
+└─ Confirmed ETA: 10:00 AM
+
+Apr 23, 10:00 AM - Ravi checked in at customer location
+└─ GPS verified: Infosys, Electronics City
+Business Metrics:
+Financial Details:
+├─ Service Type: Warranty Service (No charge)
+├─ Parts Cost: ₹1,250 (covered by warranty)
+├─ Labor Cost: ₹0 (covered by warranty)
+├─ Total Value: ₹1,250 (HP reimbursement expected)
+└─ Profit Margin: ₹450 (after parts markup)
+
+SLA Tracking:
+├─ SLA Target: 4 hours from assignment
+├─ Time Elapsed: 3 hours 30 minutes
+├─ Time Remaining: 30 minutes
+├─ Status: ON TRACK ✓
+└─ Resolution Time: 3h 30m (within target)
+
+Customer Impact:
+├─ Priority: HIGH
+├─ Business Impact: 50+ users affected
+├─ Downtime: 4 hours total
+└─ Criticality: Production environment
+Admin Actions Panel:
+Administrative Controls:
+━━━━━━━━━━━━━━━━━━━
+[Reassign Technician] → Open AI Auto Assignment
+[Escalate to Supervisor] → Create escalation ticket
+[Extend SLA] → Add time with justification
+[Request Parts] → Emergency parts order
+[Contact Customer] → Send email/SMS update
+[Generate Report] → Detailed case report
+[Audit Log] → View all changes
+Customer Account Details:
+Account Information:
+━━━━━━━━━━━━━━━━━━━
+Company: Infosys Limited
+Account ID: ACC-IN-00234
+Contract Type: Enterprise Premium
+Annual Contract Value: ₹24,50,000
+Contract Valid: Jan 1, 2024 - Dec 31, 2024
+
+Service Level Agreement:
+├─ Response Time: 2 hours
+├─ Resolution Time: 4 hours
+├─ Escalation Path: L1 → L2 → Regional Manager
+└─ Penalty Clause: ₹5,000 per hour breach
+
+Contact Hierarchy:
+├─ Primary: Rajesh Menon (IT Manager)
+├─ Escalation: Suresh Kumar (IT Head)
+└─ Contract Owner: Anjali Nair (Procurement)
+
+Total Equipment Under Contract:
+├─ HP LaserJet Printers: 45 units
+├─ HP OfficeJet MFPs: 12 units
+├─ HP DeskJet Printers: 23 units
+└─ Total: 80 devices
+
+Service History (Last 12 Months):
+├─ Total Cases: 67
+├─ Avg Resolution Time: 3.1 hours
+├─ SLA Compliance: 96%
+├─ Customer Satisfaction: 4.7⭐
+└─ Open Issues: 2 (including current)
+Exit Button: Returns to ASP Home Dashboard (Screen 10)
+
+DATA MODEL & STATE MANAGEMENT
+Key Data Structures:
+Technician Profile:
+
+{
+  id: "TECH-00156",
+  firstName: "Ravi",
+  lastName: "Kumar",
+  email: "ravi.kumar@techservice.com",
+  mobile: "+91 98765 43210",
+  zone: "Bangalore North",
+  experience: "5-10 years",
+  status: "active" | "on_visit" | "available" | "on_leave",
+  certifications: ["HP Certified", "Network Troubleshooting"],
+  currentLocation: { lat: 12.9716, lng: 77.5946 },
+  currentCase: "TKT-2024-0891",
+  stats: {
+    casesToday: 3,
+    casesThisWeek: 12,
+    casesThisMonth: 47,
+    completionRate: 98,
+    avgRating: 4.8,
+    avgResolutionTime: 3.2
+  },
+  documents: {
+    aadhaar: { uploaded: true, verified: true },
+    pan: { uploaded: true, verified: true },
+    certification: { uploaded: true, verified: true },
+    photo: { uploaded: true, verified: true },
+    addressProof: { uploaded: true, verified: true }
+  }
+}
+Case Data:
+
+{
+  caseId: "TKT-2024-0891",
+  customer: {
+    name: "Infosys Limited, Bangalore",
+    accountId: "ACC-IN-00234",
+    contact: "Rajesh Menon",
+    phone: "+91 80 4152 8000",
+    location: "Electronics City Phase 1"
+  },
+  product: {
+    model: "HP LaserJet Pro M404dn",
+    serialNumber: "CNBXJ34570",
+    warrantyStatus: "In Warranty",
+    warrantyExpiry: "2026-01-14"
+  },
+  issue: {
+    title: "Not Printing - Paper Jam Error",
+    description: "Printer stopped printing...",
+    priority: "HIGH",
+    reportedDate: "2024-04-23T09:00:00Z"
+  },
+  assignment: {
+    technicianId: "TECH-00156",
+    technicianName: "Ravi Kumar",
+    assignedDate: "2024-04-23T09:30:00Z",
+    assignmentMethod: "AI",
+    matchScore: 94
+  },
+  status: "in_progress",
+  sla: {
+    targetResolutionTime: 4, // hours
+    timeElapsed: 3.5,
+    timeRemaining: 0.5,
+    willMeet: true
+  },
+  notes: [
+    {
+      timestamp: "2024-04-23T10:00:00Z",
+      author: "Ravi Kumar",
+      text: "Arrived at customer location",
+      type: "status_update"
+    },
+    // ... more notes
+  ],
+  partsUsed: [
+    {
+      partName: "HP Paper Feed Roller",
+      partNumber: "RM1-6414-000CN",
+      quantity: 1,
+      cost: 1250,
+      warrantyCovered: true
+    }
+  ],
+  resolution: {
+    completedDate: null,
+    resolutionTime: null,
+    customerSignature: null,
+    customerRating: null,
+    customerFeedback: null
+  }
+}
+USER JOURNEYS SUMMARY
+Journey 1: New Technician Onboarding (First Time User)
+Screen 1 (AI Voice) → Screen 2 (Personal Details) → Screen 4 (Review & Submit) 
+→ Screen 5 (Learning) → Screen 6 (Technician Home) 
+→ [Ready to accept cases]
+Duration: 4-6 hours (including training) Outcome: Technician certified and ready for assignments
+
+Journey 2: Technician Daily Work (Experienced User)
+Screen 6 (Home) → Click case row → Screen 7 (Case Details) 
+→ Screen 8 (Edit Mode) → Add notes → Screen 9 (Voice Assistant) 
+→ Complete case → Back to Screen 6
+Duration: 2-4 hours per case Frequency: 3-5 cases per day
+
+Journey 3: Admin Case Management
+Screen 10 (ASP Home) → View unassigned case → Screen 13 (AI Assignment) 
+→ Assign to technician → Screen 14 (Admin Case Details) 
+→ Monitor progress → Back to Screen 10
+Duration: 5-10 minutes per assignment Frequency: 10-20 assignments per day
+
+Journey 4: Admin Oversight
+Screen 10 (ASP Home) → Screen 12 (Technician Management) 
+→ Review team performance → Screen 11 (Approvals) 
+→ Process requests → Back to Screen 10
+Duration: 30-60 minutes per day Frequency: Daily review
+
+KEY BUSINESS RULES
+SLA Management:
+
+HIGH priority: 2-hour response, 4-hour resolution
+MEDIUM priority: 4-hour response, 8-hour resolution
+LOW priority: 8-hour response, 24-hour resolution
+Technician Workload:
+
+Maximum 3 active cases simultaneously
+Alert if technician has 3+ cases
+Auto-routing disabled if overloaded
+AI Assignment Criteria:
+
+Minimum 70% match score required
+Skills match weighted 30%
+Location/ETA weighted 25%
+Performance weighted 20%
+Availability weighted 15%
+Customer history weighted 10%
+Training Requirements:
+
+All 3 courses must be completed before case assignment
+Minimum 80% quiz scores required
+Re-certification every 12 months
+Parts Management:
+
+Orders under ₹2,000: Auto-approved
+Orders ₹2,000-₹5,000: Supervisor approval
+Orders above ₹5,000: Manager approval
+Customer Satisfaction:
+
+Rating requested after each case completion
+Ratings below 3★ trigger manager review
+Ratings of 5★ count toward technician bonuses

@@ -1,0 +1,235 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.OnboardingReview"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Blue Registration Top Bar -->
+				<Toolbar class="spAiTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to Skills &amp; Zone" class="spTopBarBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Technician Self-Registration Portal" class="spAiPortalTitle" />
+					<ToolbarSpacer />
+					<Text text="Already registered?" class="spAiRegisterHint" />
+				</Toolbar>
+
+				<!-- Step progress bar (all 4 complete / step 4 active) -->
+				<HBox class="spAiStepBar" alignItems="Center" justifyContent="Center">
+					<items>
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="1" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="Personal Details" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="2" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="KYC Documents" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="3" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="Skills &amp; Zone" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="4" backgroundColor="Accent1" displaySize="XS" />
+								<Text text="Review &amp; Submit" class="spAiStepTitle spAiStepTitleActive" />
+								<Text text="Confirm &amp; submit" class="spAiStepSub spAiStepSubActive" />
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+
+				<VBox class="sapUiLargeMarginBeginEnd sapUiMediumMarginTopBottom">
+
+					<!-- ── Review Title ── -->
+					<Title text="Review &amp; Submit Application" level="H2"
+						class="sapUiSmallMarginBottom" />
+					<Text text="Please verify all details before submitting. You will be notified within 2–3 business days."
+						class="sapUiSmallMarginBottom sapUiMediumMarginBottom" />
+
+					<!-- ── Summary Cards — 3 equal columns ── -->
+					<l:Grid defaultSpan="XL4 L4 M6 S12" hSpacing="1" vSpacing="1"
+						class="sapUiMediumMarginBottom">
+						<l:content>
+
+							<!-- Personal Details -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Personal Details" level="H4" />
+										<ToolbarSpacer />
+										<Button text="Edit" type="Transparent" press=".onEditPersonal" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Name" design="Bold" />
+												<Text text="Ravi Kumar" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Date of Birth" design="Bold" />
+												<Text text="15 Apr 1990" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Mobile" design="Bold" />
+												<Text text="+91 98765 43210" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Email" design="Bold" />
+												<Text text="ravi.kumar@email.com" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Aadhaar" design="Bold" />
+												<Text text="XXXX XXXX 4321" />
+											</items>
+										</HBox>
+									</VBox>
+								</content>
+							</Panel>
+
+							<!-- KYC Documents -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="KYC Documents" level="H4" />
+										<ToolbarSpacer />
+										<Button text="Edit" type="Transparent" press=".onBack" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<HBox justifyContent="SpaceBetween" alignItems="Center" class="spReviewRow">
+											<items>
+												<Label text="Aadhaar Card" design="Bold" />
+												<ObjectStatus text="Verified" state="Success" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" alignItems="Center" class="spReviewRow">
+											<items>
+												<Label text="PAN Card" design="Bold" />
+												<ObjectStatus text="Uploaded" state="Success" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" alignItems="Center" class="spReviewRow">
+											<items>
+												<Label text="HVAC Certificate" design="Bold" />
+												<ObjectStatus text="Uploaded" state="Success" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" alignItems="Center" class="spReviewRow">
+											<items>
+												<Label text="Photo ID" design="Bold" />
+												<ObjectStatus text="Pending" state="Warning" />
+											</items>
+										</HBox>
+									</VBox>
+								</content>
+							</Panel>
+
+							<!-- Skills & Zone -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="Skills &amp; Zone" level="H4" />
+										<ToolbarSpacer />
+										<Button text="Edit" type="Transparent" press=".onEditSkills" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Primary Skill" design="Bold" />
+												<Text text="HVAC (Level 2)" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Secondary" design="Bold" />
+												<Text text="Electrical Systems" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Zone" design="Bold" />
+												<Text text="North Bangalore" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Experience" design="Bold" />
+												<Text text="2–5 years" />
+											</items>
+										</HBox>
+										<HBox justifyContent="SpaceBetween" class="spReviewRow">
+											<items>
+												<Label text="Availability" design="Bold" />
+												<Text text="Full-time (Mon–Sat)" />
+											</items>
+										</HBox>
+									</VBox>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- ── Submission Panel ── -->
+					<Panel class="spPanel">
+						<content>
+							<VBox class="sapUiMediumMarginBeginEnd sapUiMediumMarginTopBottom">
+
+								<MessageStrip
+									text="Photo ID is pending upload — you can still submit and upload it later during verification."
+									type="Warning" showIcon="true"
+									class="sapUiSmallMarginBottom" />
+
+								<FlexBox justifyContent="SpaceBetween" alignItems="Center"
+									class="sapUiSmallMarginTop">
+									<items>
+										<Text text="By submitting, you confirm all information is accurate and consent to background verification."
+											width="68%" wrapping="true" />
+										<Button text="Submit Application"
+											type="Accept"
+											icon="sap-icon://paper-plane"
+											press=".onSubmit" />
+									</items>
+								</FlexBox>
+
+							</VBox>
+						</content>
+					</Panel>
+
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

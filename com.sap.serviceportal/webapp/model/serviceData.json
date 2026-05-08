@@ -1,0 +1,147 @@
+{
+	"currentUser": {
+		"name": "Sharma & Sons Service", "id": "ASP-BLR-042", "initials": "AS", "role": "admin"
+	},
+	"welcomeDate": "Thursday, Apr 24 2026",
+	"welcomeStats": "52 active cases  •  9 technicians on field  •  4 SLA breach risks  •  3 claims pending approval",
+	"kpis": {
+		"newCases": "12", "pendingAssignment": "8", "inField": "9",
+		"partsPending": "4", "closedToday": "18", "slaBreachRisk": "4"
+	},
+	"casesPending": [
+		{ "id": "TKT-0898", "customer": "Reliance Ind.",  "issue": "Server cooling failure",    "priority": "High",   "created": "Apr 23, 08:00" },
+		{ "id": "TKT-0897", "customer": "L&T Ltd.",       "issue": "CCTV DVR not recording",    "priority": "Medium", "created": "Apr 23, 09:15" },
+		{ "id": "TKT-0896", "customer": "HDFC Bank",      "issue": "UPS alarm — bypass mode",   "priority": "High",   "created": "Apr 23, 09:30" },
+		{ "id": "TKT-0895", "customer": "Bajaj Auto",     "issue": "Fire alarm panel fault",    "priority": "High",   "created": "Apr 23, 09:45" }
+	],
+	"activeCases": [
+		{ "id": "TKT-0891", "customer": "Infosys Ltd.",   "issue": "HP printer offline",       "tech": "Ravi Kumar",  "stage": "In Progress",  "due": "Today 5:00 PM", "priority": "High" },
+		{ "id": "TKT-0887", "customer": "TCS Bangalore",  "issue": "AC breakdown",             "tech": "Priya Mehta", "stage": "On Site",      "due": "Today 3:00 PM", "priority": "High" },
+		{ "id": "TKT-0883", "customer": "Wipro Ltd.",     "issue": "UPS replacement",          "tech": "Suresh Nair", "stage": "Parts Pending","due": "Apr 24",        "priority": "Medium" },
+		{ "id": "TKT-0880", "customer": "Accenture",      "issue": "Server room cooling",      "tech": "Kiran Patil", "stage": "En Route",     "due": "Today 6:00 PM", "priority": "High" }
+	],
+	"technicianStats": { "onField": 9, "total": 14, "available": 3, "offline": 2 },
+	"slaStats": { "breachRisk": 4, "immediate": 4, "urgent": 12, "normal": 36 },
+
+	"selectedCase": {
+		"id": "TKT-2024-0891", "priority": "High", "status": "In Progress",
+		"customer": "Infosys Limited, Bangalore", "product": "HP LaserJet Pro M404dn",
+		"serialNo": "CNBXJ34570", "serviceZone": "Bangalore North",
+		"assignedTo": "Ravi Kumar", "warrantyStatus": "In Warranty",
+		"subtitle": "HP LaserJet Pro M404dn — Not Printing  •  Infosys Limited, Bangalore  •  Floor 12, IT Department",
+		"problemDescription": "Printer stopped printing. Error message 'Paper Jam' but no visible jam. Power cycled multiple times. Display shows ready but jobs stuck in queue.",
+		"serviceHistory": "Last service: 2 months ago — Toner replacement\nPrevious issue: Print quality degradation (resolved)\nMaintenance schedule: Up to date",
+		"techNotes": [
+			{ "time": "Apr 23, 10:00 AM", "author": "Ravi Kumar", "note": "Checked printer — paper feed roller worn. Ordered replacement part." },
+			{ "time": "Apr 23, 11:30 AM", "author": "Ravi Kumar", "note": "Part arrived. Installing now." },
+			{ "time": "Apr 23, 12:45 PM", "author": "Ravi Kumar", "note": "Roller replaced. Running test prints. All working normally." }
+		],
+		"partsUsed": [
+			{ "description": "1x Paper Feed Roller (HP RM1-6414)", "partNo": "RM1-6414-000CN", "cost": "₹1,250", "status": "Installed" }
+		]
+	},
+
+	"newTicket": {
+		"id": "TKT-2024-0902",
+		"title": "Industrial AC Breakdown",
+		"customer": "Reliance Industries, Bangalore",
+		"location": "Floor 7, Server Room",
+		"priority": "High",
+		"slaWindow": "6 hours",
+		"receivedTime": "2 mins ago"
+	},
+	"aiRecommendation": {
+		"technician": {
+			"name": "Ravi Kumar", "id": "EMP-001",
+			"skills": "HVAC & Electrical Systems (Level 2)",
+			"zone": "North Bangalore Zone", "status": "Available", "initials": "RK"
+		},
+		"confidence": "94% Confidence",
+		"reasoning": "Assigned to Ravi Kumar — highest HVAC expertise (98% skill match), lowest workload (2 active cases), and top SLA compliance score (94%) in zone.",
+		"matchFactors": [
+			{ "factor": "Skill Match",          "value": 98, "label": "98%" },
+			{ "factor": "Workload Score",        "value": 85, "label": "Low (2 cases)" },
+			{ "factor": "SLA Compliance",        "value": 94, "label": "94%" },
+			{ "factor": "First Time Fix Rate",   "value": 87, "label": "87%" }
+		],
+		"realTimeFactors": [
+			{ "label": "Skill match",                          "detail": "HVAC + Industrial AC",  "score": "98%",       "scoreState": "Success" },
+			{ "label": "Current active case workload",         "detail": "2 cases",               "score": "",          "scoreState": "None" },
+			{ "label": "SLA compliance score (last 90 days)",  "detail": "94%",                   "score": "",          "scoreState": "None" },
+			{ "label": "Technician availability (live status)","detail": "Available",             "score": "",          "scoreState": "Success" }
+		]
+	},
+	"availableTechnicians": [
+		{ "rank": "#1  AI Pick", "name": "Ravi Kumar",  "skillMatch": "98%", "workload": "2 cases — Low",  "slaScore": "94%", "availability": "Available", "avState": "Success", "aiScore": "96.2", "isPrimary": true },
+		{ "rank": "#2",          "name": "Deepak Singh", "skillMatch": "92%", "workload": "1 case — Low",   "slaScore": "92%", "availability": "Available", "avState": "Success", "aiScore": "88.4", "isPrimary": false },
+		{ "rank": "#3",          "name": "Kiran Patil",  "skillMatch": "85%", "workload": "3 cases — Med.", "slaScore": "85%", "availability": "Busy",      "avState": "Warning", "aiScore": "76.1", "isPrimary": false },
+		{ "rank": "#4",          "name": "Priya Mehta",  "skillMatch": "60%", "workload": "4 cases — High", "slaScore": "88%", "availability": "Busy",      "avState": "Warning", "aiScore": "58.9", "isPrimary": false },
+		{ "rank": "#5",          "name": "Anita Sharma", "skillMatch": "55%", "workload": "0 cases — Low",  "slaScore": "78%", "availability": "Offline",   "avState": "Error",   "aiScore": "52.3", "isPrimary": false }
+	],
+
+	"technicianUser": {
+		"name": "Ravi Kumar", "zone": "Bangalore North Zone", "initials": "RK"
+	},
+	"techWelcomeDate": "Thursday, Apr 24 2026",
+	"techWelcomeStats": "4 active cases today  •  Next job at 10:30 AM  •  SLA breach risk on TKT-0891",
+	"techPerformance": {
+		"ticketsResolved": "8", "firstVisitFixRate": "87%",
+		"slaRisk": "2", "customerRating": "4.8", "slaCompliance": 82
+	},
+	"casesByStage": [
+		{ "stage": "Assigned to Me", "count": "2", "stageClass": "spStageBlue" },
+		{ "stage": "En Route",       "count": "1", "stageClass": "spStageGreen" },
+		{ "stage": "On Site",        "count": "1", "stageClass": "spStageOrange" },
+		{ "stage": "Parts Pending",  "count": "0", "stageClass": "spStageGray" }
+	],
+	"scheduledJobs": [
+		{ "time": "10:30 AM", "caseId": "TKT-0891", "customer": "Infosys Ltd., Block C, Blr", "issue": "Printer offline — HP LaserJet", "priority": "High",   "priorityState": "Error",   "status": "Assigned",  "statusState": "Information", "action": "Accept" },
+		{ "time": "02:00 PM", "caseId": "TKT-0887", "customer": "TCS Bangalore, Floor 4",      "issue": "AC Breakdown — Cooling unit",  "priority": "High",   "priorityState": "Error",   "status": "En Route",  "statusState": "Success",     "action": "Arrived" },
+		{ "time": "04:30 PM", "caseId": "TKT-0880", "customer": "Wipro Ltd., Main Office",     "issue": "UPS Battery Replacement",      "priority": "Medium", "priorityState": "Warning", "status": "Accepted",  "statusState": "Success",     "action": "En Route" },
+		{ "time": "05:00 PM", "caseId": "TKT-0876", "customer": "Accenture, Tower 2",          "issue": "CCTV camera offline",          "priority": "Low",    "priorityState": "None",    "status": "Assigned",  "statusState": "Information", "action": "Accept" }
+	],
+
+	"technicianCaseDetails": {
+		"id": "TKT-2024-0891", "priority": "High", "status": "In Progress",
+		"customer": "Infosys Limited, Bangalore", "contactName": "Rajesh Menon",
+		"contactPhone": "+91 80 4152 8000", "location": "Floor 12, IT Dept, Building 3",
+		"product": "HP LaserJet Pro M404dn", "serialNo": "CNBXJ34570",
+		"warrantyStatus": "In Warranty",
+		"problemDescription": "Printer stopped printing. Error 'Paper Jam' displayed but no jam found. Power cycled multiple times — still stuck.",
+		"timeline": [
+			{ "time": "10:00 AM", "author": "Ravi Kumar", "status": "Arrived at customer location",  "note": "Checked in via mobile app. Beginning diagnostics." },
+			{ "time": "10:15 AM", "author": "Ravi Kumar", "status": "Diagnosis in progress",          "note": "Found worn paper feed roller. Ordered replacement." },
+			{ "time": "11:30 AM", "author": "System",     "status": "Parts approved",                 "note": "Parts order approved. Delivery in progress." },
+			{ "time": "12:45 PM", "author": "Ravi Kumar", "status": "Testing",                        "note": "Roller replaced. Running test prints — all successful." }
+		],
+		"partsUsed": [
+			{ "description": "HP Paper Feed Roller", "partNo": "RM1-6414-000CN", "cost": "₹1,250", "covered": "Warranty", "status": "Installed" }
+		]
+	},
+
+	"approvals": {
+		"leaveRequests": [
+			{ "name": "Ravi Kumar",  "type": "Sick Leave",  "dates": "May 10–12, 2026", "days": "3 days", "reason": "Medical procedure scheduled",  "impact": "4 cases need reassignment", "submitted": "May 5" },
+			{ "name": "Priya Sharma","type": "Vacation",    "dates": "Jun 1–7, 2026",   "days": "7 days", "reason": "Family wedding",               "impact": "Peak period — coverage needed","submitted": "May 4" }
+		],
+		"expenseClaims": [
+			{ "name": "Amit Verma",  "type": "Travel",  "amount": "₹850",   "date": "Apr 22", "details": "Travel to Sarjapur Road (45 km)", "compliant": true  },
+			{ "name": "Suresh Patel","type": "Parts",   "amount": "₹3,200", "date": "Apr 20", "details": "Emergency HP fuser assembly",     "compliant": false }
+		]
+	},
+
+	"technicians": [
+		{ "name": "Ravi Kumar",   "empId": "EMP-001", "status": "Available",   "statusState": "Success", "zone": "North Bangalore", "activeCases": "2 active", "attendance": "Present", "attendanceState": "Success", "sla": "94%", "rating": "4.8", "skills": "HVAC, Electrical (L2)" },
+		{ "name": "Priya Sharma", "empId": "EMP-002", "status": "Busy",        "statusState": "Warning", "zone": "South Bangalore", "activeCases": "4 active", "attendance": "Present", "attendanceState": "Success", "sla": "88%", "rating": "5.0", "skills": "HP Printers, MFP" },
+		{ "name": "Suresh Patel", "empId": "EMP-003", "status": "Busy",        "statusState": "Warning", "zone": "North Bangalore", "activeCases": "3 active", "attendance": "Present", "attendanceState": "Success", "sla": "91%", "rating": "4.6", "skills": "HP Enterprise, Servers" },
+		{ "name": "Amit Verma",   "empId": "EMP-004", "status": "Busy",        "statusState": "Warning", "zone": "East Bangalore",  "activeCases": "3 active", "attendance": "Absent",  "attendanceState": "Error",   "sla": "85%", "rating": "4.5", "skills": "MFP, Wireless" },
+		{ "name": "Neha Reddy",   "empId": "EMP-005", "status": "Offline",     "statusState": "Error",   "zone": "West Bangalore",  "activeCases": "0 active", "attendance": "Absent",  "attendanceState": "Error",   "sla": "78%", "rating": "4.7", "skills": "Color Printers" },
+		{ "name": "Rajesh Gupta", "empId": "EMP-006", "status": "Offline",     "statusState": "None",    "zone": "North Bangalore", "activeCases": "0 active", "attendance": "Present", "attendanceState": "Success", "sla": "—",   "rating": "—",   "skills": "HP Certified (L1)" }
+	],
+
+	"courses": [
+		{ "title": "HP LaserJet Series — Service Fundamentals", "duration": "2 hours", "modules": 8, "progress": 0,   "status": "Not Started", "locked": false },
+		{ "title": "SAP Service Cloud — Mobile App Training",    "duration": "1 hour",  "modules": 5, "progress": 0,   "status": "Locked",      "locked": true  },
+		{ "title": "Customer Service Excellence",                "duration": "1.5 hrs", "modules": 6, "progress": 0,   "status": "Locked",      "locked": true  }
+	]
+}

@@ -1,0 +1,232 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.AiAutoAssignment"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Top Bar -->
+				<Toolbar class="spTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onNavHome" tooltip="Back to Dashboard" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Sales and Service Cloud" class="spAppTitle" />
+					<ToolbarSpacer />
+					<SearchField width="240px" placeholder="Search" />
+					<Button icon="sap-icon://bell" type="Transparent" />
+					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6"
+						press=".onAvatarPress" />
+				</Toolbar>
+
+				<!-- New Ticket Banner -->
+				<HBox alignItems="Center" class="spNewTicketBanner">
+					<items>
+						<VBox>
+							<Text text="NEW TICKET RECEIVED"
+								style="font-size:0.7rem; font-weight:700; color:#cc6600; text-transform:uppercase;" />
+							<HBox alignItems="Center" class="sapUiTinyMarginTop">
+								<core:Icon src="sap-icon://map" class="sapUiSmallMarginEnd" />
+								<Title text="{service>/newTicket/id} — {service>/newTicket/title}  •  {service>/newTicket/customer}  •  {service>/newTicket/location}"
+									level="H4" />
+							</HBox>
+							<Text text="Received: {service>/newTicket/receivedTime}"
+								style="font-size:0.75rem; color:#6a6d70;" />
+						</VBox>
+						<ToolbarSpacer />
+						<ObjectStatus text="{service>/newTicket/priority}" state="Error"
+							class="sapUiSmallMarginEnd" />
+						<Panel style="background:#fee0e0; border:1px solid #bb0000; border-radius:4px; padding:4px 8px;">
+							<content>
+								<VBox alignItems="Center">
+									<Text text="SLA Window" style="font-size:0.65rem; color:#bb0000;" />
+									<Text text="{service>/newTicket/slaWindow}"
+										style="font-size:0.875rem; font-weight:700; color:#bb0000;" />
+								</VBox>
+							</content>
+						</Panel>
+					</items>
+				</HBox>
+
+				<VBox class="spContent">
+					<l:Grid defaultSpan="XL8 L8 M12 S12" hSpacing="1">
+						<l:content>
+
+							<!-- LEFT: AI Recommended Assignment -->
+							<Panel class="spAiPanel spPanel">
+								<headerToolbar>
+									<Toolbar class="spAiPanelHdrTB">
+										<Title text="AI Recommended Assignment"
+											class="spAiPanelHdrTitle" level="H4" />
+										<ToolbarSpacer />
+										<ObjectStatus text="{service>/aiRecommendation/confidence}"
+											state="Success" inverted="true" />
+									</Toolbar>
+								</headerToolbar>
+								<content>
+									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
+
+										<!-- Technician Card -->
+										<HBox alignItems="Center" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
+											<items>
+												<Avatar initials="{service>/aiRecommendation/technician/initials}"
+													size="L" backgroundColor="Accent6" />
+												<VBox class="sapUiSmallMarginBegin">
+													<Title text="{service>/aiRecommendation/technician/name}"
+														level="H3" />
+													<Text text="{service>/aiRecommendation/technician/id}  •  {service>/aiRecommendation/technician/skills}  •  {service>/aiRecommendation/technician/zone}  •  Status: {service>/aiRecommendation/technician/status}" />
+												</VBox>
+											</items>
+										</HBox>
+
+										<!-- AI Reasoning Box -->
+										<VBox class="spAiReasoningBox sapUiSmallMarginBottom">
+											<HBox alignItems="Start">
+												<items>
+													<core:Icon src="sap-icon://lightbulb" class="sapUiSmallMarginEnd sapUiSmallMarginTop"
+														color="#0a6ed1" />
+													<VBox>
+														<Label text="AI Reasoning:" design="Bold"
+															style="color:#0a6ed1;" />
+														<Text text="{service>/aiRecommendation/reasoning}"
+															wrapping="true" />
+													</VBox>
+												</items>
+											</HBox>
+										</VBox>
+
+										<!-- Match Factors -->
+										<Label text="Match Factors" design="Bold"
+											class="sapUiTinyMarginBottom" />
+										<List items="{service>/aiRecommendation/matchFactors}"
+											showSeparators="None">
+											<CustomListItem>
+												<HBox alignItems="Center">
+													<items>
+														<Text text="{service>factor}" width="160px"
+															style="font-size:0.75rem;" />
+														<ProgressIndicator
+															percentValue="{service>value}"
+															displayValue="{service>label}"
+															state="Success" width="220px" height="1.5rem" />
+													</items>
+												</HBox>
+											</CustomListItem>
+										</List>
+
+										<!-- Action Buttons -->
+										<HBox alignItems="Center" class="sapUiMediumMarginTop">
+											<items>
+												<Button text="Accept Assignment"
+													icon="sap-icon://accept" type="Accept"
+													press=".onAcceptAssignment" />
+												<Button text="Override / Re-assign"
+													icon="sap-icon://synchronize" type="Default"
+													press=".onOverride"
+													class="sapUiSmallMarginBegin" />
+												<Text text="Auto-confirms in 2:58 if not reviewed"
+													style="color:#6a6d70; font-size:0.75rem;"
+													class="sapUiSmallMarginBegin" />
+											</items>
+										</HBox>
+
+									</VBox>
+								</content>
+							</Panel>
+
+							<!-- RIGHT: Real-Time Factors -->
+							<Panel headerText="Real-Time Factors Analysed" class="spPanel">
+								<content>
+									<List items="{service>/aiRecommendation/realTimeFactors}"
+										showSeparators="Inner">
+										<CustomListItem>
+											<HBox justifyContent="SpaceBetween" alignItems="Center"
+												class="sapUiSmallMarginBeginEnd sapUiTinyMarginTopBottom">
+												<items>
+													<VBox>
+														<Label text="{service>label}" design="Bold" />
+													</VBox>
+													<HBox alignItems="Center">
+														<items>
+															<Text text="{service>detail}"
+																class="sapUiSmallMarginEnd" />
+															<ObjectStatus text="{service>score}"
+																state="{service>scoreState}"
+																visible="{= !!${service>score}}" />
+														</items>
+													</HBox>
+												</items>
+											</HBox>
+										</CustomListItem>
+									</List>
+								</content>
+							</Panel>
+
+						</l:content>
+					</l:Grid>
+
+					<!-- All Available Technicians Table -->
+					<Panel class="spPanel">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="All Available Technicians — AI Ranked" level="H4" />
+								<ToolbarSpacer />
+								<Text text="AI scores each technician across 6 dimensions. Accept or manually override at any time."
+									style="font-size:0.75rem; color:#6a6d70;" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table items="{service>/availableTechnicians}" noDataText="No technicians available">
+								<columns>
+									<Column width="10%"><Text text="RANK" /></Column>
+									<Column width="18%"><Text text="TECHNICIAN" /></Column>
+									<Column width="13%"><Text text="SKILL MATCH" /></Column>
+									<Column width="18%"><Text text="WORKLOAD" /></Column>
+									<Column width="12%"><Text text="SLA SCORE" /></Column>
+									<Column width="13%"><Text text="AVAILABILITY" /></Column>
+									<Column width="10%"><Text text="AI SCORE" /></Column>
+									<Column width="6%"><Text text="SELECT" /></Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{service>rank}" />
+											<Text text="{service>name}" />
+											<ObjectStatus text="{service>skillMatch}" state="Success" />
+											<Text text="{service>workload}" />
+											<Text text="{service>slaScore}" />
+											<ObjectStatus text="{service>availability}"
+												state="{service>avState}" />
+											<Text text="{service>aiScore}" />
+											<Button text="Assign" type="Accept"
+												press=".onSelectTechnician" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+
+				</VBox>
+
+				<!-- Dynamic Reassignment Alert -->
+				<HBox alignItems="Center" class="spDynAlertBar">
+					<items>
+						<core:Icon src="sap-icon://map" class="sapUiSmallMarginEnd"
+							color="#cc6600" />
+						<Text text="Dynamic Reassignment Alert:  TKT-0887 — Priya Mehta running 45 min behind schedule. AI recommends reassigning to Deepak Singh. Tap to review."
+							wrapping="false" style="font-size:0.75rem;" />
+						<ToolbarSpacer />
+						<Button text="Exit" icon="sap-icon://nav-back" type="Emphasized"
+							press=".onNavHome" />
+					</items>
+				</HBox>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>

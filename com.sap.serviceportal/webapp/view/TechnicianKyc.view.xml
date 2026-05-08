@@ -1,0 +1,189 @@
+<mvc:View
+	controllerName="com.sap.serviceportal.controller.TechnicianKyc"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<Page showHeader="false" enableScrolling="true" backgroundDesign="Solid">
+		<content>
+			<VBox>
+
+				<!-- Blue Registration Top Bar -->
+				<Toolbar class="spAiTopBar">
+					<Button icon="sap-icon://nav-back" type="Transparent" press=".onBack"
+						tooltip="Back to Personal Details" class="spTopBarBackBtn" />
+					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
+					<Text text="Technician Self-Registration Portal" class="spAiPortalTitle" />
+					<ToolbarSpacer />
+					<Text text="Already registered?" class="spAiRegisterHint" />
+				</Toolbar>
+
+				<!-- Step progress bar (step 2 active) -->
+				<HBox class="spAiStepBar" alignItems="Center" justifyContent="Center">
+					<items>
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="1" backgroundColor="Accent4" displaySize="XS" />
+								<Text text="Personal Details" class="spAiStepTitle" />
+								<Text text="Completed" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="2" backgroundColor="Accent1" displaySize="XS" />
+								<Text text="KYC Documents" class="spAiStepTitle spAiStepTitleActive" />
+								<Text text="Upload documents" class="spAiStepSub spAiStepSubActive" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="3" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Skills &amp; Zone" class="spAiStepTitle" />
+								<Text text="Experience &amp; area" class="spAiStepSub" />
+							</items>
+						</VBox>
+						<Text text="───────" class="spAiStepConnector" />
+						<VBox class="spAiStepItem" alignItems="Center">
+							<items>
+								<Avatar initials="4" backgroundColor="TileIcon" displaySize="XS" />
+								<Text text="Review &amp; Submit" class="spAiStepTitle" />
+								<Text text="Confirm &amp; submit" class="spAiStepSub" />
+							</items>
+						</VBox>
+					</items>
+				</HBox>
+
+				<!-- KYC Content -->
+				<VBox class="sapUiLargeMarginBeginEnd sapUiMediumMarginTopBottom">
+
+					<Panel class="spPanel">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="KYC Document Upload" level="H2" />
+								<ToolbarSpacer />
+								<ObjectStatus text="2 of 4 Uploaded" state="Warning" />
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<VBox class="sapUiMediumMarginBeginEnd sapUiMediumMarginBottom">
+								<Text text="Please upload clear scanned copies or photos of the following documents."
+									class="sapUiSmallMarginBottom" />
+
+								<!-- Aadhaar Card -->
+								<Panel class="spKycDocPanel">
+									<content>
+										<HBox alignItems="Center" class="spKycDocRow">
+											<items>
+												<VBox class="spKycDocIcon spKycIconBlue">
+													<items><Text text="ID" class="spKycIconText" /></items>
+												</VBox>
+												<VBox class="spKycDocInfo">
+													<items>
+														<Title text="Aadhaar Card" titleStyle="H5" />
+														<Text text="Front and back side • JPG, PNG or PDF • Max 2MB" class="spKycDocDesc" />
+													</items>
+												</VBox>
+												<ToolbarSpacer />
+												<ObjectStatus text="Uploaded" state="Success" class="sapUiSmallMarginEnd" />
+												<Button text="Re-upload" type="Transparent" icon="sap-icon://upload" />
+											</items>
+										</HBox>
+									</content>
+								</Panel>
+
+								<!-- PAN Card -->
+								<Panel class="spKycDocPanel">
+									<content>
+										<HBox alignItems="Center" class="spKycDocRow">
+											<items>
+												<VBox class="spKycDocIcon spKycIconGreen">
+													<items><Text text="PAN" class="spKycIconText" /></items>
+												</VBox>
+												<VBox class="spKycDocInfo">
+													<items>
+														<Title text="PAN Card" titleStyle="H5" />
+														<Text text="Permanent Account Number card • JPG, PNG or PDF • Max 2MB" class="spKycDocDesc" />
+													</items>
+												</VBox>
+												<ToolbarSpacer />
+												<ObjectStatus text="Uploaded" state="Success" class="sapUiSmallMarginEnd" />
+												<Button text="Re-upload" type="Transparent" icon="sap-icon://upload" />
+											</items>
+										</HBox>
+									</content>
+								</Panel>
+
+								<!-- HVAC Certification -->
+								<Panel class="spKycDocPanel">
+									<content>
+										<HBox alignItems="Center" class="spKycDocRow">
+											<items>
+												<VBox class="spKycDocIcon spKycIconOrange">
+													<items><Text text="CERT" class="spKycIconText" /></items>
+												</VBox>
+												<VBox class="spKycDocInfo">
+													<items>
+														<Title text="HVAC Certification" titleStyle="H5" />
+														<Text text="Trade certification or training completion certificate • PDF preferred" class="spKycDocDesc" />
+													</items>
+												</VBox>
+												<ToolbarSpacer />
+												<ObjectStatus text="Pending" state="Warning" class="sapUiSmallMarginEnd" />
+												<Button text="Upload" type="Emphasized" icon="sap-icon://upload" press=".onUpload" />
+											</items>
+										</HBox>
+									</content>
+								</Panel>
+
+								<!-- Passport Photo -->
+								<Panel class="spKycDocPanel">
+									<content>
+										<HBox alignItems="Center" class="spKycDocRow">
+											<items>
+												<VBox class="spKycDocIcon spKycIconPurple">
+													<items><Text text="IMG" class="spKycIconText" /></items>
+												</VBox>
+												<VBox class="spKycDocInfo">
+													<items>
+														<Title text="Passport-size Photo" titleStyle="H5" />
+														<Text text="Recent photo with white background • JPG or PNG • Max 1MB" class="spKycDocDesc" />
+													</items>
+												</VBox>
+												<ToolbarSpacer />
+												<ObjectStatus text="Pending" state="Warning" class="sapUiSmallMarginEnd" />
+												<Button text="Upload" type="Emphasized" icon="sap-icon://upload" press=".onUpload" />
+											</items>
+										</HBox>
+									</content>
+								</Panel>
+
+								<MessageStrip text="Documents are securely stored and used only for identity verification. All data is encrypted in transit."
+									type="Information" showIcon="true" class="sapUiSmallMarginTop sapUiSmallMarginBottom" />
+
+								<!-- Navigation buttons -->
+								<HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+									<items>
+										<Button text="Back: Personal Details"
+											icon="sap-icon://nav-back"
+											type="Default"
+											press=".onBack" />
+										<Button text="Next: Review &amp; Submit"
+											icon="sap-icon://arrow-right"
+											iconFirst="false"
+											type="Emphasized"
+											press=".onNext" />
+									</items>
+								</HBox>
+
+							</VBox>
+						</content>
+					</Panel>
+				</VBox>
+
+			</VBox>
+		</content>
+	</Page>
+
+</mvc:View>
