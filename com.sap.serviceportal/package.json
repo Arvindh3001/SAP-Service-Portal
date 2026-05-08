@@ -6,7 +6,7 @@
 	"license": "Apache-2.0",
 	"scripts": {
 		"clean": "rimraf dist coverage",
-		"build": "ui5 build --clean-dest",
+		"build": "ui5 build --clean-dest && cp webapp/index-cdn.html dist/index.html",
 		"build:opt": "ui5 build self-contained --clean-dest --all",
 		"build:vercel": "ui5 build --clean-dest && cp webapp/index-cdn.html dist/index.html",
 		"start": "ui5 serve --port 8080 -o index.html",
