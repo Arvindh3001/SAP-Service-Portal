@@ -51,10 +51,11 @@
 
 /* Top Bar overrides */
 .spTopBar.sapMTB {
-	background: #fff;
-	border-bottom: 1px solid #d9d9d9;
+	background: #fff !important;
+	border-bottom: 1px solid #e5e5e5 !important;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
 	height: 48px;
-	padding: 0 16px;
+	padding: 0 12px;
 	position: sticky;
 	top: 0;
 	z-index: 100;
@@ -73,6 +74,32 @@
 	font-size: 0.875rem;
 	font-weight: 600;
 	margin-left: 8px;
+}
+
+/* ── Header brand pill ── */
+.spBrandPill {
+	display: inline-flex;
+	align-items: center;
+	background: #0a6ed1;
+	color: #fff;
+	padding: 5px 11px 5px 8px;
+	border-radius: 6px;
+	gap: 7px;
+	margin: 0 6px;
+	cursor: default;
+	user-select: none;
+	white-space: nowrap;
+}
+.spBrandPillImg {
+	height: 16px;
+	width: auto;
+	filter: brightness(0) invert(1);
+}
+.spBrandPillTxt {
+	color: #fff;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
 }
 
 /* Content Padding */
@@ -338,21 +365,42 @@
 .spKycDocInfo.sapMVBox { flex: 1; }
 .spKycDocDesc.sapMText { color: #888 !important; font-size: 0.75rem; margin-top: 2px; }
 
-/* ── User Popover ────────────────────────────────── */
-.spPopoverHeader {
-	background: linear-gradient(135deg, #1b4f9b, #0a6ed1);
-	padding: 16px 20px;
-	border-radius: 4px 4px 0 0;
+/* ── User Profile Popover ────────────────────────── */
+.spUserPopover .sapMPopoverCont { padding: 0 !important; }
+
+.spUserPopoverHeader.sapMVBox {
+	padding: 24px 20px 20px;
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+	align-items: center;
 }
-.spPopoverName.sapMText {
-	color: #fff !important;
-	font-weight: 700;
-	font-size: 0.95rem;
+.spUserPopoverAvatar.sapMAvatar {
+	margin-bottom: 12px;
 }
-.spPopoverRole.sapMText {
-	color: rgba(255,255,255,0.75) !important;
-	font-size: 0.78rem;
+.spUserPopoverName.sapMTitle {
+	font-size: 0.9375rem !important;
+	font-weight: 600 !important;
+	color: #32363a !important;
+	margin-top: 0;
+	text-align: center;
+}
+.spUserPopoverEmail.sapMText {
+	font-size: 0.75rem !important;
+	color: #6a6d70 !important;
 	margin-top: 2px;
+	text-align: center;
+}
+.spUserPopoverFooter.sapMHBox {
+	padding: 8px 12px;
+	border-top: 1px solid #e5e5e5;
+	justify-content: flex-end;
+}
+.spUserPopoverSignOut.sapMBtn > .sapMBtnInner {
+	color: #5b38e2 !important;
+	font-weight: 600;
+}
+.spUserPopoverSignOut.sapMBtn > .sapMBtnInner .sapMBtnIcon {
+	color: #5b38e2 !important;
 }
 
 /* ── Back button in blue top bar ─────────────────── */
@@ -1308,23 +1356,23 @@
 	flex-direction: column !important;
 }
 
-/* Top bar */
-.spTopBar.sapMTB {
+/* Top bar — scoped to VA page only */
+.spVaRoot .spTopBar.sapMTB {
 	background: #1b4f9b !important;
 	border-bottom: none !important;
 	padding: 0 12px !important;
 	min-height: 48px !important;
 	flex-shrink: 0;
 }
-.spTopBar.sapMTB .sapMTBShrinkItem { flex-shrink: 0; }
-.spSapLogoImg.sapMImg { height: 24px !important; margin: 0 8px !important; }
-.spAppTitle.sapMText {
+.spVaRoot .spTopBar.sapMTB .sapMTBShrinkItem { flex-shrink: 0; }
+.spVaRoot .spSapLogoImg.sapMImg { height: 24px !important; margin: 0 8px !important; }
+.spVaRoot .spAppTitle.sapMText {
 	color: #fff !important;
 	font-size: 0.95rem !important;
 	font-weight: 600 !important;
 }
-.spTopBar.sapMTB .sapMObjStatus .sapMObjStatusText { color: #fff !important; font-size: 0.78rem !important; }
-.spTopBar.sapMTB .sapMObjStatus.sapMObjStatusSuccess .sapMObjStatusText { color: #72e572 !important; }
+.spVaRoot .spTopBar.sapMTB .sapMObjStatus .sapMObjStatusText { color: #fff !important; font-size: 0.78rem !important; }
+.spVaRoot .spTopBar.sapMTB .sapMObjStatus.sapMObjStatusSuccess .sapMObjStatusText { color: #72e572 !important; }
 
 /* Two-panel row — fills remaining height */
 .spVaPanelsRow.sapMHBox {
@@ -1731,7 +1779,7 @@
 	line-height: 1.5;
 }
 .spAspAlert:last-child { border-bottom: none; }
-.spAspAlertIcon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.spAspAlertDot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
 .spAspAlertRed   { background: #fff5f5; border-left: 3px solid #bb0000; }
 .spAspAlertOrange { background: #fff8f0; border-left: 3px solid #cc6600; }
 .spAspAlertBlue   { background: #f0f4ff; border-left: 3px solid #0a6ed1; }
@@ -1780,5 +1828,46 @@
 	font-weight: 700;
 	color: #107e3e;
 	white-space: nowrap;
+}
+
+/* ── Technician donut charts (My Cases by Priority / Stage) ── */
+.spTechDonut {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+	gap: 20px;
+}
+.spTechDonutSvg {
+	width: 110px;
+	height: 110px;
+	flex-shrink: 0;
+}
+.spTechDonutLegend {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	flex: 1;
+}
+.spTechDonutRow {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.8rem;
+}
+.spTechDonutSq {
+	width: 11px;
+	height: 11px;
+	border-radius: 2px;
+	flex-shrink: 0;
+}
+.spTechDonutLbl {
+	flex: 1;
+	color: #32363a;
+}
+.spTechDonutNum {
+	font-weight: 600;
+	color: #32363a;
+	min-width: 16px;
+	text-align: right;
 }
 

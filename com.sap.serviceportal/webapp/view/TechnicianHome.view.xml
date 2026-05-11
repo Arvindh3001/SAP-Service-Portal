@@ -19,11 +19,14 @@
 					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
 					<Text text="Sales and Service Cloud" class="spAppTitle" />
 					<ToolbarSpacer />
-					<SearchField width="240px" placeholder="Search" />
-					<Button icon="sap-icon://bell" type="Transparent" />
-					<Button icon="sap-icon://action-settings" type="Transparent" />
-					<Avatar initials="{service>/technicianUser/initials}" backgroundColor="Accent7"
-						press=".onAvatarPress" />
+					<SearchField width="380px" placeholder="Search All" showSearchButton="false" />
+					<ToolbarSpacer />
+					<Button icon="sap-icon://bell" type="Transparent" tooltip="Notifications" />
+					<Button icon="sap-icon://collaborate" type="Transparent" tooltip="Chat" />
+					<Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings" />
+					<Button icon="sap-icon://headset" type="Transparent" tooltip="Support" />
+					<Avatar initials="{service>/technicianUser/initials}" backgroundColor="Accent7" press=".onAvatarPress" />
+					<Button icon="sap-icon://grid" type="Transparent" tooltip="Apps" />
 				</Toolbar>
 
 				<!-- Hero Banner -->
@@ -60,59 +63,31 @@
 								</content>
 							</Panel>
 
-							<!-- My Cases by Stage -->
-							<Panel headerText="My Cases by Stage" class="spPanel">
+							<!-- My Cases by Priority -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="My Cases by Priority" level="H4" />
+										<ToolbarSpacer />
+										<Button icon="sap-icon://action" type="Transparent" tooltip="Open" />
+									</Toolbar>
+								</headerToolbar>
 								<content>
-									<VBox class="sapUiSmallMarginBeginEnd">
-										<core:HTML content="&lt;div style='height:8px'&gt;&lt;/div&gt;" />
-										<List items="{service>/casesByStage}" showSeparators="None">
-											<CustomListItem>
-												<HBox alignItems="Center" class="sapUiTinyMarginTopBottom">
-													<items>
-														<core:HTML
-															content="{= '&lt;div class=\'spStageDot ' + ${service>stageClass} + '\'&gt;&lt;/div&gt;'}" />
-														<Text text="{service>stage}" class="spTechStageText" />
-														<Text text="{service>count}" class="spTechCountText" />
-													</items>
-												</HBox>
-											</CustomListItem>
-										</List>
-									</VBox>
+									<core:HTML content="&lt;div class='spTechDonut'&gt;&lt;svg viewBox='0 0 100 100' class='spTechDonutSvg'&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#f0f0f0' stroke-width='14'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#bb0000' stroke-width='14' stroke-dasharray='43.98 219.9' stroke-dashoffset='0' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#cc6600' stroke-width='14' stroke-dasharray='65.97 219.9' stroke-dashoffset='-43.98' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#107e3e' stroke-width='14' stroke-dasharray='87.96 219.9' stroke-dashoffset='-109.95' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#8a9ab0' stroke-width='14' stroke-dasharray='21.99 219.9' stroke-dashoffset='-197.91' transform='rotate(-90 50 50)'/&gt;&lt;text x='50' y='54' text-anchor='middle' font-size='22' font-weight='700' fill='#1b1f23'&gt;10&lt;/text&gt;&lt;/svg&gt;&lt;div class='spTechDonutLegend'&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#bb0000'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;Immediate&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;2&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#cc6600'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;Urgent&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#107e3e'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;Normal&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;4&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#8a9ab0'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;Low&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" />
 								</content>
 							</Panel>
 
-							<!-- Today's Performance -->
-							<Panel headerText="Today's Performance" class="spPanel">
+							<!-- My Cases by Stage -->
+							<Panel class="spPanel">
+								<headerToolbar>
+									<Toolbar>
+										<Title text="My Cases by Stage" level="H4" />
+										<ToolbarSpacer />
+										<Button icon="sap-icon://action" type="Transparent" tooltip="Open" />
+									</Toolbar>
+								</headerToolbar>
 								<content>
-									<VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom">
-										<FlexBox justifyContent="SpaceBetween"
-											class="sapUiSmallMarginTopBottom">
-											<items>
-												<VBox alignItems="Center" class="spPerfKpiCell">
-													<Title text="{service>/techPerformance/ticketsResolved}" level="H2" class="spTechKpiGreen" />
-													<Text text="Tickets Resolved This Month" class="spTechKpiLabel" wrapping="true" />
-												</VBox>
-												<VBox alignItems="Center" class="spPerfKpiCell">
-													<Title text="{service>/techPerformance/firstVisitFixRate}" level="H2" class="spTechKpiBlue" />
-													<Text text="First Visit Fix Rate" class="spTechKpiLabel" />
-												</VBox>
-												<VBox alignItems="Center" class="spPerfKpiCell">
-													<Title text="{service>/techPerformance/slaRisk}" level="H2" class="spTechKpiOrange" />
-													<Text text="SLA at Risk Today" class="spTechKpiLabel" />
-												</VBox>
-												<VBox alignItems="Center" class="spPerfKpiCell">
-													<Title text="{service>/techPerformance/customerRating}" level="H2" class="spTechKpiBlue" />
-													<Text text="Customer Rating" class="spTechKpiLabel" />
-												</VBox>
-											</items>
-										</FlexBox>
-										<Label text="SLA Compliance" design="Bold" class="sapUiTinyMarginBottom" />
-										<ProgressIndicator
-											percentValue="{service>/techPerformance/slaCompliance}"
-											displayValue="{service>/techPerformance/slaCompliance}% on-time this month"
-											state="Success" />
-										<Text text="Target: 90%" class="spTechTargetLabel" />
-									</VBox>
+									<core:HTML content="&lt;div class='spTechDonut'&gt;&lt;svg viewBox='0 0 100 100' class='spTechDonutSvg'&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#f0f0f0' stroke-width='14'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#0a6ed1' stroke-width='14' stroke-dasharray='43.98 219.9' stroke-dashoffset='0' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#cc6600' stroke-width='14' stroke-dasharray='87.96 219.9' stroke-dashoffset='-43.98' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#8a9ab0' stroke-width='14' stroke-dasharray='21.99 219.9' stroke-dashoffset='-131.94' transform='rotate(-90 50 50)'/&gt;&lt;circle cx='50' cy='50' r='35' fill='none' stroke='#107e3e' stroke-width='14' stroke-dasharray='65.97 219.9' stroke-dashoffset='-153.93' transform='rotate(-90 50 50)'/&gt;&lt;text x='50' y='54' text-anchor='middle' font-size='22' font-weight='700' fill='#1b1f23'&gt;10&lt;/text&gt;&lt;/svg&gt;&lt;div class='spTechDonutLegend'&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#0a6ed1'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;New&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;2&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#cc6600'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;In Progress&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;4&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#8a9ab0'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;On Hold&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;1&lt;/span&gt;&lt;/div&gt;&lt;div class='spTechDonutRow'&gt;&lt;span class='spTechDonutSq' style='background:#107e3e'&gt;&lt;/span&gt;&lt;span class='spTechDonutLbl'&gt;Completed&lt;/span&gt;&lt;span class='spTechDonutNum'&gt;3&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" />
 								</content>
 							</Panel>
 

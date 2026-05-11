@@ -1,6 +1,7 @@
 {
 	"currentUser": {
-		"name": "Sharma & Sons Service", "id": "ASP-BLR-042", "initials": "AS", "role": "admin"
+		"name": "Sharma & Sons Service", "id": "ASP-BLR-042", "initials": "AS", "role": "admin",
+		"displayName": "Arvindh S", "email": "arvindh.s@sap.com"
 	},
 	"welcomeDate": "Thursday, Apr 24 2026",
 	"welcomeStats": "52 active cases  •  9 technicians on field  •  4 SLA breach risks  •  3 claims pending approval",
@@ -80,7 +81,8 @@
 	],
 
 	"technicianUser": {
-		"name": "Ravi Kumar", "zone": "Bangalore North Zone", "initials": "RK"
+		"name": "Ravi Kumar", "zone": "Bangalore North Zone", "initials": "RK",
+		"displayName": "Ravi Kumar", "email": "ravi.kumar@sap.com"
 	},
 	"techWelcomeDate": "Thursday, Apr 24 2026",
 	"techWelcomeStats": "4 active cases today  •  Next job at 10:30 AM  •  SLA breach risk on TKT-0891",

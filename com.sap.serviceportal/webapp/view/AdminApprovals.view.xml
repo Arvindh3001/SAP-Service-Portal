@@ -12,9 +12,12 @@
 					<Image src="img/sap-logo.svg" class="spSapLogoImg" />
 					<Text text="Sales and Service Cloud" class="spAppTitle" />
 					<ToolbarSpacer />
-					<Button icon="sap-icon://bell" type="Transparent" />
-					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6"
-						press=".onAvatarPress" />
+					<Button icon="sap-icon://bell" type="Transparent" tooltip="Notifications" />
+					<Button icon="sap-icon://collaborate" type="Transparent" tooltip="Chat" />
+					<Button icon="sap-icon://action-settings" type="Transparent" tooltip="Settings" />
+					<Button icon="sap-icon://headset" type="Transparent" tooltip="Support" />
+					<Avatar initials="{service>/currentUser/initials}" backgroundColor="Accent6" press=".onAvatarPress" />
+					<Button icon="sap-icon://grid" type="Transparent" tooltip="Apps" />
 				</Toolbar>
 
 				<VBox class="spContent">
