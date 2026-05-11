@@ -1,5 +1,32 @@
 /* SAP Service Portal - Custom Styles */
 
+/* ── Local font overrides — ensures icons and text font load from Vercel,
+       not the external CDN. This eliminates cross-origin font loading issues. ── */
+@font-face {
+	font-family: "SAP-icons";
+	src: url('../fonts/SAP-icons.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "72";
+	src: url('../fonts/72-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "72";
+	src: url('../fonts/72-Bold.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: "72";
+	src: url('../fonts/72-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+}
+
 /* Hero Banner */
 .spHeroBanner {
 	background: linear-gradient(135deg, #1d4b98 0%, #2b54a1 100%);
