@@ -6,9 +6,9 @@
 	"license": "Apache-2.0",
 	"scripts": {
 		"clean": "rimraf dist coverage",
-		"build": "ui5 build --clean-dest && cp webapp/index-cdn.html dist/index.html",
+		"build": "ui5 build --clean-dest && node -e \"require('fs').copyFileSync('webapp/index-cdn.html','dist/index.html')\"",
 		"build:opt": "ui5 build self-contained --clean-dest --all",
-		"build:vercel": "ui5 build --clean-dest && cp webapp/index-cdn.html dist/index.html",
+		"build:vercel": "ui5 build --clean-dest && node -e \"require('fs').copyFileSync('webapp/index-cdn.html','dist/index.html')\"",
 		"start": "ui5 serve --port 8080 -o index.html",
 		"start-cdn": "ui5 serve --port 8080 -o index-cdn.html",
 		"start-coverage": "ui5 serve --port 8080 --config ui5-coverage.yaml",
