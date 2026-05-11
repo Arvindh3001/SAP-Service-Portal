@@ -1,0 +1,17 @@
+{
+  "buildCommand": "cd com.sap.serviceportal && npm install --include=dev && npm run build:vercel",
+  "outputDirectory": "com.sap.serviceportal/dist",
+  "installCommand": "echo 'install handled in buildCommand'",
+  "framework": null,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
+  ]
+}
